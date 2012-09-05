@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -158,7 +159,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                Logging.Error(ViewConstants.ProjectName, ex.Message);
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
 
                 MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -172,7 +176,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                Logging.Error(ViewConstants.ProjectName, ex.Message);
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
 
                 MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -186,7 +193,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                Logging.Error(ViewConstants.ProjectName, ex.Message);
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
 
                 MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -212,7 +222,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                Logging.Error(ViewConstants.ProjectName, ex.Message);
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
 
                 MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

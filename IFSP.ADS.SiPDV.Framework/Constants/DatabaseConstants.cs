@@ -69,6 +69,26 @@ namespace IFSP.ADS.SiPDV.Framework
 
         #endregion
 
+        #region -Price-
+
+        private const string PRICE_TABLE = "Tb_Preco";
+
+        private const string PRICE_ID_COLUMN = "Id";
+        private const string PRICE_ID_PRODUCT_COLUMN = "Id_Produto";
+        private const string PRICE_DATE_TIME_COLUMN = "Data_Hora";
+        private const string PRICE_COST_PRICE_COLUMN = "Preco_Custo";
+        private const string PRICE_SALE_PRICE_COLUMN = "Preco_Venda";
+
+        private const string PRICE_ID_PARAM = "@Id";
+        private const string PRICE_ID_PRODUCT_PARAM = "@Id_Produto";
+        private const string PRICE_DATE_TIME_PARAM = "@Data_Hora";
+        private const string PRICE_COST_PRICE_PARAM = "@Preco_Custo";
+        private const string PRICE_SALE_PRICE_PARAM = "@Preco_Venda";
+
+        private const string PRICE_INSERT_SQL = "INSERT INTO Tb_Preco (Id_Produto, Data_Hora, Preco_Custo, Preco_Venda) VALUES (@Id_Produto, @Data_Hora, @Preco_Custo, @Preco_Venda)";
+
+        #endregion
+
         #endregion
 
         #region -Public Properties-
@@ -261,6 +281,70 @@ namespace IFSP.ADS.SiPDV.Framework
         public static string ProductGetByNameSql
         {
             get { return PRODUCT_GET_BY_NAME_SQL; }
+        }
+
+        #endregion
+
+        #region -Price-
+
+        public static string PriceTable
+        {
+            get { return PRICE_TABLE; }
+        }
+
+        public static string PriceIdColumn
+        {
+            get { return PRICE_ID_COLUMN; }
+        }
+
+        public static string PriceIdProductColumn
+        {
+            get { return PRICE_ID_PRODUCT_COLUMN; }
+        }
+
+        public static string PriceDateTimeColumn
+        {
+            get { return PRICE_DATE_TIME_COLUMN; }
+        }
+
+        public static string PriceCostPriceColumn
+        {
+            get { return PRICE_COST_PRICE_COLUMN; }
+        }
+
+        public static string PriceSalePriceColumn
+        {
+            get { return PRICE_SALE_PRICE_COLUMN; }
+        }
+
+        public static string PriceIdParam
+        {
+            get { return PRICE_ID_PARAM; }
+        }
+
+        public static string PriceIdProductParam
+        {
+            get { return PRICE_ID_PRODUCT_PARAM; }
+        }
+
+        public static string PriceDateTimeParam
+        {
+            get { return PRICE_DATE_TIME_PARAM; }
+        }
+
+        public static string PriceCostPriceParam
+        {
+            get { return PRICE_COST_PRICE_PARAM; }
+        }
+
+        public static string PriceSalePriceParam
+        {
+            get { return PRICE_SALE_PRICE_PARAM; }
+        }
+
+        public static string PriceInsertSql
+        {
+            get { return PRICE_INSERT_SQL; }
         }
 
         #endregion
