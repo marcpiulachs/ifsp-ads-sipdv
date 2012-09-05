@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OperatorBusiness.cs" />
     <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\IFSP.ADS.SiPDV.Framework\IFSP.ADS.SiPDV.Framework.csproj">
       <Project>{489401C9-DA79-4757-ABC6-E20859E03ED4}</Project>
       <Name>IFSP.ADS.SiPDV.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFSP.ADS.SiPDV.Log\IFSP.ADS.SiPDV.Log.csproj">
+      <Project>{A8B37CD4-CA67-436C-BBEB-30192B71C437}</Project>
+      <Name>IFSP.ADS.SiPDV.Log</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

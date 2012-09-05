@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 using IFSP.ADS.SiPDV.Framework;
@@ -12,10 +13,16 @@ namespace IFSP.ADS.SiPDV.Database
 {
     public class ProductDataAccess : BaseDataAccess
     {
+        #region -Constructor-
+
         public ProductDataAccess()
         {
             
         }
+
+        #endregion
+
+        #region -Public Methods-
 
         public int GetId(long barCode)
         {
@@ -30,12 +37,20 @@ namespace IFSP.ADS.SiPDV.Database
             }
             catch (Exception ex)
             {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
                 throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
             }
         }
 
-        public void InsertProduct(long barCode, string name, string description, string measurementUnit, 
-                                  int quantity, DateTime dateTime, float costPrice, float salePrice)
+        public void InsertProduct(long barCode, string name, string description, string measurementUnit, int quantity)
         {
             try
             {
@@ -50,14 +65,42 @@ namespace IFSP.ADS.SiPDV.Database
 
                 this.sqlCommand.ExecuteNonQuery();
             }
-            catch (SqlException sqlex)
+            catch (Exception ex)
             {
-                Logging.Error(DatabaseConstants.ProjectName, sqlex.Message);
+                Logging.Error(DatabaseConstants.ProjectName, 
+                              MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                              MethodBase.GetCurrentMethod().Name, 
+                              ex.Message);
 
-                throw sqlex;
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public void InsertPrice(int productId, DateTime dateTime, float costPrice, float salePrice)
+        {
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.PriceInsertSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.PriceIdProductParam, productId);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.PriceDateTimeParam, dateTime);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.PriceCostPriceParam, costPrice);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.PriceSalePriceParam, salePrice);
+
+                this.sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
                 throw ex;
             }
             finally
@@ -92,14 +135,13 @@ namespace IFSP.ADS.SiPDV.Database
 
                 return dtProducts;
             }
-            catch (SqlException sqlex)
-            {
-                Logging.Error(DatabaseConstants.ProjectName, sqlex.Message);
-
-                throw sqlex;
-            }
             catch (Exception ex)
             {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
                 throw ex;
             }
             finally
@@ -127,14 +169,13 @@ namespace IFSP.ADS.SiPDV.Database
 
                 return dtProducts;
             }
-            catch (SqlException sqlex)
-            {
-                Logging.Error(DatabaseConstants.ProjectName, sqlex.Message);
-
-                throw sqlex;
-            }
             catch (Exception ex)
             {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
                 throw ex;
             }
             finally
@@ -162,14 +203,13 @@ namespace IFSP.ADS.SiPDV.Database
 
                 return dtProducts;
             }
-            catch (SqlException sqlex)
-            {
-                Logging.Error(DatabaseConstants.ProjectName, sqlex.Message);
-
-                throw sqlex;
-            }
             catch (Exception ex)
             {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
                 throw ex;
             }
             finally
@@ -178,5 +218,7 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.Dispose();
             }
         }
+
+        #endregion
     }
 }

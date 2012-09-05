@@ -15,9 +15,11 @@ namespace IFSP.ADS.SiPDV.Log
         /// </summary>
         /// <param name="source">Entry source</param>
         /// <param name="message">Information message</param>
-        public static void Information(string source, string message)
+        public static void Information(string source, string className, string methodName, string message)
         {
-            EventLog.WriteEntry(source, message, EventLogEntryType.Information);
+            EventLog.WriteEntry(source, 
+                                className + Environment.NewLine + methodName + Environment.NewLine + message, 
+                                EventLogEntryType.Information);
         }
 
         /// <summary>
@@ -25,9 +27,11 @@ namespace IFSP.ADS.SiPDV.Log
         /// </summary>
         /// <param name="source">Entry source</param>
         /// <param name="message">Warning message</param>
-        public static void Warning(string source, string message)
+        public static void Warning(string source, string className, string methodName, string message)
         {
-            EventLog.WriteEntry(source, message, EventLogEntryType.Warning);
+            EventLog.WriteEntry(source,
+                                className + Environment.NewLine + methodName + Environment.NewLine + message, 
+                                EventLogEntryType.Warning);
         }
 
         /// <summary>
@@ -35,9 +39,11 @@ namespace IFSP.ADS.SiPDV.Log
         /// </summary>
         /// <param name="source">Entry source</param>
         /// <param name="message">Error message</param>
-        public static void Error(string source, string message)
+        public static void Error(string source, string className, string methodName, string message)
         {
-            EventLog.WriteEntry(source, message, EventLogEntryType.Error);
+            EventLog.WriteEntry(source,
+                                className + Environment.NewLine + methodName + Environment.NewLine + message, 
+                                EventLogEntryType.Error);
         }
 
         #endregion
