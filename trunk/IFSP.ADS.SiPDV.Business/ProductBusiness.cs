@@ -21,14 +21,22 @@ namespace IFSP.ADS.SiPDV.Business
 
         #region -Public Methods-
 
-        public void InsertProduct(Product product)
+        public void InsertUpdateProduct(Product product)
         {
             try
             {
                 using (this.productDataAccess = new ProductDataAccess())
                 {
-                    this.productDataAccess.InsertProduct(product.BarCode, product.Name, product.Description, 
-                                                         product.MeasurementUnit, product.Quantity);
+                    if (product.Id > 0)
+                    {
+                        this.productDataAccess.UpdateProduct(product.Id, product.BarCode, product.Name, 
+                                                             product.Description, product.MeasurementUnit);
+                    }
+                    else
+                    {
+                        this.productDataAccess.InsertProduct(product.BarCode, product.Name, product.Description,
+                                                             product.MeasurementUnit, product.Quantity, product.Status);
+                    }
 
                     this.productDataAccess.InsertPrice(this.productDataAccess.GetId(product.BarCode), DateTime.Now, 
                                                        product.CostPrice, product.SalePrice);
@@ -36,7 +44,27 @@ namespace IFSP.ADS.SiPDV.Business
             }
             catch (Exception ex)
             {
-                Logging.Error(DatabaseConstants.ProjectName,
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    this.productDataAccess.UpdateProductStatus(product.BarCode, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
                               MethodBase.GetCurrentMethod().DeclaringType.Name,
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
@@ -56,7 +84,7 @@ namespace IFSP.ADS.SiPDV.Business
             }
             catch (Exception ex)
             {
-                Logging.Error(DatabaseConstants.ProjectName,
+                Logging.Error(BusinessConstants.ProjectName,
                               MethodBase.GetCurrentMethod().DeclaringType.Name,
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
@@ -76,7 +104,7 @@ namespace IFSP.ADS.SiPDV.Business
             }
             catch (Exception ex)
             {
-                Logging.Error(DatabaseConstants.ProjectName,
+                Logging.Error(BusinessConstants.ProjectName,
                               MethodBase.GetCurrentMethod().DeclaringType.Name,
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
@@ -96,7 +124,7 @@ namespace IFSP.ADS.SiPDV.Business
             }
             catch (Exception ex)
             {
-                Logging.Error(DatabaseConstants.ProjectName,
+                Logging.Error(BusinessConstants.ProjectName,
                               MethodBase.GetCurrentMethod().DeclaringType.Name,
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);

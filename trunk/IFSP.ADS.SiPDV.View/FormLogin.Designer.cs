@@ -82,7 +82,7 @@
             // labelOperator
             // 
             this.labelOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOperator.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Operator;
+            this.labelOperator.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Login;
             this.labelOperator.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelOperator.Location = new System.Drawing.Point(12, 68);
             this.labelOperator.Name = "labelOperator";

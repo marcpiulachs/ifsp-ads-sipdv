@@ -24,15 +24,17 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
-        public void InsertOperator(Operator oper)
+        public void InsertOperator(string code, string name, string password, int status)
         {
             try
             {
                 this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorInsertSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, oper.Code);
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorNameParam, oper.Name);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorNameParam, name);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorPasswordParam, password);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorStatusParam, status);
 
                 this.sqlCommand.ExecuteNonQuery();
             }
@@ -47,6 +49,162 @@ namespace IFSP.ADS.SiPDV.Database
             }
             finally
             {
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public void UpdateOperator(int id, string code, string name, string password)
+        {
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorUpdateSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorNameParam, name);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorPasswordParam, password);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorIdParam, id);
+
+                this.sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public void UpdateOperatorStatus(string code, int status)
+        {
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorUpdateStatusSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorStatusParam, status);
+
+                this.sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetAllOperators()
+        {
+            DataTable dtOperators;
+
+            try
+            {
+                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetAllSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtOperators);
+
+                return dtOperators;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetOperatorsByCode(string code)
+        {
+            DataTable dtOperators;
+
+            try
+            {
+                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetByCodeSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtOperators);
+
+                return dtOperators;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetOperatorsByName(string name)
+        {
+            DataTable dtOperators;
+
+            try
+            {
+                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetByNameSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorNameParam, "%" + name + "%");
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtOperators);
+
+                return dtOperators;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
                 this.sqlCommand.Dispose();
             }
         }

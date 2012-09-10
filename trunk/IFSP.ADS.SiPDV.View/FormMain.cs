@@ -43,13 +43,17 @@ namespace IFSP.ADS.SiPDV.View
             }
             else if (e.KeyCode == Keys.F4)
             {
-                this.stockToolStripMenuItem.PerformClick();
+                this.operatorsToolStripMenuItem.PerformClick();
             }
             else if (e.KeyCode == Keys.F5)
             {
-                this.reportsToolStripMenuItem.PerformClick();
+                this.stockToolStripMenuItem.PerformClick();
             }
             else if (e.KeyCode == Keys.F6)
+            {
+                this.reportsToolStripMenuItem.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F7)
             {
                 this.configurationToolStripMenuItem.PerformClick();
             }
@@ -86,6 +90,18 @@ namespace IFSP.ADS.SiPDV.View
                 FormProducts frmProducts = new FormProducts();
                 frmProducts.MdiParent = this;
                 frmProducts.Show();
+            }
+            catch (Exception)
+            { }
+        }
+
+        private void operatorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormOperator frmOperators = new FormOperator();
+                frmOperators.MdiParent = this;
+                frmOperators.Show();
             }
             catch (Exception)
             { }

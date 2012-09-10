@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSP.ADS.SiPDV.Business", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSP.ADS.SiPDV.Config", "IFSP.ADS.SiPDV.Config\IFSP.ADS.SiPDV.Config.csproj", "{B810E63B-A17A-4DB1-A561-EC0523B167D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSP.ADS.SiPDV.Tools", "IFSP.ADS.SiPDV.Tools\IFSP.ADS.SiPDV.Tools.csproj", "{BD8A5578-BEBE-4561-AD75-3252F65DAE43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,16 @@ Global
 		{B810E63B-A17A-4DB1-A561-EC0523B167D9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B810E63B-A17A-4DB1-A561-EC0523B167D9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B810E63B-A17A-4DB1-A561-EC0523B167D9}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BD8A5578-BEBE-4561-AD75-3252F65DAE43}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

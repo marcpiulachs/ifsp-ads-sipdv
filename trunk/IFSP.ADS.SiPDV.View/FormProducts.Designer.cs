@@ -37,6 +37,7 @@
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxProduct = new System.Windows.Forms.GroupBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
             this.tableLayoutPanelProduct = new System.Windows.Forms.TableLayoutPanel();
@@ -52,7 +53,6 @@
             this.textBoxCostPrice = new System.Windows.Forms.TextBox();
             this.textBoxSalePrice = new System.Windows.Forms.TextBox();
             this.comboBoxMeasurementUnity = new System.Windows.Forms.ComboBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.groupBoxSearchProducts.SuspendLayout();
             this.tableLayoutPanelSearchProducts.SuspendLayout();
@@ -190,6 +190,21 @@
             this.groupBoxProduct.TabIndex = 0;
             this.groupBoxProduct.TabStop = false;
             this.groupBoxProduct.Text = "Cadastrar Produto";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDelete.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
+            this.buttonDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDelete.Location = new System.Drawing.Point(613, 113);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(141, 40);
+            this.buttonDelete.TabIndex = 3;
+            this.buttonDelete.Text = "Excluir";
+            this.buttonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonSave
             // 
@@ -382,21 +397,6 @@
             this.comboBoxMeasurementUnity.Name = "comboBoxMeasurementUnity";
             this.comboBoxMeasurementUnity.Size = new System.Drawing.Size(75, 24);
             this.comboBoxMeasurementUnity.TabIndex = 7;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDelete.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
-            this.buttonDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDelete.Location = new System.Drawing.Point(613, 113);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(141, 40);
-            this.buttonDelete.TabIndex = 3;
-            this.buttonDelete.Text = "Excluir";
-            this.buttonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // FormProducts
             // 

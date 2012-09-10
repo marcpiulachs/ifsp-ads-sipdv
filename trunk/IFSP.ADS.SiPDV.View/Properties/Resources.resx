@@ -130,6 +130,9 @@
   <data name="Enter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Enter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erro</value>
+  </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,9 +141,6 @@
   </data>
   <data name="Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Operator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Operator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,7 +163,55 @@
   <data name="Stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
   <data name="Table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="ProductDeleteError" xml:space="preserve">
+    <value>Erro ao excluir produto.</value>
+  </data>
+  <data name="ProductDeleteQuestion" xml:space="preserve">
+    <value>Deseja realmente excluir este produto?</value>
+  </data>
+  <data name="ProductDeleteSuccess" xml:space="preserve">
+    <value>Produto excluído com sucesso!</value>
+  </data>
+  <data name="ProductSaveError" xml:space="preserve">
+    <value>Erro ao salvar produto.</value>
+  </data>
+  <data name="ProductSaveSuccess" xml:space="preserve">
+    <value>Produto salvo com sucesso!</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Tem certeza?</value>
+  </data>
+  <data name="OperatorDeleteError" xml:space="preserve">
+    <value>Erro ao excluir operador.</value>
+  </data>
+  <data name="OperatorDeleteQuestion" xml:space="preserve">
+    <value>Deseja realmente excluir este operador?</value>
+  </data>
+  <data name="OperatorDeleteSuccess" xml:space="preserve">
+    <value>Operador excluído com sucesso!</value>
+  </data>
+  <data name="OperatorSaveError" xml:space="preserve">
+    <value>Erro ao salvar operador.</value>
+  </data>
+  <data name="OperatorSaveSuccess" xml:space="preserve">
+    <value>Operador salvo com sucesso!</value>
+  </data>
+  <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Operator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Operator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OperatorPasswordWarning" xml:space="preserve">
+    <value>Confirme a senha corretamente.</value>
   </data>
 </root>
