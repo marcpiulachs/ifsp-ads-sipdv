@@ -88,6 +88,22 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Erro.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Login {
+            get {
+                object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
@@ -116,6 +132,60 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir operador..
+        /// </summary>
+        internal static string OperatorDeleteError {
+            get {
+                return ResourceManager.GetString("OperatorDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente excluir este operador?.
+        /// </summary>
+        internal static string OperatorDeleteQuestion {
+            get {
+                return ResourceManager.GetString("OperatorDeleteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operador excluído com sucesso!.
+        /// </summary>
+        internal static string OperatorDeleteSuccess {
+            get {
+                return ResourceManager.GetString("OperatorDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirme a senha corretamente..
+        /// </summary>
+        internal static string OperatorPasswordWarning {
+            get {
+                return ResourceManager.GetString("OperatorPasswordWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar operador..
+        /// </summary>
+        internal static string OperatorSaveError {
+            get {
+                return ResourceManager.GetString("OperatorSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operador salvo com sucesso!.
+        /// </summary>
+        internal static string OperatorSaveSuccess {
+            get {
+                return ResourceManager.GetString("OperatorSaveSuccess", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Password {
             get {
                 object obj = ResourceManager.GetObject("Password", resourceCulture);
@@ -127,6 +197,60 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             get {
                 object obj = ResourceManager.GetObject("Product", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir produto..
+        /// </summary>
+        internal static string ProductDeleteError {
+            get {
+                return ResourceManager.GetString("ProductDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente excluir este produto?.
+        /// </summary>
+        internal static string ProductDeleteQuestion {
+            get {
+                return ResourceManager.GetString("ProductDeleteQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Produto excluído com sucesso!.
+        /// </summary>
+        internal static string ProductDeleteSuccess {
+            get {
+                return ResourceManager.GetString("ProductDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar produto..
+        /// </summary>
+        internal static string ProductSaveError {
+            get {
+                return ResourceManager.GetString("ProductSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Produto salvo com sucesso!.
+        /// </summary>
+        internal static string ProductSaveSuccess {
+            get {
+                return ResourceManager.GetString("ProductSaveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tem certeza?.
+        /// </summary>
+        internal static string Question {
+            get {
+                return ResourceManager.GetString("Question", resourceCulture);
             }
         }
         
@@ -165,10 +289,28 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Sucesso.
+        /// </summary>
+        internal static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Table {
             get {
                 object obj = ResourceManager.GetObject("Table", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Atenção.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }

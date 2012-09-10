@@ -57,6 +57,10 @@
       <Project>{A8B37CD4-CA67-436C-BBEB-30192B71C437}</Project>
       <Name>IFSP.ADS.SiPDV.Log</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IFSP.ADS.SiPDV.Tools\IFSP.ADS.SiPDV.Tools.csproj">
+      <Project>{BD8A5578-BEBE-4561-AD75-3252F65DAE43}</Project>
+      <Name>IFSP.ADS.SiPDV.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,6 +12,8 @@ namespace IFSP.ADS.SiPDV.Framework
         private int id;
         private string code;
         private string name;
+        private string password;
+        private int status;
 
         #endregion
 
@@ -22,11 +24,13 @@ namespace IFSP.ADS.SiPDV.Framework
  
         }
 
-        public Operator(int id, string code, string name)
+        public Operator(int id, string code, string name, string password, int status)
         {
             this.id = id;
             this.code = code;
             this.name = name;
+            this.password = password;
+            this.status = status;
         }
 
         #endregion
@@ -49,6 +53,18 @@ namespace IFSP.ADS.SiPDV.Framework
         {
             get { return name; }
             set { name = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public int Status
+        {
+            get { return status; }
+            set { status = value; }
         }
 
         #endregion

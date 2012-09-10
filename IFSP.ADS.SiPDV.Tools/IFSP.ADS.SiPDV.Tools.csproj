@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{489401C9-DA79-4757-ABC6-E20859E03ED4}</ProjectGuid>
+    <ProjectGuid>{BD8A5578-BEBE-4561-AD75-3252F65DAE43}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IFSP.ADS.SiPDV.Framework</RootNamespace>
-    <AssemblyName>IFSP.ADS.SiPDV.Framework</AssemblyName>
+    <RootNamespace>IFSP.ADS.SiPDV.Tools</RootNamespace>
+    <AssemblyName>IFSP.ADS.SiPDV.Tools</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,12 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Operator.cs" />
-    <Compile Include="Classes\Product.cs" />
-    <Compile Include="Constants\BusinessConstants.cs" />
-    <Compile Include="Constants\ConfigurationConstants.cs" />
-    <Compile Include="Constants\DatabaseConstants.cs" />
-    <Compile Include="Constants\ViewConstants.cs" />
+    <Compile Include="Cryptography\PasswordTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

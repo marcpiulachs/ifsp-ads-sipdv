@@ -15,6 +15,7 @@ namespace IFSP.ADS.SiPDV.Framework
         private string description;
         private string measurementUnit;
         private int quantity;
+        private int status;
         private float costPrice;
         private float salePrice;
 
@@ -27,8 +28,8 @@ namespace IFSP.ADS.SiPDV.Framework
 
         }
 
-        public Product(int id, long barCode, string name, string description, 
-                       string measurementUnit, int quantity, float costPrice, float salePrice)
+        public Product(int id, long barCode, string name, string description, string measurementUnit, 
+                       int quantity, int status, float costPrice, float salePrice)
         {
             this.id = id;
             this.barCode = barCode;
@@ -36,6 +37,7 @@ namespace IFSP.ADS.SiPDV.Framework
             this.description = description;
             this.measurementUnit = measurementUnit;
             this.quantity = quantity;
+            this.status = status;
             this.costPrice = costPrice;
             this.salePrice = salePrice;
         }
@@ -78,6 +80,12 @@ namespace IFSP.ADS.SiPDV.Framework
         {
             get { return quantity; }
             set { quantity = value; }
+        }
+
+        public int Status
+        {
+            get { return status; }
+            set { status = value; }
         }
 
         public float CostPrice

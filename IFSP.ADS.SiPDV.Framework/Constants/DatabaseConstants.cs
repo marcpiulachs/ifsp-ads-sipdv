@@ -30,12 +30,21 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string OPERATOR_ID_COLUMN = "Id";
         private const string OPERATOR_CODE_COLUMN = "Codigo";
         private const string OPERATOR_NAME_COLUMN = "Nome";
+        private const string OPERATOR_PASSWORD_COLUMN = "Senha";
+        private const string OPERATOR_STATUS_COLUMN = "Status";
 
         private const string OPERATOR_ID_PARAM = "@Id";
         private const string OPERATOR_CODE_PARAM = "@Codigo";
         private const string OPERATOR_NAME_PARAM = "@Nome";
+        private const string OPERATOR_PASSWORD_PARAM = "@Senha";
+        private const string OPERATOR_STATUS_PARAM = "@Status";
 
-        private const string OPERATOR_INSERT_SQL = "INSERT INTO Tb_Operador (Codigo, Nome) VALUES (@Codigo, @Nome)";
+        private const string OPERATOR_INSERT_SQL = "INSERT INTO Tb_Operador (Codigo, Nome, Senha, Status) VALUES (@Codigo, @Nome, @Senha, @Status)";
+        private const string OPERATOR_UPDATE_SQL = "UPDATE Tb_Operador SET Codigo = @Codigo, Nome = @Nome, Senha = @Senha WHERE Id = @Id";
+        private const string OPERATOR_UPDATE_STATUS_SQL = "UPDATE Tb_Operador SET Status = @Status WHERE Codigo = @Codigo";
+        private const string OPERATOR_GET_ALL_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Status = 1";
+        private const string OPERATOR_GET_BY_CODE_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Codigo = @Codigo AND Status = 1";
+        private const string OPERATOR_GET_BY_NAME_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Nome LIKE @Nome AND Status = 1";
 
         #endregion
 
@@ -49,8 +58,7 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string PRODUCT_DESCRIPTION_COLUMN = "Descricao";
         private const string PRODUCT_MEASUREMENT_UNIT_COLUMN = "Unidade_Medida";
         private const string PRODUCT_QUANTITY_COLUMN = "Quantidade_Estoque";
-        private const string PRODUCT_COST_PRICE_COLUMN = "Preco_Custo";
-        private const string PRODUCT_SALE_PRICE_COLUMN = "Preco_Venda";
+        private const string PRODUCT_STATUS_COLUMN = "Status";
 
         private const string PRODUCT_ID_PARAM = "@Id";
         private const string PRODUCT_BAR_CODE_PARAM = "@Codigo_Barra";
@@ -58,14 +66,16 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string PRODUCT_DESCRIPTION_PARAM = "@Descricao";
         private const string PRODUCT_MEASUREMENT_UNIT_PARAM = "@Unidade_Medida";
         private const string PRODUCT_QUANTITY_PARAM = "@Quantidade_Estoque";
-        private const string PRODUCT_COST_PRICE_PARAM = "@Preco_Custo";
-        private const string PRODUCT_SALE_PRICE_PARAM = "@Preco_Venda";
+        private const string PRODUCT_STATUS_PARAM = "@Status";
 
-        private const string PRODUCT_INSERT_SQL = "";
+        private const string PRODUCT_INSERT_SQL = "INSERT INTO Tb_Produto (Codigo_Barra, Nome, Descricao, Unidade_Medida, Quantidade_Estoque, Status) VALUES (@Codigo_Barra, @Nome, @Descricao, @Unidade_Medida, @Quantidade_Estoque, @Status)";
+        private const string PRODUCT_UPDATE_SQL = "UPDATE Tb_Produto SET Codigo_Barra = @Codigo_Barra, Nome = @Nome, Descricao = @Descricao, Unidade_Medida = @Unidade_Medida WHERE Id = @Id";
+        private const string PRODUCT_UPDATE_STATUS_SQL = "UPDATE Tb_Produto SET Status = @Status WHERE Codigo_Barra = @Codigo_Barra";
+        private const string PRODUCT_UPDATE_QUANTITY_SQL = "UPDATE Tb_Produto SET Quantidade_Estoque = @Quantidade_Estoque WHERE Codigo_Barra = @Codigo_Barra";
         private const string PRODUCT_GET_ID_SQL = "SELECT Id FROM Tb_Produto WHERE Codigo_Barra = @Codigo_Barra";
-        private const string PRODUCT_GET_ALL_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
-        private const string PRODUCT_GET_BY_BAR_CODE_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Codigo_Barra = @Codigo_Barra AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
-        private const string PRODUCT_GET_BY_NAME_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Nome LIKE @Nome AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
+        private const string PRODUCT_GET_ALL_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
+        private const string PRODUCT_GET_BY_BAR_CODE_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Codigo_Barra = @Codigo_Barra AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
+        private const string PRODUCT_GET_BY_NAME_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Nome LIKE @Nome AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
 
         #endregion
 
@@ -149,6 +159,16 @@ namespace IFSP.ADS.SiPDV.Framework
             get { return OPERATOR_NAME_COLUMN; }
         }
 
+        public static string OperatorPasswordColumn
+        {
+            get { return OPERATOR_PASSWORD_COLUMN; }
+        }
+
+        public static string OperatorStatusColumn
+        {
+            get { return OPERATOR_STATUS_COLUMN; }
+        }
+
         public static string OperatorIdParam
         {
             get { return OPERATOR_ID_PARAM; }
@@ -164,9 +184,44 @@ namespace IFSP.ADS.SiPDV.Framework
             get { return OPERATOR_NAME_PARAM; }
         }
 
+        public static string OperatorPasswordParam
+        {
+            get { return OPERATOR_PASSWORD_PARAM; }
+        }
+
+        public static string OperatorStatusParam
+        {
+            get { return OPERATOR_STATUS_PARAM; }
+        }
+
         public static string OperatorInsertSql
         {
             get { return OPERATOR_INSERT_SQL; }
+        }
+
+        public static string OperatorUpdateSql
+        {
+            get { return OPERATOR_UPDATE_SQL; }
+        }
+
+        public static string OperatorUpdateStatusSql
+        {
+            get { return OPERATOR_UPDATE_STATUS_SQL; }
+        }
+
+        public static string OperatorGetAllSql
+        {
+            get { return OPERATOR_GET_ALL_SQL; }
+        }
+
+        public static string OperatorGetByCodeSql
+        {
+            get { return OPERATOR_GET_BY_CODE_SQL; }
+        }
+
+        public static string OperatorGetByNameSql
+        {
+            get { return OPERATOR_GET_BY_NAME_SQL; }
         }
 
         #endregion
@@ -208,14 +263,9 @@ namespace IFSP.ADS.SiPDV.Framework
             get { return PRODUCT_QUANTITY_COLUMN; }
         }
 
-        public static string ProductCostPriceColumn
+        public static string ProductStatusColumn
         {
-            get { return PRODUCT_COST_PRICE_COLUMN; }
-        }
-
-        public static string ProductSalePriceColumn
-        {
-            get { return PRODUCT_SALE_PRICE_COLUMN; }
+            get { return PRODUCT_STATUS_COLUMN; }
         }
 
         public static string ProductIdParam
@@ -248,19 +298,29 @@ namespace IFSP.ADS.SiPDV.Framework
             get { return PRODUCT_QUANTITY_PARAM; }
         }
 
-        public static string ProductCostPriceParam
+        public static string ProductStatusParam
         {
-            get { return PRODUCT_COST_PRICE_PARAM; }
-        }
-
-        public static string ProductSalePriceParam
-        {
-            get { return PRODUCT_SALE_PRICE_PARAM; }
+            get { return PRODUCT_STATUS_PARAM; }
         }
 
         public static string ProductInsertSql
         {
             get { return PRODUCT_INSERT_SQL; }
+        }
+
+        public static string ProductUpdateSql
+        {
+            get { return PRODUCT_UPDATE_SQL; }
+        }
+
+        public static string ProductUpdateQuantitySql
+        {
+            get { return PRODUCT_UPDATE_QUANTITY_SQL; }
+        }
+
+        public static string ProductUpdateStatusSql
+        {
+            get { return PRODUCT_UPDATE_STATUS_SQL; }
         }
 
         public static string ProductGetIdSql

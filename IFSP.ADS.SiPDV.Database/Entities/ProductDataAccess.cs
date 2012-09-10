@@ -50,7 +50,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void InsertProduct(long barCode, string name, string description, string measurementUnit, int quantity)
+        public void InsertProduct(long barCode, string name, string description, string measurementUnit, int quantity, int status)
         {
             try
             {
@@ -62,6 +62,7 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductDescriptionParam, description);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductMeasurementUnitParam, measurementUnit);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductQuantityParam, quantity);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStatusParam, status);
 
                 this.sqlCommand.ExecuteNonQuery();
             }
@@ -109,14 +110,88 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void UpdateProduct()
+        public void UpdateProduct(int id, long barCode, string name, string description, string measurementUnit)
         {
- 
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductUpdateSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, name);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductDescriptionParam, description);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductMeasurementUnitParam, measurementUnit);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductIdParam, id);
+
+                this.sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
         }
 
-        public void DeleteProduct()
+        public void UpdateProductQuantity(long barCode, int quantity)
         {
- 
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductUpdateQuantitySql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductQuantityParam, quantity);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public void UpdateProductStatus(long barCode, int status)
+        {
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductUpdateStatusSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStatusParam, status);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
         }
 
         public DataTable GetAllProducts()
