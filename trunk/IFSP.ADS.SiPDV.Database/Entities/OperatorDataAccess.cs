@@ -24,6 +24,44 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
+        public int Login(string code, string password)
+        {
+            object dbReturn;
+
+            try
+            {
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorLoginSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorPasswordParam, password);
+
+                dbReturn = this.sqlCommand.ExecuteScalar();
+
+                if (dbReturn != null)
+                {
+                    return (int)dbReturn;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlCommand.Dispose();
+            }
+        }
+
         public void InsertOperator(string code, string name, string password, int status)
         {
             try

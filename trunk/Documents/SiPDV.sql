@@ -93,6 +93,9 @@ CREATE TABLE Tb_Operador (
 )
 GO
 
+INSERT INTO Tb_Operador (Codigo, Nome, Senha, Status) VALUES ('admin', 'Administrador', '21232F297A57A5A743894A0E4A801FC3', 'True')
+GO
+
 CREATE TABLE Tb_Produto (
 	Id                 INTEGER     NOT NULL IDENTITY(1,1),
 	Codigo_Barra       BIGINT      NOT NULL,

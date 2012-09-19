@@ -43,6 +43,7 @@
             this.textBoxOperator.Name = "textBoxOperator";
             this.textBoxOperator.Size = new System.Drawing.Size(304, 26);
             this.textBoxOperator.TabIndex = 1;
+            this.textBoxOperator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxOperator_KeyDown);
             // 
             // textBoxPassword
             // 
@@ -52,6 +53,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(304, 26);
             this.textBoxPassword.TabIndex = 3;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             // 
             // buttonLogin
             // 

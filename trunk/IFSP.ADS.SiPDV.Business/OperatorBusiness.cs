@@ -22,6 +22,28 @@ namespace IFSP.ADS.SiPDV.Business
 
         #region -Public Methods-
 
+        public int Login(Operator oper)
+        {
+            try
+            {
+                oper.Password = PasswordTools.GenerateEncodedPassword(oper.Password);
+
+                using (this.operatorDataAccess = new OperatorDataAccess())
+                {
+                    return this.operatorDataAccess.Login(oper.Code, oper.Password);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
         public void InsertUpdateOperator(Operator oper)
         {
             try
