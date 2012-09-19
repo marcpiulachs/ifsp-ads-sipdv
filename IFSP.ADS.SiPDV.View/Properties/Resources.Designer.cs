@@ -160,6 +160,24 @@ namespace IFSP.ADS.SiPDV.View.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operador e/ou Senha incorretos..
+        /// </summary>
+        internal static string OperatorLoginError {
+            get {
+                return ResourceManager.GetString("OperatorLoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informe o Operador e a Senha para fazer login..
+        /// </summary>
+        internal static string OperatorLoginWarning {
+            get {
+                return ResourceManager.GetString("OperatorLoginWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirme a senha corretamente..
         /// </summary>
         internal static string OperatorPasswordWarning {

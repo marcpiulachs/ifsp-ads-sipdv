@@ -29,95 +29,63 @@
         private void InitializeComponent()
         {
             this.groupBoxTotal = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.labelTotal = new System.Windows.Forms.Label();
-            this.textBoxItems = new System.Windows.Forms.TextBox();
-            this.labelItems = new System.Windows.Forms.Label();
-            this.groupBoxTable = new System.Windows.Forms.GroupBox();
+            this.groupBoxProducts = new System.Windows.Forms.GroupBox();
             this.listBoxProducts = new System.Windows.Forms.ListBox();
             this.groupBoxProduct = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxSubtotal = new System.Windows.Forms.TextBox();
+            this.labelSubtotal = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxBarCode = new System.Windows.Forms.TextBox();
+            this.labelBarCode = new System.Windows.Forms.Label();
+            this.labelSeparator = new System.Windows.Forms.Label();
+            this.labelRs1 = new System.Windows.Forms.Label();
+            this.labelRs2 = new System.Windows.Forms.Label();
+            this.textBoxTotal = new System.Windows.Forms.TextBox();
+            this.groupBoxItems = new System.Windows.Forms.GroupBox();
+            this.textBoxItems = new System.Windows.Forms.TextBox();
             this.groupBoxTotal.SuspendLayout();
-            this.groupBoxTable.SuspendLayout();
+            this.groupBoxProducts.SuspendLayout();
             this.groupBoxProduct.SuspendLayout();
+            this.groupBoxItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxTotal
             // 
-            this.groupBoxTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxTotal.Controls.Add(this.textBox2);
-            this.groupBoxTotal.Controls.Add(this.labelTotal);
-            this.groupBoxTotal.Controls.Add(this.textBoxItems);
-            this.groupBoxTotal.Controls.Add(this.labelItems);
+            this.groupBoxTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxTotal.Controls.Add(this.textBoxTotal);
             this.groupBoxTotal.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTotal.Location = new System.Drawing.Point(305, 492);
+            this.groupBoxTotal.Location = new System.Drawing.Point(12, 486);
             this.groupBoxTotal.Name = "groupBoxTotal";
-            this.groupBoxTotal.Size = new System.Drawing.Size(467, 58);
-            this.groupBoxTotal.TabIndex = 7;
+            this.groupBoxTotal.Size = new System.Drawing.Size(279, 64);
+            this.groupBoxTotal.TabIndex = 2;
             this.groupBoxTotal.TabStop = false;
             this.groupBoxTotal.Text = "Total";
             // 
-            // textBox2
+            // groupBoxProducts
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(361, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 3;
-            // 
-            // labelTotal
-            // 
-            this.labelTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(281, 25);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(74, 16);
-            this.labelTotal.TabIndex = 2;
-            this.labelTotal.Text = "Total:";
-            // 
-            // textBoxItems
-            // 
-            this.textBoxItems.Location = new System.Drawing.Point(86, 22);
-            this.textBoxItems.Name = "textBoxItems";
-            this.textBoxItems.Size = new System.Drawing.Size(100, 23);
-            this.textBoxItems.TabIndex = 1;
-            // 
-            // labelItems
-            // 
-            this.labelItems.AutoSize = true;
-            this.labelItems.Location = new System.Drawing.Point(6, 25);
-            this.labelItems.Name = "labelItems";
-            this.labelItems.Size = new System.Drawing.Size(74, 16);
-            this.labelItems.TabIndex = 0;
-            this.labelItems.Text = "Itens:";
-            // 
-            // groupBoxTable
-            // 
-            this.groupBoxTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBoxProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxTable.Controls.Add(this.listBoxProducts);
-            this.groupBoxTable.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTable.Location = new System.Drawing.Point(305, 104);
-            this.groupBoxTable.Name = "groupBoxTable";
-            this.groupBoxTable.Size = new System.Drawing.Size(467, 382);
-            this.groupBoxTable.TabIndex = 6;
-            this.groupBoxTable.TabStop = false;
-            this.groupBoxTable.Text = "Mesa 1";
+            this.groupBoxProducts.Controls.Add(this.listBoxProducts);
+            this.groupBoxProducts.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxProducts.Location = new System.Drawing.Point(297, 104);
+            this.groupBoxProducts.Name = "groupBoxProducts";
+            this.groupBoxProducts.Size = new System.Drawing.Size(475, 446);
+            this.groupBoxProducts.TabIndex = 1;
+            this.groupBoxProducts.TabStop = false;
+            this.groupBoxProducts.Text = "Listagem de Produtos";
             // 
             // listBoxProducts
             // 
             this.listBoxProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxProducts.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBoxProducts.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxProducts.FormattingEnabled = true;
             this.listBoxProducts.Items.AddRange(new object[] {
@@ -125,127 +93,210 @@
             this.listBoxProducts.Location = new System.Drawing.Point(6, 22);
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.ScrollAlwaysVisible = true;
-            this.listBoxProducts.Size = new System.Drawing.Size(455, 342);
-            this.listBoxProducts.TabIndex = 1;
+            this.listBoxProducts.Size = new System.Drawing.Size(463, 420);
+            this.listBoxProducts.TabIndex = 0;
+            this.listBoxProducts.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBoxProducts_DrawItem);
             // 
             // groupBoxProduct
             // 
-            this.groupBoxProduct.Controls.Add(this.textBox6);
-            this.groupBoxProduct.Controls.Add(this.label5);
-            this.groupBoxProduct.Controls.Add(this.textBox5);
-            this.groupBoxProduct.Controls.Add(this.label4);
-            this.groupBoxProduct.Controls.Add(this.textBox4);
-            this.groupBoxProduct.Controls.Add(this.label3);
-            this.groupBoxProduct.Controls.Add(this.label2);
-            this.groupBoxProduct.Controls.Add(this.textBox3);
-            this.groupBoxProduct.Controls.Add(this.textBox1);
-            this.groupBoxProduct.Controls.Add(this.label1);
+            this.groupBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxProduct.Controls.Add(this.labelRs2);
+            this.groupBoxProduct.Controls.Add(this.labelRs1);
+            this.groupBoxProduct.Controls.Add(this.labelSeparator);
+            this.groupBoxProduct.Controls.Add(this.textBoxSubtotal);
+            this.groupBoxProduct.Controls.Add(this.labelSubtotal);
+            this.groupBoxProduct.Controls.Add(this.textBoxPrice);
+            this.groupBoxProduct.Controls.Add(this.labelPrice);
+            this.groupBoxProduct.Controls.Add(this.textBoxQuantity);
+            this.groupBoxProduct.Controls.Add(this.labelQuantity);
+            this.groupBoxProduct.Controls.Add(this.labelName);
+            this.groupBoxProduct.Controls.Add(this.textBoxName);
+            this.groupBoxProduct.Controls.Add(this.textBoxBarCode);
+            this.groupBoxProduct.Controls.Add(this.labelBarCode);
             this.groupBoxProduct.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxProduct.Location = new System.Drawing.Point(12, 104);
             this.groupBoxProduct.Name = "groupBoxProduct";
-            this.groupBoxProduct.Size = new System.Drawing.Size(287, 446);
-            this.groupBoxProduct.TabIndex = 8;
+            this.groupBoxProduct.Size = new System.Drawing.Size(279, 306);
+            this.groupBoxProduct.TabIndex = 0;
             this.groupBoxProduct.TabStop = false;
             this.groupBoxProduct.Text = "Produto";
             // 
-            // label1
+            // textBoxSubtotal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Código de Barras:";
+            this.textBoxSubtotal.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSubtotal.Location = new System.Drawing.Point(42, 244);
+            this.textBoxSubtotal.Name = "textBoxSubtotal";
+            this.textBoxSubtotal.ReadOnly = true;
+            this.textBoxSubtotal.Size = new System.Drawing.Size(75, 23);
+            this.textBoxSubtotal.TabIndex = 10;
             // 
-            // textBox1
+            // labelSubtotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(275, 23);
-            this.textBox1.TabIndex = 1;
+            this.labelSubtotal.AutoSize = true;
+            this.labelSubtotal.Location = new System.Drawing.Point(6, 225);
+            this.labelSubtotal.Name = "labelSubtotal";
+            this.labelSubtotal.Size = new System.Drawing.Size(107, 16);
+            this.labelSubtotal.TabIndex = 9;
+            this.labelSubtotal.Text = "Subtotal:";
             // 
-            // textBox3
+            // textBoxPrice
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 86);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(275, 23);
-            this.textBox3.TabIndex = 2;
+            this.textBoxPrice.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPrice.Location = new System.Drawing.Point(42, 199);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.ReadOnly = true;
+            this.textBoxPrice.Size = new System.Drawing.Size(75, 23);
+            this.textBoxPrice.TabIndex = 8;
             // 
-            // label2
+            // labelPrice
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Descrição:";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(6, 180);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(173, 16);
+            this.labelPrice.TabIndex = 7;
+            this.labelPrice.Text = "Valor Unitário:";
             // 
-            // label3
+            // textBoxQuantity
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 16);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Quantidade:";
+            this.textBoxQuantity.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxQuantity.Location = new System.Drawing.Point(6, 41);
+            this.textBoxQuantity.MaxLength = 2;
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(25, 23);
+            this.textBoxQuantity.TabIndex = 1;
+            this.textBoxQuantity.Text = "01";
+            this.textBoxQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxQuantity_KeyDown);
             // 
-            // textBox4
+            // labelQuantity
             // 
-            this.textBox4.Location = new System.Drawing.Point(6, 131);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(275, 23);
-            this.textBox4.TabIndex = 5;
+            this.labelQuantity.AutoSize = true;
+            this.labelQuantity.Location = new System.Drawing.Point(6, 22);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(217, 16);
+            this.labelQuantity.TabIndex = 0;
+            this.labelQuantity.Text = "Quantidade (KG/UN):";
             // 
-            // label4
+            // labelName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 157);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 16);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Valor Unitário:";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(6, 135);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(63, 16);
+            this.labelName.TabIndex = 5;
+            this.labelName.Text = "Nome:";
             // 
-            // textBox5
+            // textBoxName
             // 
-            this.textBox5.Location = new System.Drawing.Point(6, 176);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(275, 23);
-            this.textBox5.TabIndex = 7;
+            this.textBoxName.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(6, 154);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.ReadOnly = true;
+            this.textBoxName.Size = new System.Drawing.Size(205, 23);
+            this.textBoxName.TabIndex = 6;
             // 
-            // label5
+            // textBoxBarCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Subtotal:";
+            this.textBoxBarCode.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBarCode.Location = new System.Drawing.Point(6, 86);
+            this.textBoxBarCode.MaxLength = 13;
+            this.textBoxBarCode.Name = "textBoxBarCode";
+            this.textBoxBarCode.Size = new System.Drawing.Size(135, 23);
+            this.textBoxBarCode.TabIndex = 3;
+            this.textBoxBarCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarCode_KeyDown);
             // 
-            // textBox6
+            // labelBarCode
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 221);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(275, 23);
-            this.textBox6.TabIndex = 9;
+            this.labelBarCode.AutoSize = true;
+            this.labelBarCode.Location = new System.Drawing.Point(6, 67);
+            this.labelBarCode.Name = "labelBarCode";
+            this.labelBarCode.Size = new System.Drawing.Size(195, 16);
+            this.labelBarCode.TabIndex = 2;
+            this.labelBarCode.Text = "Código de Barras:";
+            // 
+            // labelSeparator
+            // 
+            this.labelSeparator.Location = new System.Drawing.Point(6, 112);
+            this.labelSeparator.Name = "labelSeparator";
+            this.labelSeparator.Size = new System.Drawing.Size(267, 23);
+            this.labelSeparator.TabIndex = 4;
+            this.labelSeparator.Text = "______________________________";
+            // 
+            // labelRs1
+            // 
+            this.labelRs1.AutoSize = true;
+            this.labelRs1.Location = new System.Drawing.Point(6, 202);
+            this.labelRs1.Name = "labelRs1";
+            this.labelRs1.Size = new System.Drawing.Size(30, 16);
+            this.labelRs1.TabIndex = 11;
+            this.labelRs1.Text = "R$";
+            // 
+            // labelRs2
+            // 
+            this.labelRs2.AutoSize = true;
+            this.labelRs2.Location = new System.Drawing.Point(6, 247);
+            this.labelRs2.Name = "labelRs2";
+            this.labelRs2.Size = new System.Drawing.Size(30, 16);
+            this.labelRs2.TabIndex = 12;
+            this.labelRs2.Text = "R$";
+            // 
+            // textBoxTotal
+            // 
+            this.textBoxTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotal.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTotal.Location = new System.Drawing.Point(6, 22);
+            this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.Size = new System.Drawing.Size(267, 34);
+            this.textBoxTotal.TabIndex = 3;
+            this.textBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxItems
+            // 
+            this.groupBoxItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxItems.Controls.Add(this.textBoxItems);
+            this.groupBoxItems.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxItems.Location = new System.Drawing.Point(12, 416);
+            this.groupBoxItems.Name = "groupBoxItems";
+            this.groupBoxItems.Size = new System.Drawing.Size(279, 64);
+            this.groupBoxItems.TabIndex = 3;
+            this.groupBoxItems.TabStop = false;
+            this.groupBoxItems.Text = "Itens";
+            // 
+            // textBoxItems
+            // 
+            this.textBoxItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItems.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxItems.Location = new System.Drawing.Point(6, 22);
+            this.textBoxItems.Name = "textBoxItems";
+            this.textBoxItems.Size = new System.Drawing.Size(267, 34);
+            this.textBoxItems.TabIndex = 3;
+            this.textBoxItems.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.groupBoxItems);
             this.Controls.Add(this.groupBoxProduct);
             this.Controls.Add(this.groupBoxTotal);
-            this.Controls.Add(this.groupBoxTable);
+            this.Controls.Add(this.groupBoxProducts);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormSale";
             this.Text = "SiPDV - Venda";
+            this.Load += new System.EventHandler(this.FormSale_Load);
             this.groupBoxTotal.ResumeLayout(false);
             this.groupBoxTotal.PerformLayout();
-            this.groupBoxTable.ResumeLayout(false);
+            this.groupBoxProducts.ResumeLayout(false);
             this.groupBoxProduct.ResumeLayout(false);
             this.groupBoxProduct.PerformLayout();
+            this.groupBoxItems.ResumeLayout(false);
+            this.groupBoxItems.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,22 +304,24 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxTotal;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label labelTotal;
-        private System.Windows.Forms.TextBox textBoxItems;
-        private System.Windows.Forms.Label labelItems;
-        private System.Windows.Forms.GroupBox groupBoxTable;
+        private System.Windows.Forms.GroupBox groupBoxProducts;
         private System.Windows.Forms.ListBox listBoxProducts;
         private System.Windows.Forms.GroupBox groupBoxProduct;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxQuantity;
+        private System.Windows.Forms.Label labelQuantity;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxBarCode;
+        private System.Windows.Forms.Label labelBarCode;
+        private System.Windows.Forms.TextBox textBoxSubtotal;
+        private System.Windows.Forms.Label labelSubtotal;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label labelSeparator;
+        private System.Windows.Forms.Label labelRs2;
+        private System.Windows.Forms.Label labelRs1;
+        private System.Windows.Forms.TextBox textBoxTotal;
+        private System.Windows.Forms.GroupBox groupBoxItems;
+        private System.Windows.Forms.TextBox textBoxItems;
     }
 }

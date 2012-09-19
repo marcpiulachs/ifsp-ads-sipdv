@@ -73,6 +73,40 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
+        public Product GetProductByBarCode(long barCode)
+        {
+            DataTable dtProduct;
+            Product product = null;
+
+            try
+            {
+                dtProduct = GetProductsByBarCode(barCode);
+
+                if (dtProduct != null && dtProduct.Rows.Count == 1)
+                {
+                    product = new Product();
+                    product.Id = (int)dtProduct.Rows[0][DatabaseConstants.ProductIdColumn];
+                    product.BarCode = (long)dtProduct.Rows[0][DatabaseConstants.ProductBarCodeColumn];
+                    product.Name = (string)dtProduct.Rows[0][DatabaseConstants.ProductNameColumn];
+                    product.Description = (string)dtProduct.Rows[0][DatabaseConstants.ProductDescriptionColumn];
+                    product.MeasurementUnit = (string)dtProduct.Rows[0][DatabaseConstants.ProductMeasurementUnitColumn];
+                    product.CostPrice = float.Parse(dtProduct.Rows[0][DatabaseConstants.PriceCostPriceColumn].ToString());
+                    product.SalePrice = float.Parse(dtProduct.Rows[0][DatabaseConstants.PriceSalePriceColumn].ToString());
+                }
+
+                return product;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
         public DataTable GetAllProducts()
         {
             try

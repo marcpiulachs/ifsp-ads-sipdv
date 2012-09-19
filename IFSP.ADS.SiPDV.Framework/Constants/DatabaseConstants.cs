@@ -39,6 +39,7 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string OPERATOR_PASSWORD_PARAM = "@Senha";
         private const string OPERATOR_STATUS_PARAM = "@Status";
 
+        private const string OPERATOR_LOGIN_SQL = "SELECT Id FROM Tb_Operador WHERE Codigo = @Codigo AND Senha = @Senha";
         private const string OPERATOR_INSERT_SQL = "INSERT INTO Tb_Operador (Codigo, Nome, Senha, Status) VALUES (@Codigo, @Nome, @Senha, @Status)";
         private const string OPERATOR_UPDATE_SQL = "UPDATE Tb_Operador SET Codigo = @Codigo, Nome = @Nome, Senha = @Senha WHERE Id = @Id";
         private const string OPERATOR_UPDATE_STATUS_SQL = "UPDATE Tb_Operador SET Status = @Status WHERE Codigo = @Codigo";
@@ -192,6 +193,11 @@ namespace IFSP.ADS.SiPDV.Framework
         public static string OperatorStatusParam
         {
             get { return OPERATOR_STATUS_PARAM; }
+        }
+
+        public static string OperatorLoginSql
+        {
+            get { return OPERATOR_LOGIN_SQL; }
         }
 
         public static string OperatorInsertSql
