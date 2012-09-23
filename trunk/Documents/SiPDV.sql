@@ -72,15 +72,6 @@ GO
 USE SiPDV;
 GO
 
-CREATE TABLE Tb_Mesa (
-	Id     INTEGER NOT NULL IDENTITY(1,1),
-	Numero INTEGER NOT NULL,
-	
-	CONSTRAINT Pk_Mesa PRIMARY KEY(Id),
-	CONSTRAINT Uk_Mesa UNIQUE(Numero)
-)
-GO
-
 CREATE TABLE Tb_Operador (
 	Id     INTEGER     NOT NULL IDENTITY(1,1),
 	Codigo VARCHAR(11) NOT NULL,
@@ -91,9 +82,6 @@ CREATE TABLE Tb_Operador (
 	CONSTRAINT Pk_Operador PRIMARY KEY(Id),
 	CONSTRAINT Uk_Operador UNIQUE(Codigo)
 )
-GO
-
-INSERT INTO Tb_Operador (Codigo, Nome, Senha, Status) VALUES ('admin', 'Administrador', '21232F297A57A5A743894A0E4A801FC3', 'True')
 GO
 
 CREATE TABLE Tb_Produto (
@@ -125,28 +113,31 @@ GO
 
 CREATE TABLE Tb_Venda (
 	Id          INTEGER      NOT NULL IDENTITY(1,1),
-	Id_Mesa     INTEGER,
 	Id_Operador INTEGER      NOT NULL,
 	Data_Hora   DATETIME     NOT NULL,
 	Subtotal    DECIMAL(6,2) NOT NULL,
 	Desconto    DECIMAL(6,2),
 	Total       DECIMAL(6,2) NOT NULL,
 	
-	CONSTRAINT Pk_Mesa     PRIMARY KEY(Id),
-	CONSTRAINT Fk_Mesa     FOREIGN KEY(Id_Mesa)     REFERENCES Tb_Mesa(Id),
+	CONSTRAINT Pk_Venda    PRIMARY KEY(Id),
+	CONSTRAINT Uk_Venda    UNIQUE(Id_Operador, Data_Hora),
 	CONSTRAINT Fk_Operador FOREIGN KEY(Id_Operador) REFERENCES Tb_Operador(Id)
 )
 GO
 
 CREATE TABLE Tb_Venda_Produto (
-	Id               INTEGER NOT NULL IDENTITY(1,1),
-	Id_Venda         INTEGER NOT NULL,
-	Id_Produto       INTEGER NOT NULL,
-	Quantidade       FLOAT   NOT NULL,
-	VL_VENDA_PRODUTO FLOAT   NOT NULL,
+	Id          INTEGER      NOT NULL IDENTITY(1,1),
+	Id_Venda    INTEGER      NOT NULL,
+	Id_Produto  INTEGER      NOT NULL,
+	Quantidade  INTEGER      NOT NULL,
+	Preco_Custo DECIMAL(6,2) NOT NULL,
+	Preco_Venda DECIMAL(6,2) NOT NULL,
 	
 	CONSTRAINT Pk_Venda_Produto PRIMARY KEY(Id),
-	CONSTRAINT Fk_Venda         FOREIGN KEY(Id_Venda)   REFERENCES Tb_Venda(Id_Venda),
-	CONSTRAINT Fk_Produto       FOREIGN KEY(Id_Produto) REFERENCES Tb_Produto(Id_Produto)
+	CONSTRAINT Fk_Venda         FOREIGN KEY(Id_Venda)   REFERENCES Tb_Venda(Id),
+	CONSTRAINT Fk_Produto2      FOREIGN KEY(Id_Produto) REFERENCES Tb_Produto(Id)
 )
+GO
+
+INSERT INTO Tb_Operador (Codigo, Nome, Senha, Status) VALUES ('admin', 'Administrador', '21232F297A57A5A743894A0E4A801FC3', 'True')
 GO

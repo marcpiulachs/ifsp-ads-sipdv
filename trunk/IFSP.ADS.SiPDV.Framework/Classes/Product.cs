@@ -101,5 +101,19 @@ namespace IFSP.ADS.SiPDV.Framework
         }
 
         #endregion
+
+        #region -Public Methods-
+
+        public float CalculateSubtotal()
+        {
+            return this.quantity * this.salePrice;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0,-13} {1,-20} {2,3} {3,7:0.00} {4,7:0.00}", this.barCode, this.name, this.quantity, this.salePrice, CalculateSubtotal());
+        }
+
+        #endregion
     }
 }

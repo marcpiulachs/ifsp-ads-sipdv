@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Classes\Operator.cs" />
     <Compile Include="Classes\Product.cs" />
-    <Compile Include="Classes\ProductListItem.cs" />
+    <Compile Include="Classes\Sale.cs" />
     <Compile Include="Constants\BusinessConstants.cs" />
     <Compile Include="Constants\ConfigurationConstants.cs" />
     <Compile Include="Constants\DatabaseConstants.cs" />
