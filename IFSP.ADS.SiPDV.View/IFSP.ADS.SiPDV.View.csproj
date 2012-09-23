@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormConfirmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfirmSale.Designer.cs">
+      <DependentUpon>FormConfirmSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,12 @@
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddProduct.Designer.cs">
+      <DependentUpon>FormAddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOperator.cs">
       <SubType>Form</SubType>
@@ -90,11 +102,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormConfirmSale.resx">
+      <DependentUpon>FormConfirmSale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddProduct.resx">
+      <DependentUpon>FormAddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOperator.resx">
       <DependentUpon>FormOperator.cs</DependentUpon>
@@ -189,6 +207,10 @@
     <ProjectReference Include="..\IFSP.ADS.SiPDV.Log\IFSP.ADS.SiPDV.Log.csproj">
       <Project>{A8B37CD4-CA67-436C-BBEB-30192B71C437}</Project>
       <Name>IFSP.ADS.SiPDV.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFSP.ADS.SiPDV.SharedMemory\IFSP.ADS.SiPDV.SharedMemory.csproj">
+      <Project>{99C86699-0E16-4623-A45C-BAC07F3A3289}</Project>
+      <Name>IFSP.ADS.SiPDV.SharedMemory</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

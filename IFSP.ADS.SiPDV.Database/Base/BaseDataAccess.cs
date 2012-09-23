@@ -11,9 +11,15 @@ namespace IFSP.ADS.SiPDV.Database
 {
     public class BaseDataAccess : IDisposable
     {
+        #region -Protected Attributes-
+
         protected SqlConnection sqlConnection;
         protected SqlCommand sqlCommand;
         protected SqlDataAdapter sqlDataAdapter;
+
+        #endregion
+
+        #region -Constructor-
 
         public BaseDataAccess()
         {
@@ -27,6 +33,8 @@ namespace IFSP.ADS.SiPDV.Database
                 throw;
             }
         }
+
+        #endregion
 
         #region -Public Methods-
 

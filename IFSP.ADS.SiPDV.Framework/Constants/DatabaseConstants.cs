@@ -11,18 +11,6 @@ namespace IFSP.ADS.SiPDV.Framework
 
         private const string PROJECT_NAME = "SiPDV.Database";
 
-        #region -Table-
-
-        private const string TABLE_TABLE = "Tb_Mesa";
-
-        private const string TABLE_ID_COLUMN = "Id";
-        private const string TABLE_NUMBER_COLUMN = "Numero";
-
-        private const string TABLE_ID_PARAM = "@Id";
-        private const string TABLE_NUMBER_PARAM = "@Numero";
-
-        #endregion
-
         #region -Operator-
 
         private const string OPERATOR_TABLE = "Tb_Operador";
@@ -100,6 +88,51 @@ namespace IFSP.ADS.SiPDV.Framework
 
         #endregion
 
+        #region -Sale-
+
+        private const string SALE_TABLE = "Tb_Venda";
+
+        private const string SALE_ID_COLUMN = "Id";
+        private const string SALE_ID_OPERATOR_COLUMN = "Id_Operador";
+        private const string SALE_DATETIME_COLUMN = "Data_Hora";
+        private const string SALE_SUBTOTAL_COLUMN = "Subtotal";
+        private const string SALE_DISCOUNT_COLUMN = "Desconto";
+        private const string SALE_TOTAL_COLUMN = "Total";
+
+        private const string SALE_ID_PARAM = "@Id";
+        private const string SALE_ID_OPERATOR_PARAM = "@Id_Operador";
+        private const string SALE_DATETIME_PARAM = "@Data_Hora";
+        private const string SALE_SUBTOTAL_PARAM = "@Subtotal";
+        private const string SALE_DISCOUNT_PARAM = "@Desconto";
+        private const string SALE_TOTAL_PARAM = "@Total";
+
+        private const string SALE_INSERT_SQL = "INSERT INTO Tb_Venda (Id_Operador, Data_Hora, Subtotal, Desconto, Total) VALUES (@Id_Operador, @Data_Hora, @Subtotal, @Desconto, @Total)";
+        private const string SALE_GET_ID_SQL = "SELECT Id FROM Tb_Venda WHERE Id_Operador = @Id_Operador AND Data_Hora = @Data_Hora";
+
+        #endregion
+
+        #region -Sale_Product-
+
+        private const string SALE_PRODUCT_TABLE = "Tb_Venda_Produto";
+
+        private const string SALE_PRODUCT_ID_COLUMN = "Id";
+        private const string SALE_PRODUCT_ID_SALE_COLUMN = "Id_Venda";
+        private const string SALE_PRODUCT_ID_PRODUCT_COLUMN = "Id_Produto";
+        private const string SALE_PRODUCT_QUANTITY_COLUMN = "Quantidade";
+        private const string SALE_PRODUCT_COST_PRICE_COLUMN = "Preco_Custo";
+        private const string SALE_PRODUCT_SALE_PRICE_COLUMN = "Preco_Venda";
+
+        private const string SALE_PRODUCT_ID_PARAM = "@Id";
+        private const string SALE_PRODUCT_ID_SALE_PARAM = "@Id_Venda";
+        private const string SALE_PRODUCT_ID_PRODUCT_PARAM = "@Id_Produto";
+        private const string SALE_PRODUCT_QUANTITY_PARAM = "@Quantidade";
+        private const string SALE_PRODUCT_COST_PRICE_PARAM = "@Preco_Custo";
+        private const string SALE_PRODUCT_SALE_PRICE_PARAM = "@Preco_Venda";
+
+        private const string SALE_PRODUCT_INSERT_SQL = "INSERT INTO Tb_Venda_Produto (Id_Venda, Id_Produto, Quantidade, Preco_Custo, Preco_Venda) VALUES (@Id_Venda, @Id_Produto, @Quantidade, @Preco_Custo, @Preco_Venda)";
+
+        #endregion
+
         #endregion
 
         #region -Public Properties-
@@ -108,35 +141,6 @@ namespace IFSP.ADS.SiPDV.Framework
         {
             get { return PROJECT_NAME; }
         }
-
-        #region -Table-
-
-        public static string TableTable
-        {
-            get { return TABLE_TABLE; }
-        }
-
-        public static string TableIdColumn
-        {
-            get { return TABLE_ID_COLUMN; }
-        }
-
-        public static string TableNumberColumn
-        {
-            get { return TABLE_NUMBER_COLUMN; }
-        }
-
-        public static string TableIdParam
-        {
-            get { return TABLE_ID_PARAM; }
-        }
-
-        public static string TableNumberParam
-        {
-            get { return TABLE_NUMBER_PARAM; }
-        }
-
-        #endregion
 
         #region -Operator-
 
@@ -411,6 +415,159 @@ namespace IFSP.ADS.SiPDV.Framework
         public static string PriceInsertSql
         {
             get { return PRICE_INSERT_SQL; }
+        }
+
+        #endregion
+
+        #region -Sale-
+
+        public static string SaleTable
+        {
+            get { return SALE_TABLE; }
+        }
+
+        public static string SaleIdColumn
+        {
+            get { return SALE_ID_COLUMN; }
+        }
+
+        public static string SaleIdOperatorColumn
+        {
+            get { return SALE_ID_OPERATOR_COLUMN; }
+        }
+
+        public static string SaleDateTimeColumn
+        {
+            get { return SALE_DATETIME_COLUMN; }
+        }
+
+        public static string SaleSubtotalColumn
+        {
+            get { return SALE_SUBTOTAL_COLUMN; }
+        }
+
+        public static string SaleDiscountColumn
+        {
+            get { return SALE_DISCOUNT_COLUMN; }
+        }
+
+        public static string SaleTotalColumn
+        {
+            get { return SALE_TOTAL_COLUMN; }
+        }
+
+        public static string SaleIdParam
+        {
+            get { return SALE_ID_PARAM; }
+        }
+
+        public static string SaleIdOperatorParam
+        {
+            get { return SALE_ID_OPERATOR_PARAM; }
+        }
+
+        public static string SaleDateTimeParam
+        {
+            get { return SALE_DATETIME_PARAM; }
+        }
+
+        public static string SaleSubtotalParam
+        {
+            get { return SALE_SUBTOTAL_PARAM; }
+        }
+
+        public static string SaleDiscountParam
+        {
+            get { return SALE_DISCOUNT_PARAM; }
+        }
+
+        public static string SaleTotalParam
+        {
+            get { return SALE_TOTAL_PARAM; }
+        }
+
+        public static string SaleInsertSql
+        {
+            get { return SALE_INSERT_SQL; }
+        }
+
+        public static string SaleGetIdSql
+        {
+            get { return SALE_GET_ID_SQL; }
+        }
+
+        #endregion
+
+        #region -Sale_Product-
+
+        public static string SaleProductTable
+        {
+            get { return SALE_PRODUCT_TABLE; }
+        }
+
+        public static string SaleProductIdColumn
+        {
+            get { return SALE_PRODUCT_ID_COLUMN; }
+        }
+
+        public static string SaleProductIdSaleColumn
+        {
+            get { return SALE_PRODUCT_ID_SALE_COLUMN; }
+        }
+
+        public static string SaleProductIdProductColumn
+        {
+            get { return SALE_PRODUCT_ID_PRODUCT_COLUMN; }
+        }
+
+        public static string SaleProductQuantityColumn
+        {
+            get { return SALE_PRODUCT_QUANTITY_COLUMN; }
+        }
+
+        public static string SaleProductCostPriceColumn
+        {
+            get { return SALE_PRODUCT_COST_PRICE_COLUMN; }
+        }
+
+        public static string SaleProductSalePriceColumn
+        {
+            get { return SALE_PRODUCT_ID_SALE_COLUMN; }
+        }
+
+        public static string SaleProductIdParam
+        {
+            get { return SALE_PRODUCT_ID_PARAM; }
+        }
+
+        public static string SaleProductIdSaleParam
+        {
+            get { return SALE_PRODUCT_ID_SALE_PARAM; }
+        }
+
+        public static string SaleProductIdProductParam
+        {
+            get { return SALE_PRODUCT_ID_PRODUCT_PARAM; }
+        }
+
+        public static string SaleProductQuantityParam
+        {
+            get { return SALE_PRODUCT_QUANTITY_PARAM; }
+        }
+
+        public static string SaleProductCostPriceParam
+        {
+            get { return SALE_PRODUCT_COST_PRICE_PARAM; }
+        }
+
+        public static string SaleProductSalePriceParam
+        {
+            get { return SALE_PRODUCT_SALE_PRICE_PARAM; }
+        }
+
+        public static string SaleProductInsertSql
+        {
+            get { return SALE_PRODUCT_INSERT_SQL; }
         }
 
         #endregion

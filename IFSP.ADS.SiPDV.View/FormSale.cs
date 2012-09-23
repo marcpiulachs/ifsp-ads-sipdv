@@ -25,9 +25,11 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Attributes-
 
+        private FormAddProduct frmAddProduct;
+        private FormConfirmSale frmConfirmSale;
+
         private Product currentProduct;
-        private ProductListItem currentProductListItem;
-        private List<ProductListItem> lstProductListItem;
+        private List<Product> lstProduct;
 
         private ProductBusiness productBusiness;
 
@@ -39,7 +41,10 @@ namespace IFSP.ADS.SiPDV.View
         {
             InitializeComponent();
 
-            this.lstProductListItem = new List<ProductListItem>();
+            this.frmAddProduct = new FormAddProduct();
+            this.frmAddProduct.AddProduct += new FormAddProduct.AddProductEventHandler(frmAddProduct_AddProduct);
+
+            this.lstProduct = new List<Product>();
 
             this.productBusiness = new ProductBusiness();
         }
@@ -51,7 +56,7 @@ namespace IFSP.ADS.SiPDV.View
         private void FormSale_Load(object sender, EventArgs e)
         {
             InitializeListBox();
-            CountItemsAndCalculateTotal();
+            CountItemsAndCalculateSubtotal();
             this.textBoxBarCode.Focus();
         }
 
@@ -68,7 +73,7 @@ namespace IFSP.ADS.SiPDV.View
             if (e.KeyCode == Keys.Enter)
             {
                 AddProduct();
-                CountItemsAndCalculateTotal();
+                CountItemsAndCalculateSubtotal();
 
                 this.textBoxBarCode.Text = string.Empty;
                 this.textBoxBarCode.Focus();
@@ -84,18 +89,39 @@ namespace IFSP.ADS.SiPDV.View
             e.Graphics.FillRectangle(e.Index % 2 == 0 ? Brushes.LightGray : Brushes.White, e.Bounds);
 
             // Desenha o escrito do ListBoxItem.
-            if (listBoxProducts.Items[e.Index].ToString() == LIST_BOX_HEADER)
-            {
-                e.Graphics.DrawString(listBoxProducts.Items[e.Index].ToString(), new Font(e.Font, FontStyle.Bold), 
-                                      Brushes.Black, e.Bounds);
-            }
-            else
-            {
-                e.Graphics.DrawString(listBoxProducts.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
-            }
+            e.Graphics.DrawString(listBoxProducts.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
 
             // Se o ListBox tem foco, desenha o foco no ListBoxItem selecionado.
             e.DrawFocusRectangle();
+        }
+
+        private void buttonAddProduct_Click(object sender, EventArgs e)
+        {
+            this.frmAddProduct.ShowDialog(this);
+        }
+
+        private void frmAddProduct_AddProduct(Product product)
+        {
+            this.textBoxBarCode.Text = product.BarCode.ToString();
+            
+            AddProduct();
+            CountItemsAndCalculateSubtotal();
+
+            this.textBoxBarCode.Text = string.Empty;
+            this.textBoxBarCode.Focus();
+        }
+
+        private void buttonConfirmSale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.frmConfirmSale = new FormConfirmSale(this.lstProduct);
+                frmConfirmSale.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         #endregion
@@ -108,13 +134,13 @@ namespace IFSP.ADS.SiPDV.View
             this.listBoxProducts.Items.Add(LIST_BOX_HEADER);
         }
 
-        private int GetProductIndex(ProductListItem productListItem)
+        private int GetProductIndex(Product product)
         {
             try
             {
-                for (int i = 0; i < this.lstProductListItem.Count; i++)
+                for (int i = 0; i < this.lstProduct.Count; i++)
                 {
-                    if (this.lstProductListItem[i].Id == productListItem.Id)
+                    if (this.lstProduct[i].Id == product.Id)
                     {
                         return i;
                     }
@@ -138,28 +164,27 @@ namespace IFSP.ADS.SiPDV.View
 
                 if (this.currentProduct != null)
                 {
-                    this.currentProductListItem = new ProductListItem(this.currentProduct, int.Parse(this.textBoxQuantity.Text));
+                    this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
-                    productIndex = GetProductIndex(this.currentProductListItem);
+                    productIndex = GetProductIndex(this.currentProduct);
 
                     // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
                     if (productIndex > -1)
                     {
-                        this.currentProductListItem.Quantity += this.lstProductListItem[productIndex].Quantity;
-                        this.currentProductListItem.CalculateSubtotal();
+                        this.currentProduct.Quantity += this.lstProduct[productIndex].Quantity;
 
-                        this.lstProductListItem[productIndex] = this.currentProductListItem;
-                        this.listBoxProducts.Items[productIndex + 1] = this.currentProductListItem;
+                        this.lstProduct[productIndex] = this.currentProduct;
+                        this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
                     }
                     else
                     {
-                        this.lstProductListItem.Add(this.currentProductListItem);
-                        this.listBoxProducts.Items.Add(this.currentProductListItem);
+                        this.lstProduct.Add(this.currentProduct);
+                        this.listBoxProducts.Items.Add(this.currentProduct);
                     }
 
-                    this.textBoxName.Text = this.currentProductListItem.Name;
-                    this.textBoxPrice.Text = this.currentProductListItem.Price.ToString("0.00");
-                    this.textBoxSubtotal.Text = this.currentProductListItem.Subtotal.ToString("0.00");
+                    this.textBoxName.Text = this.currentProduct.Name;
+                    this.textBoxPrice.Text = this.currentProduct.SalePrice.ToString("0.00");
+                    this.textBoxSubtotal.Text = this.currentProduct.CalculateSubtotal().ToString("0.00");
                 }
                 else
                 {
@@ -172,19 +197,19 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
-        private void CountItemsAndCalculateTotal()
+        private void CountItemsAndCalculateSubtotal()
         {
-            float total = 0.0F;
+            float subtotal = 0.0F;
 
             try
             {
-                foreach (ProductListItem p in this.lstProductListItem)
+                foreach (Product product in this.lstProduct)
                 {
-                    total += p.Subtotal;
+                    subtotal += product.CalculateSubtotal();
                 }
 
-                this.textBoxItems.Text = this.lstProductListItem.Count.ToString();
-                this.textBoxTotal.Text = "R$" + total.ToString("0.00");
+                this.textBoxItems.Text = this.lstProduct.Count.ToString();
+                this.textBoxTotal.Text = "R$" + subtotal.ToString("0.00");
             }
             catch (Exception ex)
             {
