@@ -12,11 +12,21 @@ namespace IFSP.ADS.SiPDV.Config
     {
         #region -Public Static Methods-
 
+        /// <summary>
+        /// Lê um valor do arquivo de configurações.
+        /// </summary>
+        /// <param name="key">Chave</param>
+        /// <returns>Valor</returns>
         public static string ReadConfigurationValue(string key)
         {
             return ConfigurationManager.AppSettings[key];
         }
 
+        /// <summary>
+        /// Escreve um valor no arquivo de configurações.
+        /// </summary>
+        /// <param name="key">Chave</param>
+        /// <param name="value">Valor</param>
         public static void WriteConfigurationValue(string key, string value)
         {
             System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -28,6 +38,10 @@ namespace IFSP.ADS.SiPDV.Config
             ConfigurationManager.RefreshSection(ConfigurationConstants.DefaultSection);
         }
 
+        /// <summary>
+        /// Constrói a string de conexão com o banco de dados de acordo com valores definidos no arquivo de configurações.
+        /// </summary>
+        /// <returns>Retorna a string de conexão com o banco de dados</returns>
         public static string GetConnectionString()
         {
             return string.Format(ConfigurationConstants.ConnectionString, 

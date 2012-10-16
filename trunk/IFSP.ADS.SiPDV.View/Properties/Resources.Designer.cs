@@ -74,6 +74,33 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Informe todos os dados pra salvar as configurações de Banco de Dados..
+        /// </summary>
+        internal static string ConfigurationDatabaseEmptyFields {
+            get {
+                return ResourceManager.GetString("ConfigurationDatabaseEmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar configurações de Banco de Dados..
+        /// </summary>
+        internal static string ConfigurationDatabaseSaveError {
+            get {
+                return ResourceManager.GetString("ConfigurationDatabaseSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configurações de Banco de Dados salvas com sucesso!.
+        /// </summary>
+        internal static string ConfigurationDatabaseSaveSuccess {
+            get {
+                return ResourceManager.GetString("ConfigurationDatabaseSaveSuccess", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Edit {
             get {
                 object obj = ResourceManager.GetObject("Edit", resourceCulture);
@@ -101,6 +128,33 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             get {
                 object obj = ResourceManager.GetObject("Login", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informe o Operador e a Senha para fazer login..
+        /// </summary>
+        internal static string LoginEmptyFields {
+            get {
+                return ResourceManager.GetString("LoginEmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao fazer login..
+        /// </summary>
+        internal static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operador e/ou Senha incorretos..
+        /// </summary>
+        internal static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
             }
         }
         
@@ -156,24 +210,6 @@ namespace IFSP.ADS.SiPDV.View.Properties {
         internal static string OperatorDeleteSuccess {
             get {
                 return ResourceManager.GetString("OperatorDeleteSuccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Operador e/ou Senha incorretos..
-        /// </summary>
-        internal static string OperatorLoginError {
-            get {
-                return ResourceManager.GetString("OperatorLoginError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Informe o Operador e a Senha para fazer login..
-        /// </summary>
-        internal static string OperatorLoginWarning {
-            get {
-                return ResourceManager.GetString("OperatorLoginWarning", resourceCulture);
             }
         }
         
@@ -237,11 +273,29 @@ namespace IFSP.ADS.SiPDV.View.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selecione um produto para excluir..
+        /// </summary>
+        internal static string ProductDeleteSelectOne {
+            get {
+                return ResourceManager.GetString("ProductDeleteSelectOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Produto excluído com sucesso!.
         /// </summary>
         internal static string ProductDeleteSuccess {
             get {
                 return ResourceManager.GetString("ProductDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informe todos os dados para salvar o produto..
+        /// </summary>
+        internal static string ProductSaveEmptyFields {
+            get {
+                return ResourceManager.GetString("ProductSaveEmptyFields", resourceCulture);
             }
         }
         
@@ -286,6 +340,15 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente cancelar esta venda?.
+        /// </summary>
+        internal static string SaleCancelQuestion {
+            get {
+                return ResourceManager.GetString("SaleCancelQuestion", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
@@ -320,6 +383,15 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             get {
                 object obj = ResourceManager.GetObject("Table", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente cancelar esta mesa?.
+        /// </summary>
+        internal static string TablesCancelQuestion {
+            get {
+                return ResourceManager.GetString("TablesCancelQuestion", resourceCulture);
             }
         }
         

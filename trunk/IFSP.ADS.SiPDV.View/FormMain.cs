@@ -7,12 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using IFSP.ADS.SiPDV.SharedMemory;
+using IFSP.ADS.SiPDV.View.Properties;
+
 namespace IFSP.ADS.SiPDV.View
 {
     public partial class FormMain : Form
     {
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -24,7 +30,21 @@ namespace IFSP.ADS.SiPDV.View
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            ShowOperator();
+        }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show(this, "Deseja realmente fechar o SiPDV?", Resources.Question,
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                                    MessageBoxDefaultButton.Button2))
+            {
+                CloseMain();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -109,7 +129,14 @@ namespace IFSP.ADS.SiPDV.View
 
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                FormStock frmStock = new FormStock();
+                frmStock.MdiParent = this;
+                frmStock.Show();
+            }
+            catch (Exception)
+            { }
         }
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,7 +146,14 @@ namespace IFSP.ADS.SiPDV.View
 
         private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                FormConfiguration frmConfiguration = new FormConfiguration();
+                frmConfiguration.MdiParent = this;
+                frmConfiguration.Show();
+            }
+            catch (Exception)
+            { }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -128,6 +162,51 @@ namespace IFSP.ADS.SiPDV.View
 
             this.toolStripStatusLabelDateValue.Text = dateTime.ToString("dd/MM/yyyy");
             this.toolStripStatusLabelHourValue.Text = dateTime.ToString("HH:mm:ss");
+        }
+
+        #endregion
+
+        #region -Private Methods-
+
+        /// <summary>
+        /// Exibe o operador logado na barra inferior de informações.
+        /// </summary>
+        private void ShowOperator()
+        {
+            try
+            {
+                // Verifica se há um operador na SharedMemory.
+                if (SharedData.Instance.OperatorData != null)
+                {
+                    this.toolStripStatusLabelOperatorValue.Text = SharedData.Instance.OperatorData.Name;
+                }
+                else
+                {
+                    CloseMain();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Limpa a SharedMemory e volta ao login.
+        /// </summary>
+        private void CloseMain()
+        {
+            try
+            {
+                SharedData.Instance.Clear();
+
+                this.Hide();
+                this.Owner.Show();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         #endregion

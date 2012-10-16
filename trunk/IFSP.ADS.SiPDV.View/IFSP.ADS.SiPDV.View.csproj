@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfiguration.Designer.cs">
+      <DependentUpon>FormConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConfirmSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     <Compile Include="FormSplash.Designer.cs">
       <DependentUpon>FormSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStock.Designer.cs">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormConfiguration.resx">
+      <DependentUpon>FormConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConfirmSale.resx">
       <DependentUpon>FormConfirmSale.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +141,9 @@
     <EmbeddedResource Include="FormSplash.resx">
       <DependentUpon>FormSplash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormStock.resx">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTables.resx">
       <DependentUpon>FormTables.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,7 +157,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -199,6 +219,10 @@
     <ProjectReference Include="..\IFSP.ADS.SiPDV.Business\IFSP.ADS.SiPDV.Business.csproj">
       <Project>{6B93344D-70EA-4511-A397-8734F9DA7AA3}</Project>
       <Name>IFSP.ADS.SiPDV.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFSP.ADS.SiPDV.Config\IFSP.ADS.SiPDV.Config.csproj">
+      <Project>{B810E63B-A17A-4DB1-A561-EC0523B167D9}</Project>
+      <Name>IFSP.ADS.SiPDV.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFSP.ADS.SiPDV.Framework\IFSP.ADS.SiPDV.Framework.csproj">
       <Project>{489401C9-DA79-4757-ABC6-E20859E03ED4}</Project>

@@ -21,6 +21,9 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public BaseDataAccess()
         {
             try
@@ -38,6 +41,9 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Fecha a conexão com o banco de dados.
+        /// </summary>
         public void Dispose()
         {
             try

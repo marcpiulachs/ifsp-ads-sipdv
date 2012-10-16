@@ -11,10 +11,10 @@ namespace IFSP.ADS.SiPDV.Log
         #region -Public Static Methods-
 
         /// <summary>
-        /// Writes an information entry in the event log.
+        /// Escreve uma mensagem de informação no log de eventos do windows.
         /// </summary>
-        /// <param name="source">Entry source</param>
-        /// <param name="message">Information message</param>
+        /// <param name="source">Fonte do evento</param>
+        /// <param name="message">Mensagem a ser escrita</param>
         public static void Information(string source, string className, string methodName, string message)
         {
             EventLog.WriteEntry(source, 
@@ -23,10 +23,10 @@ namespace IFSP.ADS.SiPDV.Log
         }
 
         /// <summary>
-        /// Writes a warning entry in the event log.
+        /// Escreve uma mensagem de atenção no log de eventos do windows.
         /// </summary>
-        /// <param name="source">Entry source</param>
-        /// <param name="message">Warning message</param>
+        /// <param name="source">Fonte do evento</param>
+        /// <param name="message">Mensagem a ser escrita</param>
         public static void Warning(string source, string className, string methodName, string message)
         {
             EventLog.WriteEntry(source,
@@ -35,10 +35,10 @@ namespace IFSP.ADS.SiPDV.Log
         }
 
         /// <summary>
-        /// Writes an error entry in the event log.
+        /// Escreve uma mensagem de erro no log de eventos do windows.
         /// </summary>
-        /// <param name="source">Entry source</param>
-        /// <param name="message">Error message</param>
+        /// <param name="source">Fonte do evento</param>
+        /// <param name="message">Mensagem a ser escrita</param>
         public static void Error(string source, string className, string methodName, string message)
         {
             EventLog.WriteEntry(source,

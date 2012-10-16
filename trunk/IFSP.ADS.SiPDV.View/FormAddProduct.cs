@@ -158,7 +158,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductsByBarCode(long.Parse(barCode));
+                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductByBarCode(long.Parse(barCode));
             }
             catch (Exception ex)
             {

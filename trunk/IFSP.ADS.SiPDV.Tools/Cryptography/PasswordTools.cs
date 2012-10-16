@@ -8,6 +8,11 @@ namespace IFSP.ADS.SiPDV.Tools.Cryptography
 {
     public class PasswordTools
     {
+        /// <summary>
+        /// Gera um código hash com o algoritmo MD5 da senha do operador.
+        /// </summary>
+        /// <param name="password">Senha do operador</param>
+        /// <returns>Código hash da senha do operador</returns>
         public static string GenerateEncodedPassword(string password)
         {
             MD5 md5;
