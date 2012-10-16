@@ -21,6 +21,10 @@ namespace IFSP.ADS.SiPDV.Business
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Insere um novo produto ou atualiza caso ele já exista.
+        /// </summary>
+        /// <param name="product">Produto a ser inserido ou atualizado</param>
         public void InsertUpdateProduct(Product product)
         {
             try
@@ -53,6 +57,10 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
+        /// <summary>
+        /// Remove um produto.
+        /// </summary>
+        /// <param name="product">Produto a ser removido</param>
         public void DeleteProduct(Product product)
         {
             try
@@ -73,14 +81,43 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
-        public Product GetProductByBarCode(long barCode)
+        /// <summary>
+        /// Atualiza a quantidade em estoque de um produto.
+        /// </summary>
+        /// <param name="product">Produto a ser atualizado</param>
+        public void UpdateProductQuantity(Product product)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    this.productDataAccess.UpdateProductQuantity(product.BarCode, product.Quantity);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Busca produto pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna o produto</returns>
+        public Product ProductByBarCode(long barCode)
         {
             DataTable dtProduct;
             Product product = null;
 
             try
             {
-                dtProduct = GetProductsByBarCode(barCode);
+                dtProduct = GetProductByBarCode(barCode);
 
                 if (dtProduct != null && dtProduct.Rows.Count == 1)
                 {
@@ -107,6 +144,60 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
+        /// <summary>
+        /// Busca produto pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetProductByBarCode(long barCode)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    return this.productDataAccess.GetProductsByBarCode(barCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Busca produtos pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetProductsByName(string name)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    return this.productDataAccess.GetProductsByName(name);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Busca todos os produtos.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetAllProducts()
         {
             try
@@ -127,13 +218,18 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
-        public DataTable GetProductsByBarCode(long barCode)
+        /// <summary>
+        /// Busca produto para esqtoque pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetProductStockByBarCode(long barCode)
         {
             try
             {
                 using (this.productDataAccess = new ProductDataAccess())
                 {
-                    return this.productDataAccess.GetProductsByBarCode(barCode);
+                    return this.productDataAccess.GetProductsStockByBarCode(barCode);
                 }
             }
             catch (Exception ex)
@@ -147,13 +243,42 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
-        public DataTable GetProductsByName(string name)
+        /// <summary>
+        /// Busca produtos para estoque pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetProductsStockByName(string name)
         {
             try
             {
                 using (this.productDataAccess = new ProductDataAccess())
                 {
-                    return this.productDataAccess.GetProductsByName(name);
+                    return this.productDataAccess.GetProductsStockByName(name);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Busca todos os produtos para estoque.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetAllProductsStock()
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    return this.productDataAccess.GetAllProductsStock();
                 }
             }
             catch (Exception ex)

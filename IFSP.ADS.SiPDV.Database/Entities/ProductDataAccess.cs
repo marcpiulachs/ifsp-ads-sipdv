@@ -15,6 +15,9 @@ namespace IFSP.ADS.SiPDV.Database
     {
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public ProductDataAccess()
         {
             
@@ -269,6 +272,106 @@ namespace IFSP.ADS.SiPDV.Database
                 dtProducts = new DataTable(DatabaseConstants.ProductTable);
 
                 this.sqlCommand = new SqlCommand(DatabaseConstants.ProductGetByNameSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetAllProductsStock()
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetAllSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsStockByBarCode(long barCode)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsStockByName(string name)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByNameSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");

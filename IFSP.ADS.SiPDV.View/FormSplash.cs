@@ -13,6 +13,9 @@ namespace IFSP.ADS.SiPDV.View
     {
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormSplash()
         {
             InitializeComponent();
@@ -26,7 +29,11 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (this.progressBar.Value >= 100)
             {
-                this.Close();
+                this.timer.Enabled = false;
+                this.Hide();
+
+                FormLogin frmLogin = new FormLogin();
+                frmLogin.Show(this);
             }
 
             this.progressBar.PerformStep();

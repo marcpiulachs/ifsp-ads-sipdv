@@ -49,9 +49,9 @@
             this.groupBoxItems = new System.Windows.Forms.GroupBox();
             this.textBoxItems = new System.Windows.Forms.TextBox();
             this.buttonConfirmSale = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCancelSale = new System.Windows.Forms.Button();
             this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.buttonCancelItem = new System.Windows.Forms.Button();
+            this.buttonCancelProduct = new System.Windows.Forms.Button();
             this.groupBoxTotal.SuspendLayout();
             this.groupBoxProducts.SuspendLayout();
             this.groupBoxProduct.SuspendLayout();
@@ -248,6 +248,7 @@
             this.textBoxBarCode.Size = new System.Drawing.Size(135, 23);
             this.textBoxBarCode.TabIndex = 3;
             this.textBoxBarCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarCode_KeyDown);
+            this.textBoxBarCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarCode_KeyPress);
             // 
             // labelBarCode
             // 
@@ -298,19 +299,20 @@
             this.buttonConfirmSale.UseVisualStyleBackColor = true;
             this.buttonConfirmSale.Click += new System.EventHandler(this.buttonConfirmSale_Click);
             // 
-            // button1
+            // buttonCancelSale
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(572, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 40);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Cancelar Venda";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonCancelSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancelSale.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelSale.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
+            this.buttonCancelSale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCancelSale.Location = new System.Drawing.Point(572, 58);
+            this.buttonCancelSale.Name = "buttonCancelSale";
+            this.buttonCancelSale.Size = new System.Drawing.Size(200, 40);
+            this.buttonCancelSale.TabIndex = 11;
+            this.buttonCancelSale.Text = "Cancelar Venda";
+            this.buttonCancelSale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonCancelSale.UseVisualStyleBackColor = true;
+            this.buttonCancelSale.Click += new System.EventHandler(this.buttonCancelSale_Click);
             // 
             // buttonAddProduct
             // 
@@ -327,19 +329,20 @@
             this.buttonAddProduct.UseVisualStyleBackColor = true;
             this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // buttonCancelItem
+            // buttonCancelProduct
             // 
-            this.buttonCancelItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancelItem.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
-            this.buttonCancelItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelItem.Location = new System.Drawing.Point(366, 58);
-            this.buttonCancelItem.Name = "buttonCancelItem";
-            this.buttonCancelItem.Size = new System.Drawing.Size(200, 40);
-            this.buttonCancelItem.TabIndex = 9;
-            this.buttonCancelItem.Text = "Cancelar Item";
-            this.buttonCancelItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonCancelItem.UseVisualStyleBackColor = true;
+            this.buttonCancelProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancelProduct.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelProduct.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
+            this.buttonCancelProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCancelProduct.Location = new System.Drawing.Point(366, 58);
+            this.buttonCancelProduct.Name = "buttonCancelProduct";
+            this.buttonCancelProduct.Size = new System.Drawing.Size(200, 40);
+            this.buttonCancelProduct.TabIndex = 9;
+            this.buttonCancelProduct.Text = "Cancelar Item";
+            this.buttonCancelProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonCancelProduct.UseVisualStyleBackColor = true;
+            this.buttonCancelProduct.Click += new System.EventHandler(this.buttonCancelProduct_Click);
             // 
             // FormSale
             // 
@@ -347,9 +350,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.buttonConfirmSale);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCancelSale);
             this.Controls.Add(this.buttonAddProduct);
-            this.Controls.Add(this.buttonCancelItem);
+            this.Controls.Add(this.buttonCancelProduct);
             this.Controls.Add(this.groupBoxItems);
             this.Controls.Add(this.groupBoxProduct);
             this.Controls.Add(this.groupBoxTotal);
@@ -394,8 +397,8 @@
         private System.Windows.Forms.GroupBox groupBoxItems;
         private System.Windows.Forms.TextBox textBoxItems;
         private System.Windows.Forms.Button buttonConfirmSale;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCancelSale;
         private System.Windows.Forms.Button buttonAddProduct;
-        private System.Windows.Forms.Button buttonCancelItem;
+        private System.Windows.Forms.Button buttonCancelProduct;
     }
 }

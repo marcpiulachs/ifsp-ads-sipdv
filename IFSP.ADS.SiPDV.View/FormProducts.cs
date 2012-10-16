@@ -49,6 +49,30 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        private void textBoxBarCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && (e.KeyChar < '0' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxCostPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && e.KeyChar != ',' && (e.KeyChar < '0' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxSalePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && e.KeyChar != ',' && (e.KeyChar < '0' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void buttonNew_Click(object sender, EventArgs e)
         {
             ClearFields();
@@ -179,7 +203,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductsByBarCode(long.Parse(barCode));
+                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductByBarCode(long.Parse(barCode));
             }
             catch (Exception ex)
             {
@@ -209,13 +233,26 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
+                // Verifica se os campos do formulário não estão vazios.
+                if (string.IsNullOrWhiteSpace(this.textBoxBarCode.Text) ||
+                    string.IsNullOrWhiteSpace(this.textBoxName.Text) ||
+                    string.IsNullOrWhiteSpace(this.textBoxDescription.Text) ||
+                    string.IsNullOrWhiteSpace(this.comboBoxMeasurementUnity.SelectedItem.ToString()) ||
+                    string.IsNullOrWhiteSpace(this.textBoxCostPrice.Text) ||
+                    string.IsNullOrWhiteSpace(this.textBoxSalePrice.Text))
+                {
+                    MessageBox.Show(this, Resources.ProductSaveEmptyFields, Resources.Warning, 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 Product product = new Product();
 
                 if (this.dataGridViewProducts.SelectedRows.Count == 1)
                 {
                     product.Id = int.Parse(this.dataGridViewProducts.SelectedRows[0].Cells[0].Value.ToString());
                 }
-
                 product.BarCode = long.Parse(this.textBoxBarCode.Text);
                 product.Name = this.textBoxName.Text;
                 product.Description = this.textBoxDescription.Text;
@@ -227,8 +264,8 @@ namespace IFSP.ADS.SiPDV.View
 
                 this.productBusiness.InsertUpdateProduct(product);
 
-                MessageBox.Show(this, Resources.ProductSaveSuccess, Resources.Success, MessageBoxButtons.OK, 
-                                MessageBoxIcon.Information);
+                MessageBox.Show(this, Resources.ProductSaveSuccess, Resources.Success, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -237,7 +274,8 @@ namespace IFSP.ADS.SiPDV.View
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
 
-                MessageBox.Show(this, Resources.ProductSaveError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ProductSaveError, Resources.Error, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -245,13 +283,22 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
+                // Verifica se um produto foi selecionado para exclusão.
+                if (this.dataGridViewProducts.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show(this, Resources.ProductDeleteSelectOne, Resources.Warning,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 Product product = new Product();
                 product.BarCode = long.Parse(this.textBoxBarCode.Text);
 
                 this.productBusiness.DeleteProduct(product);
 
-                MessageBox.Show(this, Resources.ProductDeleteSuccess, Resources.Success, MessageBoxButtons.OK, 
-                                MessageBoxIcon.Information);
+                MessageBox.Show(this, Resources.ProductDeleteSuccess, Resources.Success, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -260,7 +307,8 @@ namespace IFSP.ADS.SiPDV.View
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
 
-                MessageBox.Show(this, Resources.ProductDeleteError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.ProductDeleteError, Resources.Error, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -43,6 +43,7 @@
     <Compile Include="Classes\Operator.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\Sale.cs" />
+    <Compile Include="Classes\Table.cs" />
     <Compile Include="Constants\BusinessConstants.cs" />
     <Compile Include="Constants\ConfigurationConstants.cs" />
     <Compile Include="Constants\DatabaseConstants.cs" />

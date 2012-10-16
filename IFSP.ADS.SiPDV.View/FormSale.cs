@@ -19,6 +19,9 @@ namespace IFSP.ADS.SiPDV.View
     {
         #region -Constants-
 
+        /// <summary>
+        /// Cabeçalho da lista de produtos.
+        /// </summary>
         private const string LIST_BOX_HEADER = "CÓDIGO        NOME                 QTD   PREÇO  SUBTOT";
 
         #endregion
@@ -37,6 +40,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormSale()
         {
             InitializeComponent();
@@ -80,14 +86,29 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        private void textBoxBarCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && (e.KeyChar < '0' || e.KeyChar > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void listBoxProducts_DrawItem(object sender, DrawItemEventArgs e)
         {
             // Desenha o background do ListBox para cada ListBoxItem.
             e.DrawBackground();
 
             // Preenche o ListBoxItem com cinza caso for par, e com branco caso for ímpar.
-            e.Graphics.FillRectangle(e.Index % 2 == 0 ? Brushes.LightGray : Brushes.White, e.Bounds);
-
+            if ((e.Index > 0) && ((e.State & DrawItemState.Selected) == DrawItemState.Selected))
+            {
+                e.Graphics.FillRectangle(Brushes.LightSkyBlue, e.Bounds);
+            }
+            else
+            {
+                e.Graphics.FillRectangle(e.Index % 2 == 0 ? Brushes.LightGray : Brushes.White, e.Bounds);
+            }
+            
             // Desenha o escrito do ListBoxItem.
             e.Graphics.DrawString(listBoxProducts.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds);
 
@@ -100,11 +121,9 @@ namespace IFSP.ADS.SiPDV.View
             this.frmAddProduct.ShowDialog(this);
         }
 
-        private void frmAddProduct_AddProduct(Product product)
+        private void buttonCancelProduct_Click(object sender, EventArgs e)
         {
-            this.textBoxBarCode.Text = product.BarCode.ToString();
-            
-            AddProduct();
+            RemoveProduct();
             CountItemsAndCalculateSubtotal();
 
             this.textBoxBarCode.Text = string.Empty;
@@ -124,16 +143,44 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        private void buttonCancelSale_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show(this, Resources.SaleCancelQuestion, Resources.Question, 
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                this.Close();
+            }
+        }
+
+        private void frmAddProduct_AddProduct(Product product)
+        {
+            this.textBoxBarCode.Text = product.BarCode.ToString();
+
+            AddProduct();
+            CountItemsAndCalculateSubtotal();
+
+            this.textBoxBarCode.Text = string.Empty;
+            this.textBoxBarCode.Focus();
+        }
+
         #endregion
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Limpa a lista de produtos e insere o cabeçalho.
+        /// </summary>
         private void InitializeListBox()
         {
             this.listBoxProducts.Items.Clear();
             this.listBoxProducts.Items.Add(LIST_BOX_HEADER);
         }
 
+        /// <summary>
+        /// Busca o índice de um produto na lista de produtos.
+        /// </summary>
+        /// <param name="product">Produto a ser buscado</param>
+        /// <returns>Retorna o índice do produto na lista</returns>
         private int GetProductIndex(Product product)
         {
             try
@@ -154,18 +201,23 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Adiciona um produto na lista de produtos a serem vendidos.
+        /// </summary>
         private void AddProduct()
         {
             int productIndex;
 
             try
             {
-                this.currentProduct = this.productBusiness.GetProductByBarCode(long.Parse(this.textBoxBarCode.Text));
+                // Busca o produto a ser adicionado.
+                this.currentProduct = this.productBusiness.ProductByBarCode(long.Parse(this.textBoxBarCode.Text));
 
                 if (this.currentProduct != null)
                 {
                     this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
+                    // Busca o índice deste produto na lista de produtos.
                     productIndex = GetProductIndex(this.currentProduct);
 
                     // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
@@ -175,13 +227,16 @@ namespace IFSP.ADS.SiPDV.View
 
                         this.lstProduct[productIndex] = this.currentProduct;
                         this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
+                        this.listBoxProducts.SelectedIndex = productIndex + 1;
                     }
                     else
                     {
                         this.lstProduct.Add(this.currentProduct);
                         this.listBoxProducts.Items.Add(this.currentProduct);
+                        this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
                     }
 
+                    // Informa nome, preço e subtotal deste produto.
                     this.textBoxName.Text = this.currentProduct.Name;
                     this.textBoxPrice.Text = this.currentProduct.SalePrice.ToString("0.00");
                     this.textBoxSubtotal.Text = this.currentProduct.CalculateSubtotal().ToString("0.00");
@@ -197,12 +252,41 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Remove um produto da lista de produtos a serem vendidos.
+        /// </summary>
+        private void RemoveProduct()
+        {
+            int index;
+
+            try
+            {
+                // Pega o índice do produto selecionado para remover.
+                index = this.listBoxProducts.SelectedIndex;
+
+                if (index > 0)
+                {
+                    this.lstProduct.RemoveAt(index - 1);
+                    this.listBoxProducts.Items.RemoveAt(index);
+                    this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Calcula a quantidade de itens na lista de produtos e o subtotal.
+        /// </summary>
         private void CountItemsAndCalculateSubtotal()
         {
             float subtotal = 0.0F;
 
             try
             {
+                // Percorre a lista de produtos somando o preço para obter o subtotal.
                 foreach (Product product in this.lstProduct)
                 {
                     subtotal += product.CalculateSubtotal();

@@ -214,10 +214,34 @@
   <data name="OperatorPasswordWarning" xml:space="preserve">
     <value>Confirme a senha corretamente.</value>
   </data>
-  <data name="OperatorLoginError" xml:space="preserve">
+  <data name="LoginError" xml:space="preserve">
+    <value>Erro ao fazer login.</value>
+  </data>
+  <data name="LoginEmptyFields" xml:space="preserve">
+    <value>Informe o Operador e a Senha para fazer login.</value>
+  </data>
+  <data name="ConfigurationDatabaseEmptyFields" xml:space="preserve">
+    <value>Informe todos os dados pra salvar as configurações de Banco de Dados.</value>
+  </data>
+  <data name="ConfigurationDatabaseSaveError" xml:space="preserve">
+    <value>Erro ao salvar configurações de Banco de Dados.</value>
+  </data>
+  <data name="ConfigurationDatabaseSaveSuccess" xml:space="preserve">
+    <value>Configurações de Banco de Dados salvas com sucesso!</value>
+  </data>
+  <data name="ProductSaveEmptyFields" xml:space="preserve">
+    <value>Informe todos os dados para salvar o produto.</value>
+  </data>
+  <data name="ProductDeleteSelectOne" xml:space="preserve">
+    <value>Selecione um produto para excluir.</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
     <value>Operador e/ou Senha incorretos.</value>
   </data>
-  <data name="OperatorLoginWarning" xml:space="preserve">
-    <value>Informe o Operador e a Senha para fazer login.</value>
+  <data name="SaleCancelQuestion" xml:space="preserve">
+    <value>Deseja realmente cancelar esta venda?</value>
+  </data>
+  <data name="TablesCancelQuestion" xml:space="preserve">
+    <value>Deseja realmente cancelar esta mesa?</value>
   </data>
 </root>

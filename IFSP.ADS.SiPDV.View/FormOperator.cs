@@ -206,7 +206,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.dataGridViewOperators.DataSource = this.operatorBusiness.GetOperatorsByCode(this.textBoxSearchCode.Text);
+                this.dataGridViewOperators.DataSource = this.operatorBusiness.GetOperatorByCode(this.textBoxSearchCode.Text);
             }
             catch (Exception ex)
             {

@@ -15,6 +15,9 @@ namespace IFSP.ADS.SiPDV.Database
     {
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public SaleDataAccess()
         {
  
@@ -24,6 +27,12 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Busca o id de determinada venda.
+        /// </summary>
+        /// <param name="operatorId">Id do operador que realizou a venda</param>
+        /// <param name="dateTime">Data e hora que a venda foi realizada</param>
+        /// <returns>Retorna o id da venda</returns>
         public int GetId(int operatorId, DateTime dateTime)
         {
             object dbReturn;
@@ -62,6 +71,14 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Insere uma nova venda no banco de dados.
+        /// </summary>
+        /// <param name="operatorId">Id do operador que realizou a venda</param>
+        /// <param name="dateTime">Data e hora da venda</param>
+        /// <param name="subtotal">Subtotal da venda</param>
+        /// <param name="discount">Desconto da venda</param>
+        /// <param name="total">Total da venda</param>
         public void InsertSale(int operatorId, DateTime dateTime, float subtotal, float discount, float total)
         {
             try
@@ -92,6 +109,14 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Insere um produto vendido de determinada venda.
+        /// </summary>
+        /// <param name="saleId">Id da venda</param>
+        /// <param name="productId">Id do produto</param>
+        /// <param name="quantity">Quantidade vendida deste produto</param>
+        /// <param name="costPrice">Preço de custo deste produto</param>
+        /// <param name="salePrice">Preço de venda deste produto</param>
         public void InsertSaleProducts(int saleId, int productId, int quantity, float costPrice, float salePrice)
         {
             try

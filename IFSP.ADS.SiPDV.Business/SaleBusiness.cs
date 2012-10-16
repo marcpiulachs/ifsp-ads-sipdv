@@ -21,6 +21,11 @@ namespace IFSP.ADS.SiPDV.Business
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Insere uma nova venda.
+        /// </summary>
+        /// <param name="sale">Venda realizada</param>
+        /// <param name="lstProducts">Lista de produtos vendidos</param>
         public void InsertSale(Sale sale, List<Product> lstProducts)
         {
             try

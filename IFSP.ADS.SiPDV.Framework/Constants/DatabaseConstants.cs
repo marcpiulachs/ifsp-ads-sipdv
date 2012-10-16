@@ -32,6 +32,7 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string OPERATOR_UPDATE_SQL = "UPDATE Tb_Operador SET Codigo = @Codigo, Nome = @Nome, Senha = @Senha WHERE Id = @Id";
         private const string OPERATOR_UPDATE_STATUS_SQL = "UPDATE Tb_Operador SET Status = @Status WHERE Codigo = @Codigo";
         private const string OPERATOR_GET_ALL_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Status = 1";
+        private const string OPERATOR_GET_BY_ID_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Id = @Id AND Status = 1";
         private const string OPERATOR_GET_BY_CODE_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Codigo = @Codigo AND Status = 1";
         private const string OPERATOR_GET_BY_NAME_SQL = "SELECT Id, Codigo, Nome FROM Tb_Operador WHERE Nome LIKE @Nome AND Status = 1";
 
@@ -65,6 +66,9 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string PRODUCT_GET_ALL_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
         private const string PRODUCT_GET_BY_BAR_CODE_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Codigo_Barra = @Codigo_Barra AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
         private const string PRODUCT_GET_BY_NAME_SQL = "SELECT Pro.Id, Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, Pre.Preco_Custo, Pre.Preco_Venda FROM Tb_Produto Pro, Tb_Preco Pre, (SELECT Pre2.Id_Produto, MAX(Pre2.Data_Hora) Max_Data_Hora FROM Tb_Preco Pre2 GROUP BY Pre2.Id_Produto) Tmp WHERE Pro.Id = Pre.Id_Produto AND Pro.Nome LIKE @Nome AND Pro.Status = 1 AND Pre.Id_Produto = Tmp.Id_Produto AND Pre.Data_Hora = Tmp.Max_Data_Hora";
+        private const string PRODUCT_STOCK_GET_ALL_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Status = 1";
+        private const string PRODUCT_STOCK_GET_BY_BAR_CODE_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Codigo_Barra = @Codigo_Barra AND Status = 1";
+        private const string PRODUCT_STOCK_GET_BY_NAME_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Nome LIKE @Nome AND Status = 1";
 
         #endregion
 
@@ -224,6 +228,11 @@ namespace IFSP.ADS.SiPDV.Framework
             get { return OPERATOR_GET_ALL_SQL; }
         }
 
+        public static string OperatorGetByIdSql
+        {
+            get { return OPERATOR_GET_BY_ID_SQL; }
+        }
+
         public static string OperatorGetByCodeSql
         {
             get { return OPERATOR_GET_BY_CODE_SQL; }
@@ -351,6 +360,21 @@ namespace IFSP.ADS.SiPDV.Framework
         public static string ProductGetByNameSql
         {
             get { return PRODUCT_GET_BY_NAME_SQL; }
+        }
+
+        public static string ProductStockGetAllSql
+        {
+            get { return PRODUCT_STOCK_GET_ALL_SQL; }
+        }
+
+        public static string ProductStockGetByBarCodeSql
+        {
+            get { return PRODUCT_STOCK_GET_BY_BAR_CODE_SQL; }
+        }
+
+        public static string ProductStockGetByNameSql
+        {
+            get { return PRODUCT_STOCK_GET_BY_NAME_SQL; }
         }
 
         #endregion

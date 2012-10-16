@@ -15,6 +15,9 @@ namespace IFSP.ADS.SiPDV.Database
     {
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public OperatorDataAccess()
         {
  
@@ -147,21 +150,28 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetAllOperators()
+        /// <summary>
+        /// Busca o operador pelo id.
+        /// </summary>
+        /// <param name="id">Id do operador</param>
+        /// <returns>Retorna um DataTable contendo o resultado da busca realizada</returns>
+        public DataTable GetOperatorById(int id)
         {
-            DataTable dtOperators;
+            DataTable dtOperator;
 
             try
             {
-                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+                dtOperator = new DataTable(DatabaseConstants.OperatorTable);
 
-                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetAllSql, this.sqlConnection);
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetByIdSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
-                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
-                this.sqlDataAdapter.Fill(dtOperators);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorIdParam, id);
 
-                return dtOperators;
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtOperator);
+
+                return dtOperator;
             }
             catch (Exception ex)
             {
@@ -179,13 +189,18 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetOperatorsByCode(string code)
+        /// <summary>
+        /// Busca o operador pelo código.
+        /// </summary>
+        /// <param name="code">Código do operador</param>
+        /// <returns>Retorna um DataTable contendo o resultado da busca realizada</returns>
+        public DataTable GetOperatorByCode(string code)
         {
-            DataTable dtOperators;
+            DataTable dtOperator;
 
             try
             {
-                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+                dtOperator = new DataTable(DatabaseConstants.OperatorTable);
 
                 this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetByCodeSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
@@ -193,9 +208,9 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorCodeParam, code);
 
                 this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
-                this.sqlDataAdapter.Fill(dtOperators);
+                this.sqlDataAdapter.Fill(dtOperator);
 
-                return dtOperators;
+                return dtOperator;
             }
             catch (Exception ex)
             {
@@ -213,6 +228,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os operadores pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos operadores</param>
+        /// <returns>Retorna um DataTable contendo o resultado da busca realizada</returns>
         public DataTable GetOperatorsByName(string name)
         {
             DataTable dtOperators;
@@ -225,6 +245,42 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.CommandType = CommandType.Text;
 
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.OperatorNameParam, "%" + name + "%");
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtOperators);
+
+                return dtOperators;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Busca todos os operadores.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo o resultado da busca realizada</returns>
+        public DataTable GetAllOperators()
+        {
+            DataTable dtOperators;
+
+            try
+            {
+                dtOperators = new DataTable(DatabaseConstants.OperatorTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.OperatorGetAllSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
 
                 this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
                 this.sqlDataAdapter.Fill(dtOperators);

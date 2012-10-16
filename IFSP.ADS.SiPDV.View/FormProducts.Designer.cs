@@ -353,6 +353,7 @@
             this.textBoxBarCode.Size = new System.Drawing.Size(135, 23);
             this.textBoxBarCode.TabIndex = 1;
             this.textBoxBarCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarCode_KeyDown);
+            this.textBoxBarCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBarCode_KeyPress);
             // 
             // textBoxName
             // 
@@ -373,6 +374,7 @@
             this.textBoxCostPrice.Name = "textBoxCostPrice";
             this.textBoxCostPrice.Size = new System.Drawing.Size(75, 23);
             this.textBoxCostPrice.TabIndex = 9;
+            this.textBoxCostPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCostPrice_KeyPress);
             // 
             // textBoxSalePrice
             // 
@@ -383,6 +385,7 @@
             this.textBoxSalePrice.Name = "textBoxSalePrice";
             this.textBoxSalePrice.Size = new System.Drawing.Size(75, 23);
             this.textBoxSalePrice.TabIndex = 11;
+            this.textBoxSalePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalePrice_KeyPress);
             // 
             // comboBoxMeasurementUnity
             // 
