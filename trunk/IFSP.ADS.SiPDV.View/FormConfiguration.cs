@@ -52,6 +52,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Carrega as configurações do sistema.
+        /// </summary>
         private void LoadDatabaseConfiguration()
         {
             try
@@ -76,6 +79,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Salva as configurações do sistema.
+        /// </summary>
         private void SaveDatabaseConfiguration()
         {
             try

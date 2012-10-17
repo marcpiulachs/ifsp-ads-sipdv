@@ -32,6 +32,10 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
+        /// <param name="lstProducts">Lista de produtos que será vendida</param>
         public FormConfirmSale(List<Product> lstProducts)
         {
             InitializeComponent();
@@ -69,6 +73,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Calcula o subtotal da venda.
+        /// </summary>
         private void CalculateSubtotal()
         {
             try
@@ -89,6 +96,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Calcula o total da venda (Total = Subtotal - Desconto).
+        /// </summary>
         private void CalculateTotal()
         {
             try
@@ -107,6 +117,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Confirma a realização da venda.
+        /// </summary>
         private void ConfirmSale()
         {
             try
