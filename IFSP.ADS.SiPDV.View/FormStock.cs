@@ -65,7 +65,7 @@ namespace IFSP.ADS.SiPDV.View
             {
                 if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
                 {
-                    LoadProductsStockByBarCode(this.textBoxSearchBarCode.Text);
+                    LoadProductStockByBarCode(this.textBoxSearchBarCode.Text);
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
             {
-                LoadProductsStockByBarCode(this.textBoxSearchBarCode.Text);
+                LoadProductStockByBarCode(this.textBoxSearchBarCode.Text);
             }
             else if (!string.IsNullOrWhiteSpace(this.textBoxSearchName.Text))
             {
@@ -123,6 +123,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Limpa os campos do formulário de produtos em estoque.
+        /// </summary>
         private void ClearFields()
         {
             this.textBoxBarCode.Text = string.Empty;
@@ -132,8 +135,12 @@ namespace IFSP.ADS.SiPDV.View
             this.textBoxQuantity.Focus();
         }
 
+        /// <summary>
+        /// Preenche os campos do formulário de produtos em estoque com os dados do produto selecionado.
+        /// </summary>
         private void FillFields()
         {
+            // Verifica se algum produto foi selecionado.
             if (this.dataGridViewProducts.SelectedRows.Count == 1)
             {
                 this.textBoxBarCode.Text = this.dataGridViewProducts.SelectedRows[0].Cells[1].Value.ToString();
@@ -142,6 +149,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega todos os produtos para estoque.
+        /// </summary>
         private void LoadAllProductsStock()
         {
             try
@@ -157,7 +167,11 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
-        private void LoadProductsStockByBarCode(string barCode)
+        /// <summary>
+        /// Carrega produto pelo código de barras para estoque.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        private void LoadProductStockByBarCode(string barCode)
         {
             try
             {
@@ -172,6 +186,10 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega produtos pelo nome para estoque.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
         private void LoadProductsStockByName(string name)
         {
             try
@@ -187,6 +205,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Salva a alterações realizadas nas quantidades dos produtos em estoque.
+        /// </summary>
         private void SaveStock()
         {
             int currentQuantity;

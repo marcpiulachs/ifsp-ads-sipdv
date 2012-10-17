@@ -25,6 +25,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormAddProduct()
         {
             InitializeComponent();
@@ -36,9 +39,21 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Event Handling-
 
+        /// <summary>
+        /// Delegate para declaração do evento para adicionar produto.
+        /// </summary>
+        /// <param name="product">Produto que será adicionado</param>
         public delegate void AddProductEventHandler(Product product);
+
+        /// <summary>
+        /// Evento para adicionar um produto.
+        /// </summary>
         public event AddProductEventHandler AddProduct;
 
+        /// <summary>
+        /// Lança evento para adicionar produto.
+        /// </summary>
+        /// <param name="product">Produto que será adicionado</param>
         public void ThrowAddProduct(Product product)
         {
             AddProductEventHandler handler = AddProduct;
@@ -64,7 +79,7 @@ namespace IFSP.ADS.SiPDV.View
             {
                 if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
                 {
-                    LoadProductsByBarCode(this.textBoxSearchBarCode.Text);
+                    LoadProductByBarCode(this.textBoxSearchBarCode.Text);
                 }
             }
         }
@@ -100,7 +115,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
             {
-                LoadProductsByBarCode(this.textBoxSearchBarCode.Text);
+                LoadProductByBarCode(this.textBoxSearchBarCode.Text);
             }
             else if (!string.IsNullOrWhiteSpace(this.textBoxSearchName.Text))
             {
@@ -114,6 +129,7 @@ namespace IFSP.ADS.SiPDV.View
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
+            // Verifica se algum produto foi selecionado.
             if (this.dataGridViewProducts.SelectedRows.Count > 0)
             {
                 Product product = new Product();
@@ -125,6 +141,7 @@ namespace IFSP.ADS.SiPDV.View
                 product.CostPrice = float.Parse(this.dataGridViewProducts.SelectedRows[0].Cells[5].Value.ToString());
                 product.SalePrice = float.Parse(this.dataGridViewProducts.SelectedRows[0].Cells[6].Value.ToString());
 
+                // Lança evento para ser capturado no FormSale ou no FormTables.
                 ThrowAddProduct(product);
 
                 this.Close();
@@ -139,6 +156,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Carrega todos os produtos.
+        /// </summary>
         private void LoadAllProducts()
         {
             try
@@ -154,7 +174,11 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
-        private void LoadProductsByBarCode(string barCode)
+        /// <summary>
+        /// Carrega produto pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        private void LoadProductByBarCode(string barCode)
         {
             try
             {
@@ -169,6 +193,10 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega produtos pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
         private void LoadProductsByName(string name)
         {
             try
