@@ -147,6 +147,41 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        public DataTable GetSaleByDate(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            DataTable dtSales;
+
+            try
+            {
+                dtSales = new DataTable(DatabaseConstants.SaleTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.SaleGetByDateSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeInitialParam, dateTimeInitial);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeFinalParam, dateTimeFinal);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtSales);
+
+                return dtSales;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
         #endregion
     }
 }

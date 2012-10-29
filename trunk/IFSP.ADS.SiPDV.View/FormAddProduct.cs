@@ -70,7 +70,7 @@ namespace IFSP.ADS.SiPDV.View
 
         private void FormAddProduct_Load(object sender, EventArgs e)
         {
-            LoadAllProducts();
+            LoadAllProductsSale();
         }
 
         private void textBoxSearchBarCode_KeyDown(object sender, KeyEventArgs e)
@@ -79,7 +79,7 @@ namespace IFSP.ADS.SiPDV.View
             {
                 if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
                 {
-                    LoadProductByBarCode(this.textBoxSearchBarCode.Text);
+                    LoadProductSaleByBarCode(this.textBoxSearchBarCode.Text);
                 }
             }
         }
@@ -88,7 +88,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (this.textBoxSearchBarCode.Text.Length == 0)
             {
-                LoadAllProducts();
+                LoadAllProductsSale();
             }
         }
 
@@ -98,7 +98,7 @@ namespace IFSP.ADS.SiPDV.View
             {
                 if (!string.IsNullOrWhiteSpace(this.textBoxSearchName.Text))
                 {
-                    LoadProductsByName(this.textBoxSearchName.Text);
+                    LoadProductsSaleByName(this.textBoxSearchName.Text);
                 }
             }
         }
@@ -107,7 +107,7 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (this.textBoxSearchName.Text.Length == 0)
             {
-                LoadAllProducts();
+                LoadAllProductsSale();
             }
         }
 
@@ -115,15 +115,15 @@ namespace IFSP.ADS.SiPDV.View
         {
             if (!string.IsNullOrWhiteSpace(this.textBoxSearchBarCode.Text))
             {
-                LoadProductByBarCode(this.textBoxSearchBarCode.Text);
+                LoadProductSaleByBarCode(this.textBoxSearchBarCode.Text);
             }
             else if (!string.IsNullOrWhiteSpace(this.textBoxSearchName.Text))
             {
-                LoadProductsByName(this.textBoxSearchName.Text);
+                LoadProductsSaleByName(this.textBoxSearchName.Text);
             }
             else
             {
-                LoadAllProducts();
+                LoadAllProductsSale();
             }
         }
 
@@ -157,13 +157,13 @@ namespace IFSP.ADS.SiPDV.View
         #region -Private Methods-
 
         /// <summary>
-        /// Carrega todos os produtos.
+        /// Carrega todos os produtos para venda.
         /// </summary>
-        private void LoadAllProducts()
+        private void LoadAllProductsSale()
         {
             try
             {
-                this.dataGridViewProducts.DataSource = this.productBusiness.GetAllProducts();
+                this.dataGridViewProducts.DataSource = this.productBusiness.GetAllProductsSale();
             }
             catch (Exception ex)
             {
@@ -175,14 +175,14 @@ namespace IFSP.ADS.SiPDV.View
         }
 
         /// <summary>
-        /// Carrega produto pelo código de barras.
+        /// Carrega produto para venda pelo código de barras.
         /// </summary>
         /// <param name="barCode">Código de barras do produto</param>
-        private void LoadProductByBarCode(string barCode)
+        private void LoadProductSaleByBarCode(string barCode)
         {
             try
             {
-                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductByBarCode(long.Parse(barCode));
+                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductSaleByBarCode(long.Parse(barCode));
             }
             catch (Exception ex)
             {
@@ -194,14 +194,14 @@ namespace IFSP.ADS.SiPDV.View
         }
 
         /// <summary>
-        /// Carrega produtos pelo nome.
+        /// Carrega produtos para venda pelo nome.
         /// </summary>
         /// <param name="name">Nome dos produtos</param>
-        private void LoadProductsByName(string name)
+        private void LoadProductsSaleByName(string name)
         {
             try
             {
-                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductsByName(name);
+                this.dataGridViewProducts.DataSource = this.productBusiness.GetProductsSaleByName(name);
             }
             catch (Exception ex)
             {
