@@ -255,38 +255,11 @@ namespace IFSP.ADS.SiPDV.View.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Erro ao excluir produto..
+        ///   Looks up a localized string similar to Este produto não existe. Confira o código de baras..
         /// </summary>
-        internal static string ProductDeleteError {
+        internal static string ProductNotExists {
             get {
-                return ResourceManager.GetString("ProductDeleteError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente excluir este produto?.
-        /// </summary>
-        internal static string ProductDeleteQuestion {
-            get {
-                return ResourceManager.GetString("ProductDeleteQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selecione um produto para excluir..
-        /// </summary>
-        internal static string ProductDeleteSelectOne {
-            get {
-                return ResourceManager.GetString("ProductDeleteSelectOne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Produto excluído com sucesso!.
-        /// </summary>
-        internal static string ProductDeleteSuccess {
-            get {
-                return ResourceManager.GetString("ProductDeleteSuccess", resourceCulture);
+                return ResourceManager.GetString("ProductNotExists", resourceCulture);
             }
         }
         
@@ -367,6 +340,42 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             get {
                 object obj = ResourceManager.GetObject("Stock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantidade insuficiente de produtos no estoque..
+        /// </summary>
+        internal static string StockProductNotEnough {
+            get {
+                return ResourceManager.GetString("StockProductNotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecione um produto para atualizar o estoque..
+        /// </summary>
+        internal static string StockProductNotSelected {
+            get {
+                return ResourceManager.GetString("StockProductNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar estoque..
+        /// </summary>
+        internal static string StockSaveError {
+            get {
+                return ResourceManager.GetString("StockSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estoque atualizado com sucesso!.
+        /// </summary>
+        internal static string StockSaveSucess {
+            get {
+                return ResourceManager.GetString("StockSaveSucess", resourceCulture);
             }
         }
         

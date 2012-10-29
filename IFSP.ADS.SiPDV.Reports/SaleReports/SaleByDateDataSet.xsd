@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SaleByDateDataSet" targetNamespace="http://tempuri.org/SaleByDateDataSet.xsd" xmlns:mstns="http://tempuri.org/SaleByDateDataSet.xsd" xmlns="http://tempuri.org/SaleByDateDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SaleByDateDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SaleByDateDataSet" msprop:Generator_UserDSName="SaleByDateDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tb_Venda" msprop:Generator_TableClassName="Tb_VendaDataTable" msprop:Generator_TableVarName="tableTb_Venda" msprop:Generator_TablePropName="Tb_Venda" msprop:Generator_RowDeletingName="Tb_VendaRowDeleting" msprop:Generator_UserTableName="Tb_Venda" msprop:Generator_RowChangingName="Tb_VendaRowChanging" msprop:Generator_RowEvHandlerName="Tb_VendaRowChangeEventHandler" msprop:Generator_RowDeletedName="Tb_VendaRowDeleted" msprop:Generator_RowEvArgName="Tb_VendaRowChangeEvent" msprop:Generator_RowChangedName="Tb_VendaRowChanged" msprop:Generator_RowClassName="Tb_VendaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Operador" msprop:Generator_ColumnVarNameInTable="columnOperador" msprop:Generator_ColumnPropNameInRow="Operador" msprop:Generator_ColumnPropNameInTable="OperadorColumn" msprop:Generator_UserColumnName="Operador" type="xs:string" minOccurs="0" />
+              <xs:element name="Data_Hora" msprop:Generator_ColumnVarNameInTable="columnData_Hora" msprop:Generator_ColumnPropNameInRow="Data_Hora" msprop:Generator_ColumnPropNameInTable="Data_HoraColumn" msprop:Generator_UserColumnName="Data_Hora" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Desconto" msprop:Generator_ColumnVarNameInTable="columnDesconto" msprop:Generator_ColumnPropNameInRow="Desconto" msprop:Generator_ColumnPropNameInTable="DescontoColumn" msprop:Generator_UserColumnName="Desconto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

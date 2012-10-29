@@ -37,7 +37,6 @@
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxProduct = new System.Windows.Forms.GroupBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
             this.tableLayoutPanelProduct = new System.Windows.Forms.TableLayoutPanel();
@@ -53,11 +52,16 @@
             this.textBoxCostPrice = new System.Windows.Forms.TextBox();
             this.textBoxSalePrice = new System.Windows.Forms.TextBox();
             this.comboBoxMeasurementUnity = new System.Windows.Forms.ComboBox();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.tableLayoutPanelStatus = new System.Windows.Forms.TableLayoutPanel();
+            this.radioButtonActive = new System.Windows.Forms.RadioButton();
+            this.radioButtonInactive = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.groupBoxSearchProducts.SuspendLayout();
             this.tableLayoutPanelSearchProducts.SuspendLayout();
             this.groupBoxProduct.SuspendLayout();
             this.tableLayoutPanelProduct.SuspendLayout();
+            this.tableLayoutPanelStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewProducts
@@ -71,7 +75,7 @@
             this.dataGridViewProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProducts.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(12, 314);
+            this.dataGridViewProducts.Location = new System.Drawing.Point(12, 344);
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
@@ -87,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxSearchProducts.Controls.Add(this.tableLayoutPanelSearchProducts);
             this.groupBoxSearchProducts.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxSearchProducts.Location = new System.Drawing.Point(12, 238);
+            this.groupBoxSearchProducts.Location = new System.Drawing.Point(12, 268);
             this.groupBoxSearchProducts.Name = "groupBoxSearchProducts";
             this.groupBoxSearchProducts.Size = new System.Drawing.Size(760, 70);
             this.groupBoxSearchProducts.TabIndex = 1;
@@ -179,32 +183,16 @@
             // 
             this.groupBoxProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxProduct.Controls.Add(this.buttonDelete);
             this.groupBoxProduct.Controls.Add(this.buttonSave);
             this.groupBoxProduct.Controls.Add(this.buttonNew);
             this.groupBoxProduct.Controls.Add(this.tableLayoutPanelProduct);
             this.groupBoxProduct.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxProduct.Location = new System.Drawing.Point(12, 12);
             this.groupBoxProduct.Name = "groupBoxProduct";
-            this.groupBoxProduct.Size = new System.Drawing.Size(760, 220);
+            this.groupBoxProduct.Size = new System.Drawing.Size(760, 250);
             this.groupBoxProduct.TabIndex = 0;
             this.groupBoxProduct.TabStop = false;
             this.groupBoxProduct.Text = "Cadastrar Produto";
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDelete.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Cancel;
-            this.buttonDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDelete.Location = new System.Drawing.Point(613, 113);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(141, 40);
-            this.buttonDelete.TabIndex = 3;
-            this.buttonDelete.Text = "Excluir";
-            this.buttonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonSave
             // 
@@ -255,16 +243,19 @@
             this.tableLayoutPanelProduct.Controls.Add(this.textBoxCostPrice, 1, 4);
             this.tableLayoutPanelProduct.Controls.Add(this.textBoxSalePrice, 1, 5);
             this.tableLayoutPanelProduct.Controls.Add(this.comboBoxMeasurementUnity, 1, 3);
+            this.tableLayoutPanelProduct.Controls.Add(this.labelStatus, 0, 6);
+            this.tableLayoutPanelProduct.Controls.Add(this.tableLayoutPanelStatus, 1, 6);
             this.tableLayoutPanelProduct.Location = new System.Drawing.Point(7, 21);
             this.tableLayoutPanelProduct.Name = "tableLayoutPanelProduct";
-            this.tableLayoutPanelProduct.RowCount = 6;
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelProduct.Size = new System.Drawing.Size(600, 180);
+            this.tableLayoutPanelProduct.RowCount = 7;
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelProduct.Size = new System.Drawing.Size(600, 210);
             this.tableLayoutPanelProduct.TabIndex = 0;
             // 
             // textBoxDescription
@@ -315,7 +306,7 @@
             this.labelMeasurementUnity.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelMeasurementUnity.AutoSize = true;
             this.labelMeasurementUnity.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMeasurementUnity.Location = new System.Drawing.Point(19, 93);
+            this.labelMeasurementUnity.Location = new System.Drawing.Point(19, 94);
             this.labelMeasurementUnity.Name = "labelMeasurementUnity";
             this.labelMeasurementUnity.Size = new System.Drawing.Size(188, 16);
             this.labelMeasurementUnity.TabIndex = 6;
@@ -326,7 +317,7 @@
             this.labelCostPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelCostPrice.AutoSize = true;
             this.labelCostPrice.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCostPrice.Location = new System.Drawing.Point(49, 122);
+            this.labelCostPrice.Location = new System.Drawing.Point(49, 123);
             this.labelCostPrice.Name = "labelCostPrice";
             this.labelCostPrice.Size = new System.Drawing.Size(158, 16);
             this.labelCostPrice.TabIndex = 8;
@@ -337,7 +328,7 @@
             this.labelSalePrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelSalePrice.AutoSize = true;
             this.labelSalePrice.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSalePrice.Location = new System.Drawing.Point(49, 154);
+            this.labelSalePrice.Location = new System.Drawing.Point(49, 152);
             this.labelSalePrice.Name = "labelSalePrice";
             this.labelSalePrice.Size = new System.Drawing.Size(158, 16);
             this.labelSalePrice.TabIndex = 10;
@@ -369,7 +360,7 @@
             // 
             this.textBoxCostPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxCostPrice.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCostPrice.Location = new System.Drawing.Point(213, 119);
+            this.textBoxCostPrice.Location = new System.Drawing.Point(213, 120);
             this.textBoxCostPrice.MaxLength = 7;
             this.textBoxCostPrice.Name = "textBoxCostPrice";
             this.textBoxCostPrice.Size = new System.Drawing.Size(75, 23);
@@ -380,7 +371,7 @@
             // 
             this.textBoxSalePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxSalePrice.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSalePrice.Location = new System.Drawing.Point(213, 151);
+            this.textBoxSalePrice.Location = new System.Drawing.Point(213, 149);
             this.textBoxSalePrice.MaxLength = 7;
             this.textBoxSalePrice.Name = "textBoxSalePrice";
             this.textBoxSalePrice.Size = new System.Drawing.Size(75, 23);
@@ -401,17 +392,70 @@
             this.comboBoxMeasurementUnity.Size = new System.Drawing.Size(75, 24);
             this.comboBoxMeasurementUnity.TabIndex = 7;
             // 
+            // labelStatus
+            // 
+            this.labelStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.Location = new System.Drawing.Point(129, 184);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(78, 16);
+            this.labelStatus.TabIndex = 12;
+            this.labelStatus.Text = "Status:";
+            // 
+            // tableLayoutPanelStatus
+            // 
+            this.tableLayoutPanelStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanelStatus.ColumnCount = 2;
+            this.tableLayoutPanelStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanelStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanelStatus.Controls.Add(this.radioButtonActive, 0, 0);
+            this.tableLayoutPanelStatus.Controls.Add(this.radioButtonInactive, 1, 0);
+            this.tableLayoutPanelStatus.Location = new System.Drawing.Point(213, 178);
+            this.tableLayoutPanelStatus.Name = "tableLayoutPanelStatus";
+            this.tableLayoutPanelStatus.RowCount = 1;
+            this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelStatus.Size = new System.Drawing.Size(192, 29);
+            this.tableLayoutPanelStatus.TabIndex = 13;
+            // 
+            // radioButtonActive
+            // 
+            this.radioButtonActive.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonActive.AutoSize = true;
+            this.radioButtonActive.Checked = true;
+            this.radioButtonActive.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonActive.Location = new System.Drawing.Point(3, 4);
+            this.radioButtonActive.Name = "radioButtonActive";
+            this.radioButtonActive.Size = new System.Drawing.Size(76, 20);
+            this.radioButtonActive.TabIndex = 0;
+            this.radioButtonActive.TabStop = true;
+            this.radioButtonActive.Text = "Ativo";
+            this.radioButtonActive.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonInactive
+            // 
+            this.radioButtonInactive.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonInactive.AutoSize = true;
+            this.radioButtonInactive.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonInactive.Location = new System.Drawing.Point(88, 4);
+            this.radioButtonInactive.Name = "radioButtonInactive";
+            this.radioButtonInactive.Size = new System.Drawing.Size(96, 20);
+            this.radioButtonInactive.TabIndex = 1;
+            this.radioButtonInactive.Text = "Inativo";
+            this.radioButtonInactive.UseVisualStyleBackColor = true;
+            // 
             // FormProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(784, 592);
             this.Controls.Add(this.groupBoxProduct);
             this.Controls.Add(this.groupBoxSearchProducts);
             this.Controls.Add(this.dataGridViewProducts);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 630);
             this.Name = "FormProducts";
             this.Text = "SiPDV - Produtos";
             this.Load += new System.EventHandler(this.FormProducts_Load);
@@ -422,6 +466,8 @@
             this.groupBoxProduct.ResumeLayout(false);
             this.tableLayoutPanelProduct.ResumeLayout(false);
             this.tableLayoutPanelProduct.PerformLayout();
+            this.tableLayoutPanelStatus.ResumeLayout(false);
+            this.tableLayoutPanelStatus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -452,6 +498,9 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxSearchName;
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelStatus;
+        private System.Windows.Forms.RadioButton radioButtonActive;
+        private System.Windows.Forms.RadioButton radioButtonInactive;
     }
 }

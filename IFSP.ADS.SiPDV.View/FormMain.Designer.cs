@@ -76,8 +76,9 @@
             this.saleToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Sale;
             this.saleToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.saleToolStripMenuItem.Name = "saleToolStripMenuItem";
-            this.saleToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
-            this.saleToolStripMenuItem.Text = "Venda (F1)";
+            this.saleToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.saleToolStripMenuItem.Size = new System.Drawing.Size(96, 44);
+            this.saleToolStripMenuItem.Text = "Venda";
             this.saleToolStripMenuItem.Click += new System.EventHandler(this.saleToolStripMenuItem_Click);
             // 
             // tablesToolStripMenuItem
@@ -86,8 +87,8 @@
             this.tablesToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Table;
             this.tablesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
-            this.tablesToolStripMenuItem.Text = "Mesas (F2)";
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(96, 44);
+            this.tablesToolStripMenuItem.Text = "Mesas";
             this.tablesToolStripMenuItem.Click += new System.EventHandler(this.tablesToolStripMenuItem_Click);
             // 
             // productsToolStripMenuItem
@@ -96,8 +97,8 @@
             this.productsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("productsToolStripMenuItem.Image")));
             this.productsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(168, 44);
-            this.productsToolStripMenuItem.Text = "Produtos (F3)";
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(123, 44);
+            this.productsToolStripMenuItem.Text = "Produtos";
             this.productsToolStripMenuItem.Click += new System.EventHandler(this.productsToolStripMenuItem_Click);
             // 
             // operatorsToolStripMenuItem
@@ -106,8 +107,8 @@
             this.operatorsToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Operator;
             this.operatorsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.operatorsToolStripMenuItem.Name = "operatorsToolStripMenuItem";
-            this.operatorsToolStripMenuItem.Size = new System.Drawing.Size(186, 44);
-            this.operatorsToolStripMenuItem.Text = "Operadores (F4)";
+            this.operatorsToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
+            this.operatorsToolStripMenuItem.Text = "Operadores";
             this.operatorsToolStripMenuItem.Click += new System.EventHandler(this.operatorsToolStripMenuItem_Click);
             // 
             // stockToolStripMenuItem
@@ -116,8 +117,8 @@
             this.stockToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Stock;
             this.stockToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(159, 44);
-            this.stockToolStripMenuItem.Text = "Estoque (F5)";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(114, 44);
+            this.stockToolStripMenuItem.Text = "Estoque";
             this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
@@ -126,8 +127,8 @@
             this.reportsToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Report;
             this.reportsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(186, 44);
-            this.reportsToolStripMenuItem.Text = "Relatórios (F6)";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
+            this.reportsToolStripMenuItem.Text = "Relatórios";
             this.reportsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
@@ -136,8 +137,8 @@
             this.configurationToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Configuration;
             this.configurationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(213, 44);
-            this.configurationToolStripMenuItem.Text = "Configurações (F7)";
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(168, 44);
+            this.configurationToolStripMenuItem.Text = "Configurações";
             this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
             // 
             // statusStrip

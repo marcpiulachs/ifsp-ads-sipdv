@@ -16,6 +16,7 @@ namespace IFSP.ADS.SiPDV.Business
         #region -Private Attributes-
 
         private SaleDataAccess saleDataAccess;
+        private ProductDataAccess productDataAccess;
 
         #endregion
 
@@ -43,6 +44,11 @@ namespace IFSP.ADS.SiPDV.Business
                             try
                             {
                                 this.saleDataAccess.InsertSaleProducts(sale.Id, product.Id, product.Quantity, product.CostPrice, product.SalePrice);
+
+                                using (this.productDataAccess = new ProductDataAccess())
+                                {
+                                    this.productDataAccess.UpdateProductStockQuantity(product.BarCode, product.StockQuantity - product.Quantity);
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -53,6 +59,32 @@ namespace IFSP.ADS.SiPDV.Business
                             }
                         }
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Busca todas as vendas realizadas entre duas datas.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
+        public DataTable GetSaleByDate(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            try
+            {
+                using (this.saleDataAccess = new SaleDataAccess())
+                {
+                    return this.saleDataAccess.GetSaleByDate(dateTimeInitial, dateTimeFinal);
                 }
             }
             catch (Exception ex)

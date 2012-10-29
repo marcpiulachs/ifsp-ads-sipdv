@@ -86,17 +86,6 @@ namespace IFSP.ADS.SiPDV.View
             LoadAllProducts();
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.Yes == MessageBox.Show(this, Resources.ProductDeleteQuestion, Resources.Question, 
-                                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question, 
-                                                          MessageBoxDefaultButton.Button2))
-            {
-                DeleteProduct();
-                LoadAllProducts();
-            }
-        }
-
         private void textBoxSearchBarCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -169,6 +158,7 @@ namespace IFSP.ADS.SiPDV.View
             this.comboBoxMeasurementUnity.SelectedIndex = -1;
             this.textBoxCostPrice.Text = string.Empty;
             this.textBoxSalePrice.Text = string.Empty;
+            this.radioButtonActive.Checked = true;
         }
 
         private void FillFields()
@@ -181,6 +171,14 @@ namespace IFSP.ADS.SiPDV.View
                 this.comboBoxMeasurementUnity.SelectedItem = this.dataGridViewProducts.SelectedRows[0].Cells[4].Value.ToString();
                 this.textBoxCostPrice.Text = this.dataGridViewProducts.SelectedRows[0].Cells[5].Value.ToString();
                 this.textBoxSalePrice.Text = this.dataGridViewProducts.SelectedRows[0].Cells[6].Value.ToString();
+                if (this.dataGridViewProducts.SelectedRows[0].Cells[7].Value.ToString() == true.ToString())
+                {
+                    this.radioButtonActive.Checked = true;
+                }
+                else
+                {
+                    this.radioButtonInactive.Checked = true;
+                }
             }
         }
 
@@ -257,8 +255,8 @@ namespace IFSP.ADS.SiPDV.View
                 product.Name = this.textBoxName.Text;
                 product.Description = this.textBoxDescription.Text;
                 product.MeasurementUnit = this.comboBoxMeasurementUnity.SelectedItem.ToString();
-                product.Quantity = 0;
-                product.Status = 1;
+                product.StockQuantity = 0;
+                product.Status = this.radioButtonActive.Checked ? 1 : 0;
                 product.CostPrice = float.Parse(this.textBoxCostPrice.Text);
                 product.SalePrice = float.Parse(this.textBoxSalePrice.Text);
 
@@ -275,39 +273,6 @@ namespace IFSP.ADS.SiPDV.View
                               ex.Message);
 
                 MessageBox.Show(this, Resources.ProductSaveError, Resources.Error, 
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void DeleteProduct()
-        {
-            try
-            {
-                // Verifica se um produto foi selecionado para exclusão.
-                if (this.dataGridViewProducts.SelectedRows.Count != 1)
-                {
-                    MessageBox.Show(this, Resources.ProductDeleteSelectOne, Resources.Warning,
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    return;
-                }
-
-                Product product = new Product();
-                product.BarCode = long.Parse(this.textBoxBarCode.Text);
-
-                this.productBusiness.DeleteProduct(product);
-
-                MessageBox.Show(this, Resources.ProductDeleteSuccess, Resources.Success, 
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                Logging.Error(ViewConstants.ProjectName,
-                              MethodBase.GetCurrentMethod().DeclaringType.Name,
-                              MethodBase.GetCurrentMethod().Name,
-                              ex.Message);
-
-                MessageBox.Show(this, Resources.ProductDeleteError, Resources.Error, 
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -211,44 +211,57 @@ namespace IFSP.ADS.SiPDV.View
             try
             {
                 // Busca o produto a ser adicionado.
-                this.currentProduct = this.productBusiness.ProductByBarCode(long.Parse(this.textBoxBarCode.Text));
+                this.currentProduct = this.productBusiness.GetProductSale(long.Parse(this.textBoxBarCode.Text));
 
                 if (this.currentProduct != null)
                 {
                     this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
-                    // Busca o índice deste produto na lista de produtos.
-                    productIndex = GetProductIndex(this.currentProduct);
-
-                    // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
-                    if (productIndex > -1)
+                    // Se a quantidade a ser vendida for maior que a quantidade em estoque, exibe um alerta.
+                    if (this.currentProduct.Quantity <= this.currentProduct.StockQuantity)
                     {
-                        this.currentProduct.Quantity += this.lstProduct[productIndex].Quantity;
+                        // Busca o índice deste produto na lista de produtos.
+                        productIndex = GetProductIndex(this.currentProduct);
 
-                        this.lstProduct[productIndex] = this.currentProduct;
-                        this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
-                        this.listBoxProducts.SelectedIndex = productIndex + 1;
+                        // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
+                        if (productIndex > -1)
+                        {
+                            this.currentProduct.Quantity += this.lstProduct[productIndex].Quantity;
+
+                            this.lstProduct[productIndex] = this.currentProduct;
+                            this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
+                            this.listBoxProducts.SelectedIndex = productIndex + 1;
+                        }
+                        else
+                        {
+                            this.lstProduct.Add(this.currentProduct);
+                            this.listBoxProducts.Items.Add(this.currentProduct);
+                            this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
+                        }
+
+                        // Informa nome, preço e subtotal deste produto.
+                        this.textBoxName.Text = this.currentProduct.Name;
+                        this.textBoxPrice.Text = this.currentProduct.SalePrice.ToString("0.00");
+                        this.textBoxSubtotal.Text = this.currentProduct.CalculateSubtotal().ToString("0.00");
                     }
                     else
                     {
-                        this.lstProduct.Add(this.currentProduct);
-                        this.listBoxProducts.Items.Add(this.currentProduct);
-                        this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
+                        MessageBox.Show(this, Resources.StockProductNotEnough, Resources.Warning,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
-                    // Informa nome, preço e subtotal deste produto.
-                    this.textBoxName.Text = this.currentProduct.Name;
-                    this.textBoxPrice.Text = this.currentProduct.SalePrice.ToString("0.00");
-                    this.textBoxSubtotal.Text = this.currentProduct.CalculateSubtotal().ToString("0.00");
                 }
                 else
                 {
-
+                    MessageBox.Show(this, Resources.ProductNotExists, Resources.Warning,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 
@@ -273,7 +286,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 
@@ -297,7 +313,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 

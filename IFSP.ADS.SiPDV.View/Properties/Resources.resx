@@ -172,15 +172,6 @@
   <data name="Warning" xml:space="preserve">
     <value>Atenção</value>
   </data>
-  <data name="ProductDeleteError" xml:space="preserve">
-    <value>Erro ao excluir produto.</value>
-  </data>
-  <data name="ProductDeleteQuestion" xml:space="preserve">
-    <value>Deseja realmente excluir este produto?</value>
-  </data>
-  <data name="ProductDeleteSuccess" xml:space="preserve">
-    <value>Produto excluído com sucesso!</value>
-  </data>
   <data name="ProductSaveError" xml:space="preserve">
     <value>Erro ao salvar produto.</value>
   </data>
@@ -232,9 +223,6 @@
   <data name="ProductSaveEmptyFields" xml:space="preserve">
     <value>Informe todos os dados para salvar o produto.</value>
   </data>
-  <data name="ProductDeleteSelectOne" xml:space="preserve">
-    <value>Selecione um produto para excluir.</value>
-  </data>
   <data name="LoginFailed" xml:space="preserve">
     <value>Operador e/ou Senha incorretos.</value>
   </data>
@@ -243,5 +231,20 @@
   </data>
   <data name="TablesCancelQuestion" xml:space="preserve">
     <value>Deseja realmente cancelar esta mesa?</value>
+  </data>
+  <data name="StockProductNotEnough" xml:space="preserve">
+    <value>Quantidade insuficiente de produtos no estoque.</value>
+  </data>
+  <data name="StockProductNotSelected" xml:space="preserve">
+    <value>Selecione um produto para atualizar o estoque.</value>
+  </data>
+  <data name="StockSaveError" xml:space="preserve">
+    <value>Erro ao atualizar estoque.</value>
+  </data>
+  <data name="StockSaveSucess" xml:space="preserve">
+    <value>Estoque atualizado com sucesso!</value>
+  </data>
+  <data name="ProductNotExists" xml:space="preserve">
+    <value>Este produto não existe. Confira o código de baras.</value>
   </data>
 </root>

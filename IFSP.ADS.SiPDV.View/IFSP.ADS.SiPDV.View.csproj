@@ -11,7 +11,8 @@
     <RootNamespace>IFSP.ADS.SiPDV.View</RootNamespace>
     <AssemblyName>IFSP.ADS.SiPDV.View</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,6 +84,12 @@
     <Compile Include="FormAddProduct.Designer.cs">
       <DependentUpon>FormAddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMissingProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMissingProducts.Designer.cs">
+      <DependentUpon>FormMissingProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormOperator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +107,12 @@
     </Compile>
     <Compile Include="FormSale.Designer.cs">
       <DependentUpon>FormSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSaleByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSaleByDate.Designer.cs">
+      <DependentUpon>FormSaleByDate.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSplash.cs">
       <SubType>Form</SubType>
@@ -129,6 +149,9 @@
     <EmbeddedResource Include="FormAddProduct.resx">
       <DependentUpon>FormAddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMissingProducts.resx">
+      <DependentUpon>FormMissingProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormOperator.resx">
       <DependentUpon>FormOperator.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSale.resx">
       <DependentUpon>FormSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSaleByDate.resx">
+      <DependentUpon>FormSaleByDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSplash.resx">
       <DependentUpon>FormSplash.cs</DependentUpon>
@@ -231,6 +257,10 @@
     <ProjectReference Include="..\IFSP.ADS.SiPDV.Log\IFSP.ADS.SiPDV.Log.csproj">
       <Project>{A8B37CD4-CA67-436C-BBEB-30192B71C437}</Project>
       <Name>IFSP.ADS.SiPDV.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFSP.ADS.SiPDV.Reports\IFSP.ADS.SiPDV.Reports.csproj">
+      <Project>{05B4E5C8-A228-4198-B65C-C6014AC89E36}</Project>
+      <Name>IFSP.ADS.SiPDV.Reports</Name>
     </ProjectReference>
     <ProjectReference Include="..\IFSP.ADS.SiPDV.SharedMemory\IFSP.ADS.SiPDV.SharedMemory.csproj">
       <Project>{99C86699-0E16-4623-A45C-BAC07F3A3289}</Project>

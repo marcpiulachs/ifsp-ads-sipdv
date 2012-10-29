@@ -53,7 +53,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void InsertProduct(long barCode, string name, string description, string measurementUnit, int quantity, int status)
+        public void InsertProduct(long barCode, string name, string description, string measurementUnit, double stockQuantity, int status)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, name);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductDescriptionParam, description);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductMeasurementUnitParam, measurementUnit);
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductQuantityParam, quantity);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStockQuantityParam, stockQuantity);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStatusParam, status);
 
                 this.sqlCommand.ExecuteNonQuery();
@@ -113,7 +113,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void UpdateProduct(int id, long barCode, string name, string description, string measurementUnit)
+        public void UpdateProduct(int id, long barCode, string name, string description, string measurementUnit, int status)
         {
             try
             {
@@ -124,6 +124,7 @@ namespace IFSP.ADS.SiPDV.Database
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, name);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductDescriptionParam, description);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductMeasurementUnitParam, measurementUnit);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStatusParam, status);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductIdParam, id);
 
                 this.sqlCommand.ExecuteNonQuery();
@@ -143,14 +144,14 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void UpdateProductQuantity(long barCode, int quantity)
+        public void UpdateProductStockQuantity(long barCode, double stockQuantity)
         {
             try
             {
                 this.sqlCommand = new SqlCommand(DatabaseConstants.ProductUpdateQuantitySql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductQuantityParam, quantity);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStockQuantityParam, stockQuantity);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
 
                 this.sqlCommand.ExecuteNonQuery();
@@ -170,17 +171,23 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public void UpdateProductStatus(long barCode, int status)
+        public DataTable GetProductSale(long barCode)
         {
+            DataTable dtProduct;
+
             try
             {
-                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductUpdateStatusSql, this.sqlConnection);
+                dtProduct = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductSaleGetSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStatusParam, status);
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
 
-                this.sqlCommand.ExecuteNonQuery();
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProduct);
+
+                return dtProduct;
             }
             catch (Exception ex)
             {
@@ -193,6 +200,75 @@ namespace IFSP.ADS.SiPDV.Database
             }
             finally
             {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductByBarCode(long barCode)
+        {
+            DataTable dtProduct;
+
+            try
+            {
+                dtProduct = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProduct);
+
+                return dtProduct;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsByName(string name)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductGetByNameSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
                 this.sqlCommand.Dispose();
             }
         }
@@ -229,7 +305,41 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetProductsByBarCode(long barCode)
+        public DataTable GetProductSaleByBarCode(long barCode)
+        {
+            DataTable dtProduct;
+
+            try
+            {
+                dtProduct = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductSaleGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProduct);
+
+                return dtProduct;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsSaleByName(string name)
         {
             DataTable dtProducts;
 
@@ -237,10 +347,10 @@ namespace IFSP.ADS.SiPDV.Database
             {
                 dtProducts = new DataTable(DatabaseConstants.ProductTable);
 
-                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductSaleGetByNameSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");
 
                 this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
                 this.sqlDataAdapter.Fill(dtProducts);
@@ -263,7 +373,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetProductsByName(string name)
+        public DataTable GetAllProductsSale()
         {
             DataTable dtProducts;
 
@@ -271,7 +381,73 @@ namespace IFSP.ADS.SiPDV.Database
             {
                 dtProducts = new DataTable(DatabaseConstants.ProductTable);
 
-                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductGetByNameSql, this.sqlConnection);
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductSaleGetAllSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductStockByBarCode(long barCode)
+        {
+            DataTable dtProduct;
+
+            try
+            {
+                dtProduct = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProduct);
+
+                return dtProduct;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsStockByName(string name)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByNameSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
 
                 this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");
@@ -329,7 +505,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetProductsStockByBarCode(long barCode)
+        public DataTable GetProductsStockMissing()
         {
             DataTable dtProducts;
 
@@ -337,44 +513,8 @@ namespace IFSP.ADS.SiPDV.Database
             {
                 dtProducts = new DataTable(DatabaseConstants.ProductTable);
 
-                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByBarCodeSql, this.sqlConnection);
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockMissingSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
-
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductBarCodeParam, barCode);
-
-                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
-                this.sqlDataAdapter.Fill(dtProducts);
-
-                return dtProducts;
-            }
-            catch (Exception ex)
-            {
-                Logging.Error(DatabaseConstants.ProjectName,
-                              MethodBase.GetCurrentMethod().DeclaringType.Name,
-                              MethodBase.GetCurrentMethod().Name,
-                              ex.Message);
-
-                throw ex;
-            }
-            finally
-            {
-                this.sqlDataAdapter.Dispose();
-                this.sqlCommand.Dispose();
-            }
-        }
-
-        public DataTable GetProductsStockByName(string name)
-        {
-            DataTable dtProducts;
-
-            try
-            {
-                dtProducts = new DataTable(DatabaseConstants.ProductTable);
-
-                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockGetByNameSql, this.sqlConnection);
-                this.sqlCommand.CommandType = CommandType.Text;
-
-                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductNameParam, "%" + name + "%");
 
                 this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
                 this.sqlDataAdapter.Fill(dtProducts);

@@ -250,8 +250,8 @@ namespace IFSP.ADS.SiPDV.View
 
                 this.operatorBusiness.InsertUpdateOperator(oper);
 
-                MessageBox.Show(this, Resources.OperatorSaveSuccess, Resources.Success, MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show(this, Resources.OperatorSaveSuccess, Resources.Success, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -260,7 +260,8 @@ namespace IFSP.ADS.SiPDV.View
                               MethodBase.GetCurrentMethod().Name,
                               ex.Message);
 
-                MessageBox.Show(this, Resources.OperatorSaveError, Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Resources.OperatorSaveError, Resources.Error, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

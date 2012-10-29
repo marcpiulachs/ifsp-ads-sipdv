@@ -221,7 +221,10 @@ namespace IFSP.ADS.SiPDV.View
 
                 if (this.dataGridViewProducts.SelectedRows.Count == 1)
                 {
+                    // Quantidade atual do produto em estoque.
                     currentQuantity = int.Parse(this.dataGridViewProducts.SelectedRows[0].Cells[4].Value.ToString());
+                    
+                    // Quantidade a ser adicionar ou retirada do estoque.
                     additionalQuantity = int.Parse(textBoxQuantity.Text);
 
                     Product product = new Product();
@@ -232,25 +235,44 @@ namespace IFSP.ADS.SiPDV.View
 
                     if (this.radioButtonProductIn.Checked)
                     {
-                        product.Quantity = currentQuantity + additionalQuantity;
+                        product.StockQuantity = currentQuantity + additionalQuantity;
                     }
                     else
                     {
-                        product.Quantity = currentQuantity - additionalQuantity;
+                        // Se a quantidade a ser retirada for maior que a quantidade em estoque, exibe um alerta.
+                        if (additionalQuantity > currentQuantity)
+                        {
+                            MessageBox.Show(this, Resources.StockProductNotEnough, Resources.Warning,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                        else
+                        {
+                            product.StockQuantity = currentQuantity - additionalQuantity;
+                        }
                     }
 
-                    this.productBusiness.UpdateProductQuantity(product);
+                    this.productBusiness.UpdateProductStockQuantity(product);
 
-                    MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Resources.StockSaveSucess, Resources.Success, 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show(this, "", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Resources.StockProductNotSelected, Resources.Warning, 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                MessageBox.Show(this, Resources.StockSaveError, Resources.Error,
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

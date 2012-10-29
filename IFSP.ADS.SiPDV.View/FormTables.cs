@@ -367,40 +367,54 @@ namespace IFSP.ADS.SiPDV.View
 
             try
             {
-                this.currentProduct = this.productBusiness.ProductByBarCode(long.Parse(this.textBoxBarCode.Text));
+                this.currentProduct = this.productBusiness.GetProductSale(long.Parse(this.textBoxBarCode.Text));
 
                 if (this.currentProduct != null)
                 {
                     this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
-                    productIndex = GetProductIndex(tableIndex, this.currentProduct);
-
-                    // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
-                    if (productIndex > -1)
+                    // Se a quantidade a ser vendida for maior que a quantidade em estoque, exibe um alerta.
+                    if (this.currentProduct.Quantity <= this.currentProduct.StockQuantity)
                     {
-                        this.currentProduct.Quantity += this.lstTables[tableIndex].LstProducts[productIndex].Quantity;
+                        // Busca o índice deste produto na lista de produtos.
+                        productIndex = GetProductIndex(tableIndex, this.currentProduct);
 
-                        this.lstTables[tableIndex].LstProducts[productIndex] = this.currentProduct;
-                        this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
-                        this.listBoxProducts.SelectedIndex = productIndex + 1;
+                        // Se o índice do produto for maior que 0 ele já está na lista, caso contrário ele será adicionado.
+                        if (productIndex > -1)
+                        {
+                            this.currentProduct.Quantity += this.lstTables[tableIndex].LstProducts[productIndex].Quantity;
+
+                            this.lstTables[tableIndex].LstProducts[productIndex] = this.currentProduct;
+                            this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
+                            this.listBoxProducts.SelectedIndex = productIndex + 1;
+                        }
+                        else
+                        {
+                            this.lstTables[tableIndex].LstProducts.Add(this.currentProduct);
+                            this.listBoxProducts.Items.Add(this.currentProduct);
+                            this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
+                        }
                     }
                     else
                     {
-                        this.lstTables[tableIndex].LstProducts.Add(this.currentProduct);
-                        this.listBoxProducts.Items.Add(this.currentProduct);
-                        this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
+                        MessageBox.Show(this, Resources.StockProductNotEnough, Resources.Warning,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-
+                    MessageBox.Show(this, Resources.ProductNotExists, Resources.Warning,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 UpdateTablesStatus();
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 
@@ -427,7 +441,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 
@@ -464,7 +481,10 @@ namespace IFSP.ADS.SiPDV.View
             }
             catch (Exception ex)
             {
-                throw ex;
+                Logging.Error(ViewConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
             }
         }
 

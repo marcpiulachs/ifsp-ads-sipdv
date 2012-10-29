@@ -31,6 +31,7 @@ namespace IFSP.ADS.SiPDV.View
         private void FormMain_Load(object sender, EventArgs e)
         {
             ShowOperator();
+            VerifyUserAccess();
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -141,7 +142,14 @@ namespace IFSP.ADS.SiPDV.View
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                FormSaleByDate frm = new FormSaleByDate();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            catch (Exception)
+            { }
         }
 
         private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,6 +196,26 @@ namespace IFSP.ADS.SiPDV.View
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Verifica os acessos do usuário logado.
+        /// Caso não seja usuário admin, esconde aa opções de Operadores e Configurações.
+        /// </summary>
+        private void VerifyUserAccess()
+        {
+            try
+            {
+                if (SharedData.Instance.OperatorData.Code != "admin")
+                {
+                    this.operatorsToolStripMenuItem.Visible = false;
+                    this.configurationToolStripMenuItem.Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
