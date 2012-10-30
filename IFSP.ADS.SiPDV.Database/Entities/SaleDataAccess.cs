@@ -147,6 +147,12 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca todas as vendas realizadas entre duas datas.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetSaleByDate(DateTime dateTimeInitial, DateTime dateTimeFinal)
         {
             DataTable dtSales;

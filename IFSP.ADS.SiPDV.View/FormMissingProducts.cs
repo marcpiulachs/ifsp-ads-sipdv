@@ -26,6 +26,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormMissingProducts()
         {
             InitializeComponent();
@@ -46,21 +49,32 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Carrega o relatório de produtos em falta no estoque.
+        /// </summary>
         private void LoadReport()
         {
             try
             {
+                // Cria o DataSet que armazena os dados para o relatório.
                 MissingProductsDataSet dataSet = new MissingProductsDataSet();
+
+                // Limpa o DataTable de produtos.
                 dataSet.Tables[DatabaseConstants.ProductTable].Rows.Clear();
 
+                // Preenche o DataTable de produtos com o resultado da busca feita no banco de dados.
                 foreach (DataRow dr in this.productBusiness.GetProductsStockMissing().Rows)
                 {
                     dataSet.Tables[DatabaseConstants.ProductTable].Rows.Add(dr.ItemArray);
                 }
 
+                // Cria o CrystalReport de produtos em falta no estoque.
                 MissingProductsCrystalReport crystalReport = new MissingProductsCrystalReport();
+
+                // Define que a fonte de dados do relatório é o DataSet.
                 crystalReport.SetDataSource(dataSet);
 
+                // Exibe o relatório no componente visual do CrystalReport.
                 this.crystalReportViewer.ReportSource = crystalReport;
             }
             catch (Exception ex)
