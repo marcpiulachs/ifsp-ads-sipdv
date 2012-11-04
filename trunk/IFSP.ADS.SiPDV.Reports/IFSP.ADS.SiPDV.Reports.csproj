@@ -44,6 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductReports\SoldProductsCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoldProductsCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductReports\SoldProductsDataSet.cs">
+      <DependentUpon>SoldProductsDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductReports\SoldProductsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoldProductsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleReports\SaleByDateCrystalReport.cs">
       <AutoGen>True</AutoGen>
@@ -77,6 +92,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ProductReports\SoldProductsDataSet.xsc">
+      <DependentUpon>SoldProductsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProductReports\SoldProductsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SoldProductsDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProductReports\SoldProductsDataSet.xss">
+      <DependentUpon>SoldProductsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="SaleReports\SaleByDateDataSet.xsc">
       <DependentUpon>SaleByDateDataSet.xsd</DependentUpon>
     </None>
@@ -101,6 +127,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ProductReports\SoldProductsCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SoldProductsCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleReports\SaleByDateCrystalReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SaleByDateCrystalReport.cs</LastGenOutput>

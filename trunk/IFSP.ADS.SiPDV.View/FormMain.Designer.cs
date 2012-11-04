@@ -37,6 +37,8 @@
             this.operatorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saleByDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.missingProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelOperator = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,6 +51,7 @@
             this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelVersionValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.soldProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +126,10 @@
             // 
             // reportsToolStripMenuItem
             // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saleByDateToolStripMenuItem,
+            this.soldProductsToolStripMenuItem,
+            this.missingProductsToolStripMenuItem});
             this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Report;
             this.reportsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -130,6 +137,20 @@
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(141, 44);
             this.reportsToolStripMenuItem.Text = "Relatórios";
             this.reportsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
+            // 
+            // saleByDateToolStripMenuItem
+            // 
+            this.saleByDateToolStripMenuItem.Name = "saleByDateToolStripMenuItem";
+            this.saleByDateToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.saleByDateToolStripMenuItem.Text = "Vendas por Período";
+            this.saleByDateToolStripMenuItem.Click += new System.EventHandler(this.saleByDateToolStripMenuItem_Click);
+            // 
+            // missingProductsToolStripMenuItem
+            // 
+            this.missingProductsToolStripMenuItem.Name = "missingProductsToolStripMenuItem";
+            this.missingProductsToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.missingProductsToolStripMenuItem.Text = "Produtos em Falta no Estoque";
+            this.missingProductsToolStripMenuItem.Click += new System.EventHandler(this.missingProductsToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
             // 
@@ -235,6 +256,13 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // soldProductsToolStripMenuItem
+            // 
+            this.soldProductsToolStripMenuItem.Name = "soldProductsToolStripMenuItem";
+            this.soldProductsToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.soldProductsToolStripMenuItem.Text = "Produtos Vendidos";
+            this.soldProductsToolStripMenuItem.Click += new System.EventHandler(this.soldProductsToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +315,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelVersionValue;
         private System.Windows.Forms.ToolStripMenuItem saleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operatorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saleByDateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem missingProductsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem soldProductsToolStripMenuItem;
 
     }
 }

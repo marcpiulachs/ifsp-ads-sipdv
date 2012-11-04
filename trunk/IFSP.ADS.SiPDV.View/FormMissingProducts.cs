@@ -45,6 +45,11 @@ namespace IFSP.ADS.SiPDV.View
             LoadReport();
         }
 
+        private void buttonLoadReport_Click(object sender, EventArgs e)
+        {
+            LoadReport();
+        }
+
         #endregion
 
         #region -Private Methods-
@@ -54,8 +59,13 @@ namespace IFSP.ADS.SiPDV.View
         /// </summary>
         private void LoadReport()
         {
+            double minStockQuantity;
+
             try
             {
+                // Quantidade mínima de produtos em estoque para parâmetro do relatório.
+                minStockQuantity = double.Parse(this.textBoxMinStockQuantity.Text);
+
                 // Cria o DataSet que armazena os dados para o relatório.
                 MissingProductsDataSet dataSet = new MissingProductsDataSet();
 
@@ -63,7 +73,7 @@ namespace IFSP.ADS.SiPDV.View
                 dataSet.Tables[DatabaseConstants.ProductTable].Rows.Clear();
 
                 // Preenche o DataTable de produtos com o resultado da busca feita no banco de dados.
-                foreach (DataRow dr in this.productBusiness.GetProductsStockMissing().Rows)
+                foreach (DataRow dr in this.productBusiness.GetProductsStockMissing(minStockQuantity).Rows)
                 {
                     dataSet.Tables[DatabaseConstants.ProductTable].Rows.Add(dr.ItemArray);
                 }

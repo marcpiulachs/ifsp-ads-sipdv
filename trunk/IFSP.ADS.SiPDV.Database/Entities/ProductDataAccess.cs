@@ -505,7 +505,7 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
-        public DataTable GetProductsStockMissing()
+        public DataTable GetProductsStockMissing(double stockQuantity)
         {
             DataTable dtProducts;
 
@@ -515,6 +515,78 @@ namespace IFSP.ADS.SiPDV.Database
 
                 this.sqlCommand = new SqlCommand(DatabaseConstants.ProductStockMissingSql, this.sqlConnection);
                 this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.ProductStockQuantityParam, stockQuantity);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsBestSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductBestSellersSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeInitialParam, dateTimeInitial);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeFinalParam, dateTimeFinal);
+
+                this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
+                this.sqlDataAdapter.Fill(dtProducts);
+
+                return dtProducts;
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(DatabaseConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+            finally
+            {
+                this.sqlDataAdapter.Dispose();
+                this.sqlCommand.Dispose();
+            }
+        }
+
+        public DataTable GetProductsWorstSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            DataTable dtProducts;
+
+            try
+            {
+                dtProducts = new DataTable(DatabaseConstants.ProductTable);
+
+                this.sqlCommand = new SqlCommand(DatabaseConstants.ProductWorstSellersSql, this.sqlConnection);
+                this.sqlCommand.CommandType = CommandType.Text;
+
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeInitialParam, dateTimeInitial);
+                this.sqlCommand.Parameters.AddWithValue(DatabaseConstants.SaleDateTimeFinalParam, dateTimeFinal);
 
                 this.sqlDataAdapter = new SqlDataAdapter(this.sqlCommand);
                 this.sqlDataAdapter.Fill(dtProducts);

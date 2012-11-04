@@ -49,6 +49,33 @@ namespace IFSP.ADS.SiPDV.View
 
         #endregion
 
+        #region -Event Handling-
+
+        /// <summary>
+        /// Delegate para declaração do evento de venda confirmada.
+        /// </summary>
+        public delegate void ConfirmedSaleEventHandler();
+
+        /// <summary>
+        /// Evento para informar que a venda foi confirmada.
+        /// </summary>
+        public event ConfirmedSaleEventHandler ConfirmedSale;
+
+        /// <summary>
+        /// Lança evento de venda confirmada.
+        /// </summary>
+        public void ThrowConfirmSale()
+        {
+            ConfirmedSaleEventHandler handler = ConfirmedSale;
+
+            if (handler != null)
+            {
+                ConfirmedSale();
+            }
+        }
+
+        #endregion
+
         #region -Events-
 
         private void textBoxDiscount_KeyDown(object sender, KeyEventArgs e)
@@ -103,10 +130,21 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.discount = float.Parse(this.textBoxDiscount.Text);
-                this.total = this.subtotal - this.discount;
+                if (!string.IsNullOrWhiteSpace(this.textBoxDiscount.Text))
+                {
+                    this.discount = float.Parse(this.textBoxDiscount.Text);
+                }
 
-                this.textBoxTotal.Text = this.total.ToString("0.00");
+                if (this.discount >= 0 && this.discount <= this.subtotal)
+                {
+                    this.total = this.subtotal - this.discount;
+                    this.textBoxTotal.Text = this.total.ToString("0.00");
+                }
+                else
+                {
+                    this.textBoxDiscount.Text = string.Empty;
+                    this.textBoxDiscount.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -124,6 +162,8 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
+                CalculateTotal();
+
                 Sale sale = new Sale();
                 sale.OperatorId = SharedData.Instance.OperatorData.Id;
                 sale.DateTime = DateTime.Now;
@@ -134,6 +174,8 @@ namespace IFSP.ADS.SiPDV.View
                 this.saleBusiness.InsertSale(sale, lstProducts);
 
                 MessageBox.Show(this, "Venda realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ThrowConfirmSale();
 
                 this.Close();
             }

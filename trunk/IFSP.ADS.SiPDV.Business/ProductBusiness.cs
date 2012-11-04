@@ -347,16 +347,57 @@ namespace IFSP.ADS.SiPDV.Business
         }
 
         /// <summary>
-        /// Busca os 10 produtos que mais estão em falta no estoque.
+        /// Busca os produtos que estão em falta no estoque, de acordo com o mínimo informado.
         /// </summary>
+        /// <param name="stockQuantity">Quantidade mínima de produtos no estoque</param>
         /// <returns>Retorna um DataTable contendo a busca realizada</returns>
-        public DataTable GetProductsStockMissing()
+        public DataTable GetProductsStockMissing(double stockQuantity)
         {
             try
             {
                 using (this.productDataAccess = new ProductDataAccess())
                 {
-                    return this.productDataAccess.GetProductsStockMissing();
+                    return this.productDataAccess.GetProductsStockMissing(stockQuantity);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        public DataTable GetProductsBestSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    return this.productDataAccess.GetProductsBestSellers(dateTimeInitial, dateTimeFinal);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.Error(BusinessConstants.ProjectName,
+                              MethodBase.GetCurrentMethod().DeclaringType.Name,
+                              MethodBase.GetCurrentMethod().Name,
+                              ex.Message);
+
+                throw ex;
+            }
+        }
+
+        public DataTable GetProductsWorstSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
+        {
+            try
+            {
+                using (this.productDataAccess = new ProductDataAccess())
+                {
+                    return this.productDataAccess.GetProductsWorstSellers(dateTimeInitial, dateTimeFinal);
                 }
             }
             catch (Exception ex)

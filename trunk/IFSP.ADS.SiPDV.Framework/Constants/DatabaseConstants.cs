@@ -72,7 +72,9 @@ namespace IFSP.ADS.SiPDV.Framework
         private const string PRODUCT_STOCK_GET_ALL_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Status = 1 ORDER BY Nome";
         private const string PRODUCT_STOCK_GET_BY_BAR_CODE_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Codigo_Barra = @Codigo_Barra AND Status = 1 ORDER BY Nome";
         private const string PRODUCT_STOCK_GET_BY_NAME_SQL = "SELECT Id, Codigo_Barra, Nome, Descricao, Quantidade_Estoque FROM Tb_Produto WHERE Nome LIKE @Nome AND Status = 1 ORDER BY Nome";
-        private const string PRODUCT_STOCK_MISSING_SQL = "SELECT TOP 10 Codigo_Barra, Nome, Descricao, Unidade_Medida, Quantidade_Estoque FROM Tb_Produto ORDER BY Quantidade_Estoque";
+        private const string PRODUCT_STOCK_MISSING_SQL = "SELECT Codigo_Barra, Nome, Descricao, Unidade_Medida, Quantidade_Estoque FROM Tb_Produto WHERE Quantidade_Estoque < @Quantidade_Estoque ORDER BY Quantidade_Estoque";
+        private const string PRODUCT_BEST_SELLERS_SQL = "SELECT TOP 25 Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, SUM(VPro.Quantidade) AS Quantidade FROM Tb_Produto Pro, Tb_Venda Ven, Tb_Venda_Produto VPro WHERE Pro.Id = VPro.Id_Produto AND Ven.Id = VPro.Id_Venda AND Ven.Data_Hora BETWEEN @Data_Hora_Inicial AND @Data_Hora_Final GROUP BY Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida ORDER BY Quantidade DESC";
+        private const string PRODUCT_WORST_SELLERS_SQL = "SELECT TOP 25 Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida, SUM(VPro.Quantidade) AS Quantidade FROM Tb_Produto Pro, Tb_Venda Ven, Tb_Venda_Produto VPro WHERE Pro.Id = VPro.Id_Produto AND Ven.Id = VPro.Id_Venda AND Ven.Data_Hora BETWEEN @Data_Hora_Inicial AND @Data_Hora_Final GROUP BY Pro.Codigo_Barra, Pro.Nome, Pro.Descricao, Pro.Unidade_Medida ORDER BY Quantidade";
 
         #endregion
 
@@ -402,6 +404,16 @@ namespace IFSP.ADS.SiPDV.Framework
         public static string ProductStockMissingSql
         {
             get { return PRODUCT_STOCK_MISSING_SQL; }
+        }
+
+        public static string ProductBestSellersSql
+        {
+            get { return PRODUCT_BEST_SELLERS_SQL; }
+        }
+
+        public static string ProductWorstSellersSql
+        {
+            get { return PRODUCT_WORST_SELLERS_SQL; }
         }
 
         #endregion

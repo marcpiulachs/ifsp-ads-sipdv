@@ -142,11 +142,40 @@ namespace IFSP.ADS.SiPDV.View
 
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void saleByDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             try
             {
-                FormSaleByDate frm = new FormSaleByDate();
-                frm.MdiParent = this;
-                frm.Show();
+                FormSaleByDate frmSaleByDate = new FormSaleByDate();
+                frmSaleByDate.MdiParent = this;
+                frmSaleByDate.Show();
+            }
+            catch (Exception)
+            { }
+        }
+
+        private void soldProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormSoldProducts frmSoldProducts = new FormSoldProducts();
+                frmSoldProducts.MdiParent = this;
+                frmSoldProducts.Show();
+            }
+            catch (Exception)
+            { }
+        }
+
+        private void missingProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormMissingProducts frmMissingProducts = new FormMissingProducts();
+                frmMissingProducts.MdiParent = this;
+                frmMissingProducts.Show();
             }
             catch (Exception)
             { }
@@ -201,7 +230,7 @@ namespace IFSP.ADS.SiPDV.View
 
         /// <summary>
         /// Verifica os acessos do usuário logado.
-        /// Caso não seja usuário admin, esconde aa opções de Operadores e Configurações.
+        /// Caso não seja usuário admin, esconde aa opções de Operadores, Relatórios e Configurações.
         /// </summary>
         private void VerifyUserAccess()
         {
@@ -210,6 +239,7 @@ namespace IFSP.ADS.SiPDV.View
                 if (SharedData.Instance.OperatorData.Code != "admin")
                 {
                     this.operatorsToolStripMenuItem.Visible = false;
+                    this.reportsToolStripMenuItem.Visible = false;
                     this.configurationToolStripMenuItem.Visible = false;
                 }
             }

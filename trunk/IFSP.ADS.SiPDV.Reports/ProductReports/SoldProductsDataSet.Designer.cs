@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace IFSP.ADS.SiPDV.Reports.StockReports {
+namespace IFSP.ADS.SiPDV.Reports.ProductReports {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("MissingProductsDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("SoldProductsDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class MissingProductsDataSet : global::System.Data.DataSet {
+    public partial class SoldProductsDataSet : global::System.Data.DataSet {
         
         private Tb_ProdutoDataTable tableTb_Produto;
         
@@ -30,7 +30,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public MissingProductsDataSet() {
+        public SoldProductsDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected MissingProductsDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected SoldProductsDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            MissingProductsDataSet cln = ((MissingProductsDataSet)(base.Clone()));
+            SoldProductsDataSet cln = ((SoldProductsDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "MissingProductsDataSet";
+            this.DataSetName = "SoldProductsDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/MissingProductsDataSet.xsd";
+            this.Namespace = "http://tempuri.org/SoldProductsDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableTb_Produto = new Tb_ProdutoDataTable();
@@ -225,7 +225,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            MissingProductsDataSet ds = new MissingProductsDataSet();
+            SoldProductsDataSet ds = new SoldProductsDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -287,7 +287,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             
             private global::System.Data.DataColumn columnUnidade_Medida;
             
-            private global::System.Data.DataColumn columnQuantidade_Estoque;
+            private global::System.Data.DataColumn columnQuantidade;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -356,9 +356,9 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Quantidade_EstoqueColumn {
+            public global::System.Data.DataColumn QuantidadeColumn {
                 get {
-                    return this.columnQuantidade_Estoque;
+                    return this.columnQuantidade;
                 }
             }
             
@@ -399,14 +399,14 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Tb_ProdutoRow AddTb_ProdutoRow(string Codigo_Barra, string Nome, string Descricao, string Unidade_Medida, decimal Quantidade_Estoque) {
+            public Tb_ProdutoRow AddTb_ProdutoRow(string Codigo_Barra, string Nome, string Descricao, string Unidade_Medida, decimal Quantidade) {
                 Tb_ProdutoRow rowTb_ProdutoRow = ((Tb_ProdutoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Codigo_Barra,
                         Nome,
                         Descricao,
                         Unidade_Medida,
-                        Quantidade_Estoque};
+                        Quantidade};
                 rowTb_ProdutoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTb_ProdutoRow);
                 return rowTb_ProdutoRow;
@@ -433,7 +433,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
                 this.columnNome = base.Columns["Nome"];
                 this.columnDescricao = base.Columns["Descricao"];
                 this.columnUnidade_Medida = base.Columns["Unidade_Medida"];
-                this.columnQuantidade_Estoque = base.Columns["Quantidade_Estoque"];
+                this.columnQuantidade = base.Columns["Quantidade"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -447,8 +447,8 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
                 base.Columns.Add(this.columnDescricao);
                 this.columnUnidade_Medida = new global::System.Data.DataColumn("Unidade_Medida", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnidade_Medida);
-                this.columnQuantidade_Estoque = new global::System.Data.DataColumn("Quantidade_Estoque", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantidade_Estoque);
+                this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantidade);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -516,7 +516,7 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                MissingProductsDataSet ds = new MissingProductsDataSet();
+                SoldProductsDataSet ds = new SoldProductsDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -655,17 +655,17 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Quantidade_Estoque {
+            public decimal Quantidade {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTb_Produto.Quantidade_EstoqueColumn]));
+                        return ((decimal)(this[this.tableTb_Produto.QuantidadeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantidade_Estoque\' in table \'Tb_Produto\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantidade\' in table \'Tb_Produto\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTb_Produto.Quantidade_EstoqueColumn] = value;
+                    this[this.tableTb_Produto.QuantidadeColumn] = value;
                 }
             }
             
@@ -719,14 +719,14 @@ namespace IFSP.ADS.SiPDV.Reports.StockReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsQuantidade_EstoqueNull() {
-                return this.IsNull(this.tableTb_Produto.Quantidade_EstoqueColumn);
+            public bool IsQuantidadeNull() {
+                return this.IsNull(this.tableTb_Produto.QuantidadeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetQuantidade_EstoqueNull() {
-                this[this.tableTb_Produto.Quantidade_EstoqueColumn] = global::System.Convert.DBNull;
+            public void SetQuantidadeNull() {
+                this[this.tableTb_Produto.QuantidadeColumn] = global::System.Convert.DBNull;
             }
         }
         
