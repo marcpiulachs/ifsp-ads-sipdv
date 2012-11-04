@@ -134,8 +134,16 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.frmConfirmSale = new FormConfirmSale(this.lstProduct);
-                frmConfirmSale.ShowDialog(this);
+                if (this.lstProduct.Count > 0)
+                {
+                    this.frmConfirmSale = new FormConfirmSale(this.lstProduct);
+                    this.frmConfirmSale.ConfirmedSale += new FormConfirmSale.ConfirmedSaleEventHandler(frmConfirmSale_ConfirmedSale);
+                    frmConfirmSale.ShowDialog(this);
+                }
+                else
+                {
+ 
+                }
             }
             catch (Exception ex)
             {
@@ -161,6 +169,11 @@ namespace IFSP.ADS.SiPDV.View
 
             this.textBoxBarCode.Text = string.Empty;
             this.textBoxBarCode.Focus();
+        }
+
+        private void frmConfirmSale_ConfirmedSale()
+        {
+            this.Close();
         }
 
         #endregion

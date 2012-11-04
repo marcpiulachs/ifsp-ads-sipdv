@@ -258,8 +258,16 @@ namespace IFSP.ADS.SiPDV.View
         {
             try
             {
-                this.frmConfirmSale = new FormConfirmSale(this.lstTables[this.currentTable.Number - 1].LstProducts);
-                frmConfirmSale.ShowDialog(this);
+                if (this.lstTables[this.currentTable.Number - 1].LstProducts.Count > 0)
+                {
+                    this.frmConfirmSale = new FormConfirmSale(this.lstTables[this.currentTable.Number - 1].LstProducts);
+                    this.frmConfirmSale.ConfirmedSale += new FormConfirmSale.ConfirmedSaleEventHandler(frmConfirmSale_ConfirmedSale);
+                    frmConfirmSale.ShowDialog(this);
+                }
+                else
+                {
+ 
+                }
             }
             catch (Exception ex)
             {
@@ -286,6 +294,13 @@ namespace IFSP.ADS.SiPDV.View
 
             this.textBoxBarCode.Text = string.Empty;
             this.textBoxBarCode.Focus();
+        }
+
+        private void frmConfirmSale_ConfirmedSale()
+        {
+            this.lstTables[this.currentTable.Number - 1].LstProducts.Clear();
+            LoadTable(this.currentTable.Number - 1);
+            UpdateTablesStatus();
         }
 
         #endregion
@@ -323,6 +338,7 @@ namespace IFSP.ADS.SiPDV.View
         private void LoadTable(int tableIndex)
         {
             this.currentTable = this.lstTables[tableIndex];
+            this.groupBoxProducts.Text = string.Format("Listagem de Produtos (Mesa {0:00})", tableIndex + 1);
 
             this.listBoxProducts.Items.Clear();
             this.listBoxProducts.Items.Add(LIST_BOX_HEADER);

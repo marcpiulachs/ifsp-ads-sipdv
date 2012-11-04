@@ -32,11 +32,11 @@
             this.groupBoxConfirmSale = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
+            this.textBoxSubtotal = new System.Windows.Forms.TextBox();
             this.labelTotal = new System.Windows.Forms.Label();
             this.textBoxDiscount = new System.Windows.Forms.TextBox();
-            this.labelDiscount = new System.Windows.Forms.Label();
-            this.textBoxSubtotal = new System.Windows.Forms.TextBox();
             this.labelSubtotal = new System.Windows.Forms.Label();
+            this.labelDiscount = new System.Windows.Forms.Label();
             this.groupBoxConfirmSale.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -96,44 +96,14 @@
             // textBoxTotal
             // 
             this.textBoxTotal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxTotal.Location = new System.Drawing.Point(124, 62);
+            this.textBoxTotal.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxTotal.Location = new System.Drawing.Point(124, 63);
             this.textBoxTotal.MaxLength = 7;
             this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.ReadOnly = true;
             this.textBoxTotal.Size = new System.Drawing.Size(200, 23);
-            this.textBoxTotal.TabIndex = 13;
+            this.textBoxTotal.TabIndex = 5;
             this.textBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelTotal
-            // 
-            this.labelTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(44, 66);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(74, 16);
-            this.labelTotal.TabIndex = 12;
-            this.labelTotal.Text = "Total:";
-            // 
-            // textBoxDiscount
-            // 
-            this.textBoxDiscount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxDiscount.Location = new System.Drawing.Point(124, 32);
-            this.textBoxDiscount.MaxLength = 7;
-            this.textBoxDiscount.Name = "textBoxDiscount";
-            this.textBoxDiscount.Size = new System.Drawing.Size(200, 23);
-            this.textBoxDiscount.TabIndex = 11;
-            this.textBoxDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxDiscount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDiscount_KeyDown);
-            this.textBoxDiscount.Leave += new System.EventHandler(this.textBoxDiscount_Leave);
-            // 
-            // labelDiscount
-            // 
-            this.labelDiscount.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelDiscount.AutoSize = true;
-            this.labelDiscount.Location = new System.Drawing.Point(11, 35);
-            this.labelDiscount.Name = "labelDiscount";
-            this.labelDiscount.Size = new System.Drawing.Size(107, 16);
-            this.labelDiscount.TabIndex = 10;
-            this.labelDiscount.Text = "Desconto:";
             // 
             // textBoxSubtotal
             // 
@@ -144,18 +114,50 @@
             this.textBoxSubtotal.Name = "textBoxSubtotal";
             this.textBoxSubtotal.ReadOnly = true;
             this.textBoxSubtotal.Size = new System.Drawing.Size(200, 23);
-            this.textBoxSubtotal.TabIndex = 9;
+            this.textBoxSubtotal.TabIndex = 1;
             this.textBoxSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(44, 67);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(74, 16);
+            this.labelTotal.TabIndex = 4;
+            this.labelTotal.Text = "Total:";
+            // 
+            // textBoxDiscount
+            // 
+            this.textBoxDiscount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxDiscount.Location = new System.Drawing.Point(124, 33);
+            this.textBoxDiscount.MaxLength = 7;
+            this.textBoxDiscount.Name = "textBoxDiscount";
+            this.textBoxDiscount.Size = new System.Drawing.Size(200, 23);
+            this.textBoxDiscount.TabIndex = 3;
+            this.textBoxDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxDiscount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDiscount_KeyDown);
+            this.textBoxDiscount.Leave += new System.EventHandler(this.textBoxDiscount_Leave);
             // 
             // labelSubtotal
             // 
             this.labelSubtotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelSubtotal.AutoSize = true;
-            this.labelSubtotal.Location = new System.Drawing.Point(11, 6);
+            this.labelSubtotal.Location = new System.Drawing.Point(11, 7);
             this.labelSubtotal.Name = "labelSubtotal";
             this.labelSubtotal.Size = new System.Drawing.Size(107, 16);
-            this.labelSubtotal.TabIndex = 8;
+            this.labelSubtotal.TabIndex = 0;
             this.labelSubtotal.Text = "Subtotal:";
+            // 
+            // labelDiscount
+            // 
+            this.labelDiscount.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelDiscount.AutoSize = true;
+            this.labelDiscount.Location = new System.Drawing.Point(11, 37);
+            this.labelDiscount.Name = "labelDiscount";
+            this.labelDiscount.Size = new System.Drawing.Size(107, 16);
+            this.labelDiscount.TabIndex = 2;
+            this.labelDiscount.Text = "Desconto:";
             // 
             // FormConfirmSale
             // 

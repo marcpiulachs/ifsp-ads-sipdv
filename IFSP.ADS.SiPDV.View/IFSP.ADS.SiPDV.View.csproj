@@ -114,6 +114,12 @@
     <Compile Include="FormSaleByDate.Designer.cs">
       <DependentUpon>FormSaleByDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSoldProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSoldProducts.Designer.cs">
+      <DependentUpon>FormSoldProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSaleByDate.resx">
       <DependentUpon>FormSaleByDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSoldProducts.resx">
+      <DependentUpon>FormSoldProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSplash.resx">
       <DependentUpon>FormSplash.cs</DependentUpon>

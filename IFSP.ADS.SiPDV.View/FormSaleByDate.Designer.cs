@@ -85,11 +85,14 @@
             // buttonLoadReport
             // 
             this.buttonLoadReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLoadReport.Location = new System.Drawing.Point(672, 11);
+            this.buttonLoadReport.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Enter;
+            this.buttonLoadReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonLoadReport.Location = new System.Drawing.Point(652, 12);
             this.buttonLoadReport.Name = "buttonLoadReport";
-            this.buttonLoadReport.Size = new System.Drawing.Size(100, 42);
+            this.buttonLoadReport.Size = new System.Drawing.Size(120, 42);
             this.buttonLoadReport.TabIndex = 5;
             this.buttonLoadReport.Text = "Carregar Relatório";
+            this.buttonLoadReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLoadReport.UseVisualStyleBackColor = true;
             this.buttonLoadReport.Click += new System.EventHandler(this.buttonLoadReport_Click);
             // 
