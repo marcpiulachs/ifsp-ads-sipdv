@@ -374,6 +374,36 @@ namespace IFSP.ADS.SiPDV.View
         }
 
         /// <summary>
+        /// Busca a quantidade de um produto em todas em mesas.
+        /// </summary>
+        /// <param name="prod">Produto a ser buscado</param>
+        /// <returns>Retorna a quantidade do produto em todas as mesas</returns>
+        private int GetProductQuantity(Product prod)
+        {
+            int count = 0;
+
+            try
+            {
+                foreach (Table table in this.lstTables)
+                {
+                    foreach (Product product in table.LstProducts)
+                    {
+                        if (product.Id == prod.Id)
+                        {
+                            count += product.Quantity;
+                        }
+                    }
+                }
+
+                return count;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Adiciona um produto na lista de produtos da mesa selecionada.
         /// </summary>
         /// <param name="tableIndex">Índice da mesa</param>
@@ -390,7 +420,7 @@ namespace IFSP.ADS.SiPDV.View
                     this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
                     // Se a quantidade a ser vendida for maior que a quantidade em estoque, exibe um alerta.
-                    if (this.currentProduct.Quantity <= this.currentProduct.StockQuantity)
+                    if (this.currentProduct.Quantity + GetProductQuantity(this.currentProduct) <= this.currentProduct.StockQuantity)
                     {
                         // Busca o índice deste produto na lista de produtos.
                         productIndex = GetProductIndex(tableIndex, this.currentProduct);

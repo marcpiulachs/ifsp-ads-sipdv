@@ -67,6 +67,15 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Deseja realmente fechar o SiPDV?.
+        /// </summary>
+        internal static string CloseProgramQuestion {
+            get {
+                return ResourceManager.GetString("CloseProgramQuestion", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Configuration {
             get {
                 object obj = ResourceManager.GetObject("Configuration", resourceCulture);
@@ -306,6 +315,13 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        internal static System.Drawing.Icon S {
+            get {
+                object obj = ResourceManager.GetObject("S", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Sale {
             get {
                 object obj = ResourceManager.GetObject("Sale", resourceCulture);
@@ -322,6 +338,15 @@ namespace IFSP.ADS.SiPDV.View.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Venda realizada com sucesso!.
+        /// </summary>
+        internal static string SaleSaveSuccess {
+            get {
+                return ResourceManager.GetString("SaleSaveSuccess", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
@@ -332,6 +357,13 @@ namespace IFSP.ADS.SiPDV.View.Properties {
         internal static System.Drawing.Bitmap Search {
             get {
                 object obj = ResourceManager.GetObject("Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SiPDV {
+            get {
+                object obj = ResourceManager.GetObject("SiPDV", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

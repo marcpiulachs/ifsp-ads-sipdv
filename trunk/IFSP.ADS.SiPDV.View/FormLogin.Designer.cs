@@ -104,6 +104,7 @@
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.textBoxOperator);
             this.Controls.Add(this.labelOperator);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(480, 360);
             this.MinimumSize = new System.Drawing.Size(480, 360);

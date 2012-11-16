@@ -31,6 +31,7 @@ namespace IFSP.ADS.SiPDV.Business
         {
             try
             {
+                // Gera o hash da senha.
                 oper.Password = PasswordTools.GenerateEncodedPassword(oper.Password);
 
                 using (this.operatorDataAccess = new OperatorDataAccess())
@@ -243,121 +244,6 @@ namespace IFSP.ADS.SiPDV.Business
                 throw ex;
             }
         }
-
-        //public Operator OperatorByCode(string code)
-        //{
-        //    Operator oper = null;
-        //    DataTable dtOperator;
-
-        //    try
-        //    {
-        //        using (this.operatorDataAccess = new OperatorDataAccess())
-        //        {
-        //            dtOperator = this.operatorDataAccess.GetOperatorByCode(code);
-        //        }
-
-        //        if (dtOperator != null && dtOperator.Rows.Count > 0)
-        //        {
-        //            oper = new Operator();
-        //            oper.Id = (int)dtOperator.Rows[0][DatabaseConstants.OperatorIdColumn];
-        //            oper.Code = (string)dtOperator.Rows[0][DatabaseConstants.OperatorCodeColumn];
-        //            oper.Name = (string)dtOperator.Rows[0][DatabaseConstants.OperatorNameColumn];
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logging.Error(BusinessConstants.ProjectName,
-        //                      MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                      MethodBase.GetCurrentMethod().Name,
-        //                      ex.Message);
-
-        //        throw ex;
-        //    }
-
-        //    return oper;
-        //}
-
-        //public List<Operator> OperatorsByName(string name)
-        //{
-        //    Operator oper;
-        //    List<Operator> lstOperators = null;
-        //    DataTable dtOperator;
-
-        //    try
-        //    {
-        //        using (this.operatorDataAccess = new OperatorDataAccess())
-        //        {
-        //            dtOperator = this.operatorDataAccess.GetOperatorsByName(name);
-        //        }
-
-        //        if (dtOperator != null && dtOperator.Rows.Count > 0)
-        //        {
-        //            lstOperators = new List<Operator>();
-
-        //            foreach (DataRow dr in dtOperator.Rows)
-        //            {
-        //                oper = new Operator();
-        //                oper.Id = (int)dtOperator.Rows[0][DatabaseConstants.OperatorIdColumn];
-        //                oper.Code = (string)dtOperator.Rows[0][DatabaseConstants.OperatorCodeColumn];
-        //                oper.Name = (string)dtOperator.Rows[0][DatabaseConstants.OperatorNameColumn];
-
-        //                lstOperators.Add(oper);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logging.Error(BusinessConstants.ProjectName,
-        //                      MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                      MethodBase.GetCurrentMethod().Name,
-        //                      ex.Message);
-
-        //        throw ex;
-        //    }
-
-        //    return lstOperators;
-        //}
-
-        //public List<Operator> AllOperators()
-        //{
-        //    Operator oper;
-        //    List<Operator> lstOperators = null;
-        //    DataTable dtOperator;
-
-        //    try
-        //    {
-        //        using (this.operatorDataAccess = new OperatorDataAccess())
-        //        {
-        //            dtOperator = this.operatorDataAccess.GetAllOperators();
-        //        }
-
-        //        if (dtOperator != null && dtOperator.Rows.Count > 0)
-        //        {
-        //            lstOperators = new List<Operator>();
-
-        //            foreach (DataRow dr in dtOperator.Rows)
-        //            {
-        //                oper = new Operator();
-        //                oper.Id = (int)dtOperator.Rows[0][DatabaseConstants.OperatorIdColumn];
-        //                oper.Code = (string)dtOperator.Rows[0][DatabaseConstants.OperatorCodeColumn];
-        //                oper.Name = (string)dtOperator.Rows[0][DatabaseConstants.OperatorNameColumn];
-
-        //                lstOperators.Add(oper);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logging.Error(BusinessConstants.ProjectName,
-        //                      MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                      MethodBase.GetCurrentMethod().Name,
-        //                      ex.Message);
-
-        //        throw ex;
-        //    }
-
-        //    return lstOperators;
-        //}
 
         #endregion
     }

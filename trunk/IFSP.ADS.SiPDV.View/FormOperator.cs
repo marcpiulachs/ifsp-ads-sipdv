@@ -25,6 +25,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormOperator()
         {
             InitializeComponent();
@@ -78,11 +81,6 @@ namespace IFSP.ADS.SiPDV.View
                 DeleteOperator();
                 LoadAllOperators();
             }
-        }
-
-        private void buttonChangePassword_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxSearchCode_KeyDown(object sender, KeyEventArgs e)
@@ -154,6 +152,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Limpa os campos do formulário de operador.
+        /// </summary>
         private void ClearFields()
         {
             this.textBoxCode.Text = string.Empty;
@@ -162,6 +163,9 @@ namespace IFSP.ADS.SiPDV.View
             this.textBoxConfirmPassword.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Preenche os campos do formulário de operador com os dados do operador selecionado.
+        /// </summary>
         private void FillFields()
         {
             if (this.dataGridViewOperators.SelectedRows.Count == 1)
@@ -171,6 +175,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Esconde os campos de senha do formulário.
+        /// </summary>
         private void HidePasswordFields()
         {
             this.labelPassword.Visible = false;
@@ -179,6 +186,9 @@ namespace IFSP.ADS.SiPDV.View
             this.textBoxConfirmPassword.Visible = false;
         }
 
+        /// <summary>
+        /// Exibe os campos de senha do formulário.
+        /// </summary>
         private void ShowPasswordFields()
         {
             this.labelPassword.Visible = true;
@@ -187,6 +197,9 @@ namespace IFSP.ADS.SiPDV.View
             this.textBoxConfirmPassword.Visible = true;
         }
 
+        /// <summary>
+        /// Carrega todos os operadores.
+        /// </summary>
         private void LoadAllOperators()
         {
             try
@@ -202,6 +215,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega operador pelo código.
+        /// </summary>
         private void LoadOperatorsByCode()
         {
             try
@@ -217,6 +233,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega operadores pelo nome.
+        /// </summary>
         private void LoadOperatorsByName()
         {
             try
@@ -232,6 +251,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Salva os dados do operador.
+        /// </summary>
         private void SaveOperator()
         {
             try
@@ -265,6 +287,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Deleta um operador.
+        /// </summary>
         private void DeleteOperator()
         {
             try

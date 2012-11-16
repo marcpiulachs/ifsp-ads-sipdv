@@ -215,6 +215,31 @@ namespace IFSP.ADS.SiPDV.View
         }
 
         /// <summary>
+        /// Busca a quantidade de um produto na lista de produtos.
+        /// </summary>
+        /// <param name="prod">Produto a ser buscado</param>
+        /// <returns>Retorna a quantidade do produto na lista</returns>
+        private int GetProductQuantity(Product prod)
+        {
+            try
+            {
+                foreach(Product product in this.lstProduct)
+                {
+                    if (product.Id == prod.Id)
+                    {
+                        return product.Quantity;
+                    }
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Adiciona um produto na lista de produtos a serem vendidos.
         /// </summary>
         private void AddProduct()
@@ -231,7 +256,7 @@ namespace IFSP.ADS.SiPDV.View
                     this.currentProduct.Quantity = int.Parse(textBoxQuantity.Text);
 
                     // Se a quantidade a ser vendida for maior que a quantidade em estoque, exibe um alerta.
-                    if (this.currentProduct.Quantity <= this.currentProduct.StockQuantity)
+                    if (this.currentProduct.Quantity + GetProductQuantity(this.currentProduct) <= this.currentProduct.StockQuantity)
                     {
                         // Busca o índice deste produto na lista de produtos.
                         productIndex = GetProductIndex(this.currentProduct);

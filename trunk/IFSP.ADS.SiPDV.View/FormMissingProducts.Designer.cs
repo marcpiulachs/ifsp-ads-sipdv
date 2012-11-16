@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMissingProducts));
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.buttonLoadReport = new System.Windows.Forms.Button();
             this.labelMinStockQuantity = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.Controls.Add(this.buttonLoadReport);
             this.Controls.Add(this.crystalReportViewer);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 630);
             this.Name = "FormMissingProducts";

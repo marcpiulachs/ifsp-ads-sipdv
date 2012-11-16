@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConfiguration));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -201,6 +202,7 @@
             this.ClientSize = new System.Drawing.Size(624, 442);
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "FormConfiguration";

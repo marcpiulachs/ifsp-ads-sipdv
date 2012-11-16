@@ -36,7 +36,7 @@ namespace IFSP.ADS.SiPDV.View
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (DialogResult.Yes == MessageBox.Show(this, "Deseja realmente fechar o SiPDV?", Resources.Question,
+            if (DialogResult.Yes == MessageBox.Show(this, Resources.CloseProgramQuestion, Resources.Question,
                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                                                     MessageBoxDefaultButton.Button2))
             {
@@ -230,7 +230,7 @@ namespace IFSP.ADS.SiPDV.View
 
         /// <summary>
         /// Verifica os acessos do usuário logado.
-        /// Caso não seja usuário admin, esconde aa opções de Operadores, Relatórios e Configurações.
+        /// Caso não seja usuário admin, esconde as opções de Operadores, Relatórios e Configurações.
         /// </summary>
         private void VerifyUserAccess()
         {

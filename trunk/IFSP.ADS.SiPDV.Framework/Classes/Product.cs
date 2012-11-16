@@ -112,6 +112,10 @@ namespace IFSP.ADS.SiPDV.Framework
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Calcula o subtotal do produto (Quantidade * Valor de Venda).
+        /// </summary>
+        /// <returns>Retorna o subtotal do produto</returns>
         public float CalculateSubtotal()
         {
             return this.quantity * this.salePrice;

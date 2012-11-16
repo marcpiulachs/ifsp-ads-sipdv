@@ -19,6 +19,9 @@ namespace IFSP.ADS.SiPDV.SharedMemory
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor privado padrão.
+        /// </summary>
         private SharedData()
         {
 
@@ -28,6 +31,9 @@ namespace IFSP.ADS.SiPDV.SharedMemory
 
         #region -Singleton-
 
+        /// <summary>
+        /// Retorna a instância da SharedMemory. Caso ela seja nula, cria uma instância.
+        /// </summary>
         public static SharedData Instance
         {
             get
@@ -55,6 +61,9 @@ namespace IFSP.ADS.SiPDV.SharedMemory
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Limpa a SharedMemory.
+        /// </summary>
         public void Clear()
         {
             this.operatorData = null;

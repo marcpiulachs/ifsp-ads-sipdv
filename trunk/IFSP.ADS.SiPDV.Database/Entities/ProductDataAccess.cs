@@ -27,6 +27,11 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Busca o id do produto.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna o id do produto</returns>
         public int GetId(long barCode)
         {
             try
@@ -53,6 +58,15 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Insere um novo produto no banco de dados.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <param name="name">Nome do produto</param>
+        /// <param name="description">Descrição do produto</param>
+        /// <param name="measurementUnit">Unidade de medida do produto</param>
+        /// <param name="stockQuantity">Quantidade em estoque do produto</param>
+        /// <param name="status">Status do produto</param>
         public void InsertProduct(long barCode, string name, string description, string measurementUnit, double stockQuantity, int status)
         {
             try
@@ -84,6 +98,13 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Insere um novo preço de um produto.
+        /// </summary>
+        /// <param name="productId">Id do produto</param>
+        /// <param name="dateTime">Data do preço do produto</param>
+        /// <param name="costPrice">Preço de custo</param>
+        /// <param name="salePrice">Preço de venda</param>
         public void InsertPrice(int productId, DateTime dateTime, float costPrice, float salePrice)
         {
             try
@@ -113,6 +134,15 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Atualiza um produto no banco de dados.
+        /// </summary>
+        /// <param name="id">Id do produto</param>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <param name="name">Nome do produto</param>
+        /// <param name="description">Descrição do produto</param>
+        /// <param name="measurementUnit">Unidade de medida do produto</param>
+        /// <param name="status">Status do produto</param>
         public void UpdateProduct(int id, long barCode, string name, string description, string measurementUnit, int status)
         {
             try
@@ -144,6 +174,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Atualiza a quantidade em estoque de um produto.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <param name="stockQuantity">Quantidade em estoque do produto</param>
         public void UpdateProductStockQuantity(long barCode, double stockQuantity)
         {
             try
@@ -171,6 +206,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca um produto para venda.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductSale(long barCode)
         {
             DataTable dtProduct;
@@ -205,6 +245,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca o produto pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductByBarCode(long barCode)
         {
             DataTable dtProduct;
@@ -239,6 +284,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsByName(string name)
         {
             DataTable dtProducts;
@@ -273,6 +323,10 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca todos os produtos.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetAllProducts()
         {
             DataTable dtProducts;
@@ -305,6 +359,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca o produto para venda pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductSaleByBarCode(long barCode)
         {
             DataTable dtProduct;
@@ -339,6 +398,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos para venda pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsSaleByName(string name)
         {
             DataTable dtProducts;
@@ -373,6 +437,10 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca todos os produtos para venda.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetAllProductsSale()
         {
             DataTable dtProducts;
@@ -405,6 +473,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca o produto para estoque pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductStockByBarCode(long barCode)
         {
             DataTable dtProduct;
@@ -439,6 +512,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos para estoque pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsStockByName(string name)
         {
             DataTable dtProducts;
@@ -473,6 +551,10 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca todos os produtos para estoque.
+        /// </summary>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetAllProductsStock()
         {
             DataTable dtProducts;
@@ -505,6 +587,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos que estão em falta no estoque, de acordo com o mínimo informado.
+        /// </summary>
+        /// <param name="stockQuantity">Quantidade mínima de produtos no estoque</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsStockMissing(double stockQuantity)
         {
             DataTable dtProducts;
@@ -539,6 +626,12 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos mais vendidos em determinado período.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsBestSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
         {
             DataTable dtProducts;
@@ -574,6 +667,12 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Busca os produtos menos vendidos em determinado período.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsWorstSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
         {
             DataTable dtProducts;

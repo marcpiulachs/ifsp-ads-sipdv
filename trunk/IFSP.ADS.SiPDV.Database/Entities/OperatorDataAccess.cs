@@ -27,6 +27,12 @@ namespace IFSP.ADS.SiPDV.Database
 
         #region -Public Methods-
 
+        /// <summary>
+        /// Valida o login do operador.
+        /// </summary>
+        /// <param name="code">Código do operador</param>
+        /// <param name="password">Senha do operador</param>
+        /// <returns>Retorna o id do operador em caso de sucesso, ou 0 caso o login não seja válido</returns>
         public int Login(string code, string password)
         {
             object dbReturn;
@@ -65,6 +71,13 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Insere um novo operador no banco de dados.
+        /// </summary>
+        /// <param name="code">Código do operador</param>
+        /// <param name="name">Nome do operador</param>
+        /// <param name="password">Senha do operador</param>
+        /// <param name="status">Status do operador</param>
         public void InsertOperator(string code, string name, string password, int status)
         {
             try
@@ -94,6 +107,13 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Atualiza um operador no banco de dados.
+        /// </summary>
+        /// <param name="id">Id do operador</param>
+        /// <param name="code">Código do operador</param>
+        /// <param name="name">Nome do operador</param>
+        /// <param name="password">Senha do operador</param>
         public void UpdateOperator(int id, string code, string name, string password)
         {
             try
@@ -123,6 +143,11 @@ namespace IFSP.ADS.SiPDV.Database
             }
         }
 
+        /// <summary>
+        /// Atualiza o status do operador (1 - ativo, 0 - inativo).
+        /// </summary>
+        /// <param name="code">Código do operador</param>
+        /// <param name="status">Status do operador</param>
         public void UpdateOperatorStatus(string code, int status)
         {
             try

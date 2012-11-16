@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSoldProducts));
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.buttonLoadReport = new System.Windows.Forms.Button();
             this.dateTimePickerFinal = new System.Windows.Forms.DateTimePicker();
@@ -134,6 +135,7 @@
             this.Controls.Add(this.dateTimePickerInitial);
             this.Controls.Add(this.crystalReportViewer);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 630);
             this.Name = "FormSoldProducts";
