@@ -173,7 +173,8 @@ namespace IFSP.ADS.SiPDV.View
 
                 this.saleBusiness.InsertSale(sale, lstProducts);
 
-                MessageBox.Show(this, "Venda realizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Resources.SaleSaveSuccess, Resources.Success, 
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ThrowConfirmSale();
 

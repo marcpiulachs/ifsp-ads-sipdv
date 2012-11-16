@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOperator));
             this.groupBoxOperator = new System.Windows.Forms.GroupBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNew = new System.Windows.Forms.Button();
             this.tableLayoutPanelOperator = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelCode = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.labelConfirmPassword = new System.Windows.Forms.Label();
             this.textBoxCode = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.labelConfirmPassword = new System.Windows.Forms.Label();
             this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
             this.groupBoxSearchOperators = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSearchOperators = new System.Windows.Forms.TableLayoutPanel();
@@ -144,17 +145,6 @@
             this.tableLayoutPanelOperator.Size = new System.Drawing.Size(600, 180);
             this.tableLayoutPanelOperator.TabIndex = 0;
             // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(213, 61);
-            this.textBoxPassword.MaxLength = 35;
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(120, 23);
-            this.textBoxPassword.TabIndex = 5;
-            this.textBoxPassword.UseSystemPasswordChar = true;
-            // 
             // labelCode
             // 
             this.labelCode.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -177,28 +167,6 @@
             this.labelName.TabIndex = 2;
             this.labelName.Text = "Nome:";
             // 
-            // labelPassword
-            // 
-            this.labelPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(139, 64);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(68, 16);
-            this.labelPassword.TabIndex = 4;
-            this.labelPassword.Text = "Senha:";
-            // 
-            // labelConfirmPassword
-            // 
-            this.labelConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelConfirmPassword.AutoSize = true;
-            this.labelConfirmPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfirmPassword.Location = new System.Drawing.Point(29, 93);
-            this.labelConfirmPassword.Name = "labelConfirmPassword";
-            this.labelConfirmPassword.Size = new System.Drawing.Size(178, 16);
-            this.labelConfirmPassword.TabIndex = 6;
-            this.labelConfirmPassword.Text = "Confirme a Senha:";
-            // 
             // textBoxCode
             // 
             this.textBoxCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -218,6 +186,39 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(305, 23);
             this.textBoxName.TabIndex = 3;
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.Location = new System.Drawing.Point(139, 64);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(68, 16);
+            this.labelPassword.TabIndex = 4;
+            this.labelPassword.Text = "Senha:";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(213, 61);
+            this.textBoxPassword.MaxLength = 35;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(120, 23);
+            this.textBoxPassword.TabIndex = 5;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // labelConfirmPassword
+            // 
+            this.labelConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelConfirmPassword.AutoSize = true;
+            this.labelConfirmPassword.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfirmPassword.Location = new System.Drawing.Point(29, 93);
+            this.labelConfirmPassword.Name = "labelConfirmPassword";
+            this.labelConfirmPassword.Size = new System.Drawing.Size(178, 16);
+            this.labelConfirmPassword.TabIndex = 6;
+            this.labelConfirmPassword.Text = "Confirme a Senha:";
             // 
             // textBoxConfirmPassword
             // 
@@ -354,6 +355,7 @@
             this.Controls.Add(this.groupBoxSearchOperators);
             this.Controls.Add(this.dataGridViewOperators);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormOperator";

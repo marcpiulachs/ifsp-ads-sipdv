@@ -38,6 +38,7 @@
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saleByDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.soldProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.missingProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -51,7 +52,6 @@
             this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelVersionValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.soldProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +144,13 @@
             this.saleByDateToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
             this.saleByDateToolStripMenuItem.Text = "Vendas por Período";
             this.saleByDateToolStripMenuItem.Click += new System.EventHandler(this.saleByDateToolStripMenuItem_Click);
+            // 
+            // soldProductsToolStripMenuItem
+            // 
+            this.soldProductsToolStripMenuItem.Name = "soldProductsToolStripMenuItem";
+            this.soldProductsToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
+            this.soldProductsToolStripMenuItem.Text = "Produtos Vendidos";
+            this.soldProductsToolStripMenuItem.Click += new System.EventHandler(this.soldProductsToolStripMenuItem_Click);
             // 
             // missingProductsToolStripMenuItem
             // 
@@ -256,13 +263,6 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // soldProductsToolStripMenuItem
-            // 
-            this.soldProductsToolStripMenuItem.Name = "soldProductsToolStripMenuItem";
-            this.soldProductsToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.soldProductsToolStripMenuItem.Text = "Produtos Vendidos";
-            this.soldProductsToolStripMenuItem.Click += new System.EventHandler(this.soldProductsToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +274,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;

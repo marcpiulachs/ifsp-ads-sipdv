@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProduct));
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.groupBoxSearchProducts = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSearchProducts = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.labelSearchBarCode = new System.Windows.Forms.Label();
             this.labelSearchName = new System.Windows.Forms.Label();
             this.textBoxSearchBarCode = new System.Windows.Forms.TextBox();
             this.textBoxSearchName = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.groupBoxSearchProducts.SuspendLayout();
             this.tableLayoutPanelSearchProducts.SuspendLayout();
@@ -111,6 +112,19 @@
             this.tableLayoutPanelSearchProducts.Size = new System.Drawing.Size(588, 60);
             this.tableLayoutPanelSearchProducts.TabIndex = 0;
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearch.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Search;
+            this.buttonSearch.Location = new System.Drawing.Point(473, 33);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(112, 24);
+            this.buttonSearch.TabIndex = 4;
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
             // labelSearchBarCode
             // 
             this.labelSearchBarCode.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -157,19 +171,6 @@
             this.textBoxSearchName.TextChanged += new System.EventHandler(this.textBoxSearchName_TextChanged);
             this.textBoxSearchName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchName_KeyDown);
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearch.Image = global::IFSP.ADS.SiPDV.View.Properties.Resources.Search;
-            this.buttonSearch.Location = new System.Drawing.Point(473, 33);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(112, 24);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
             // FormAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
@@ -179,6 +180,7 @@
             this.Controls.Add(this.buttonAddProduct);
             this.Controls.Add(this.dataGridViewProducts);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "FormAddProduct";

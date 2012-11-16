@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSale));
             this.groupBoxTotal = new System.Windows.Forms.GroupBox();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
             this.groupBoxProducts = new System.Windows.Forms.GroupBox();
@@ -358,6 +359,7 @@
             this.Controls.Add(this.groupBoxTotal);
             this.Controls.Add(this.groupBoxProducts);
             this.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormSale";

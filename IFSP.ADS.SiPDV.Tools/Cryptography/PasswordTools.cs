@@ -8,6 +8,8 @@ namespace IFSP.ADS.SiPDV.Tools.Cryptography
 {
     public class PasswordTools
     {
+        #region -Public Static Methods-
+
         /// <summary>
         /// Gera um código hash com o algoritmo MD5 da senha do operador.
         /// </summary>
@@ -31,5 +33,7 @@ namespace IFSP.ADS.SiPDV.Tools.Cryptography
                 throw ex;
             }
         }
+
+        #endregion
     }
 }

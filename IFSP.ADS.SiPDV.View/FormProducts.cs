@@ -25,6 +25,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Constructor-
 
+        /// <summary>
+        /// Construtor padrão.
+        /// </summary>
         public FormProducts()
         {
             InitializeComponent();
@@ -150,6 +153,9 @@ namespace IFSP.ADS.SiPDV.View
 
         #region -Private Methods-
 
+        /// <summary>
+        /// Limpa os campos do formulário de produtos.
+        /// </summary>
         private void ClearFields()
         {
             this.textBoxBarCode.Text = string.Empty;
@@ -161,6 +167,9 @@ namespace IFSP.ADS.SiPDV.View
             this.radioButtonActive.Checked = true;
         }
 
+        /// <summary>
+        /// Preenche os campos do formulário de produtos com os dados do produto selecionado.
+        /// </summary>
         private void FillFields()
         {
             if (this.dataGridViewProducts.SelectedRows.Count == 1)
@@ -182,6 +191,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega todos os produtos.
+        /// </summary>
         private void LoadAllProducts()
         {
             try
@@ -197,6 +209,10 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega o produto pelo código de barras.
+        /// </summary>
+        /// <param name="barCode">Código de barras do produto</param>
         private void LoadProductsByBarCode(string barCode)
         {
             try
@@ -212,6 +228,10 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Carrega os produtos pelo nome.
+        /// </summary>
+        /// <param name="name">Nome dos produtos</param>
         private void LoadProductsByName(string name)
         {
             try
@@ -227,6 +247,9 @@ namespace IFSP.ADS.SiPDV.View
             }
         }
 
+        /// <summary>
+        /// Salva os dados do produto.
+        /// </summary>
         private void SaveProduct()
         {
             try

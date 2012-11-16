@@ -371,6 +371,12 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
+        /// <summary>
+        /// Busca os produtos mais vendidos em determinado período.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsBestSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
         {
             try
@@ -391,6 +397,12 @@ namespace IFSP.ADS.SiPDV.Business
             }
         }
 
+        /// <summary>
+        /// Busca os produtos menos vendidos em determinado período.
+        /// </summary>
+        /// <param name="dateTimeInitial">Data inicial</param>
+        /// <param name="dateTimeFinal">Data final</param>
+        /// <returns>Retorna um DataTable contendo a busca realizada</returns>
         public DataTable GetProductsWorstSellers(DateTime dateTimeInitial, DateTime dateTimeFinal)
         {
             try
