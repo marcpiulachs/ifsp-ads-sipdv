@@ -543,10 +543,12 @@ namespace IFSP.ADS.SiPDV.View
             {
                 if (table.LstProducts.Count > 0)
                 {
+                    // Busca o botão da mesa atual em tempo de execução e pinta de vermelho.
                     ((Button)this.tableLayoutPanelTables.Controls["buttonTable" + table.Number.ToString("00")]).BackColor = Color.Firebrick;
                 }
                 else
                 {
+                    // Buscar o botão da mesa atual em tempo de execução e pinta de verde.
                     ((Button)this.tableLayoutPanelTables.Controls["buttonTable" + table.Number.ToString("00")]).BackColor = Color.OliveDrab;
                 }
             }
