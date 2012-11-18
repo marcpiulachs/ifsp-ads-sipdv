@@ -267,7 +267,9 @@ namespace IFSP.ADS.SiPDV.View
                             this.currentProduct.Quantity += this.lstProduct[productIndex].Quantity;
 
                             this.lstProduct[productIndex] = this.currentProduct;
+                            // Associa o produto no listbox.
                             this.listBoxProducts.Items[productIndex + 1] = this.currentProduct;
+                            // Seleciona o item do listbox.
                             this.listBoxProducts.SelectedIndex = productIndex + 1;
                         }
                         else
@@ -317,8 +319,11 @@ namespace IFSP.ADS.SiPDV.View
 
                 if (index > 0)
                 {
+                    // Remove o produto da memória.
                     this.lstProduct.RemoveAt(index - 1);
+                    // Remove o produto do listbox.
                     this.listBoxProducts.Items.RemoveAt(index);
+                    // Seleciona o último produto do listbox.
                     this.listBoxProducts.SelectedIndex = this.listBoxProducts.Items.Count - 1;
                 }
             }
